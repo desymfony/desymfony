@@ -22,6 +22,7 @@ Pasos para que cada uno se lo instale
     * Las siguientes veces: `git push`
   1. Crear un host local en `/etc/hosts` (ej. `127.0.0.1  desymfony.local`)
   1. Configurar un host virtual en Apache2:
+
 ```
 # DESYMFONY 2011
 <VirtualHost *:80>
