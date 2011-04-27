@@ -17,6 +17,10 @@ _demo:
 _ponencias:
     resource: @PonenciaBundle/Resources/config/routing.yml
 
+_admin_ponencias:
+    resource: @PonenciaBundle/Resources/config/admin_routing.yml
+    prefix:   /admin/ponencia
+
 _ponentes:
     resource: @PonenteBundle/Resources/config/routing.yml
 

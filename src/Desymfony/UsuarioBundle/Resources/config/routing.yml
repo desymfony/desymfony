@@ -1,3 +1,15 @@
-#homepage:
-#    pattern:  /
-#    defaults: { _controller: UsuarioBundle:Default:index }
+registro:
+    pattern:  /registro
+    defaults: { _controller: UsuarioBundle:Default:registro }
+
+perfil:
+    pattern:  /perfil
+    defaults: { _controller: UsuarioBundle:Default:perfil }
+
+login:
+    pattern:  /login
+    defaults: { _controller: UsuarioBundle:Default:login }
+
+logoff:
+    pattern:  /logoff
+    defaults: { _controller: UsuarioBundle:Default:logoff }

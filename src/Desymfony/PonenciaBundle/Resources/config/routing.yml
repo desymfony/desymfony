@@ -1,3 +1,11 @@
-#homepage:
-#    pattern:  /
-#    defaults: { _controller: PonenciaBundle:Default:index }
+ponencias:
+    pattern:  /ponencias
+    defaults: { _controller: PonenciaBundle:Default:index }
+
+ponencia:
+    pattern:  /ponencia/{slug}
+    defaults: { _controller: PonenciaBundle:Default:ponencia }
+
+apuntarse:
+    pattern:  /me-apunto-a-{slug}
+    defaults: { _controller: PonenciaBundle:Default:apuntarse }
