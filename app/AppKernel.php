@@ -18,6 +18,11 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Acme\DemoBundle\AcmeDemoBundle(),
+            
+            new Desymfony\PonenciaBundle\PonenciaBundle(),
+            new Desymfony\PonenteBundle\PonenteBundle(),
+            new Desymfony\UsuarioBundle\UsuarioBundle(),
+            new Desymfony\ComunBundle\ComunBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

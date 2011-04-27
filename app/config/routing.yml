@@ -1,3 +1,4 @@
+# Rutas que incluye por defecto la distribución estándar
 _welcome:
     pattern:  /
     defaults: { _controller: AcmeDemoBundle:Welcome:index }
@@ -10,3 +11,17 @@ _demo:
     resource: "@AcmeDemoBundle/Controller/DemoController.php"
     type:     annotation
     prefix:   /demo
+
+
+# Rutas del proyecto Desymfony
+_ponencias:
+    resource: @PonenciaBundle/Resources/config/routing.yml
+
+_ponentes:
+    resource: @PonenteBundle/Resources/config/routing.yml
+
+_usuarios:
+    resource: @UsuarioBundle/Resources/config/routing.yml
+
+_comun:
+    resource: @ComunBundle/Resources/config/routing.yml
