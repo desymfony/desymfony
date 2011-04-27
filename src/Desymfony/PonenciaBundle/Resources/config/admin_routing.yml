@@ -1,0 +1,16 @@
+# Sólo las rutas de la parte de administración de las ponencias
+admin_ponencia_list:
+    pattern:  /list
+    defaults: { _controller: PonenciaBundle:Admin:list }
+
+admin_ponencia_new:
+    pattern:  /new
+    defaults: { _controller: PonenciaBundle:Admin:new }
+
+admin_ponencia_edit:
+    pattern:  /edit/{id}
+    defaults: { _controller: PonenciaBundle:Admin:edit }
+
+admin_ponencia_delete:
+    pattern:  /delete/{id}
+    defaults: { _controller: PonenciaBundle:Admin:delete }
