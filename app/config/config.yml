@@ -51,6 +51,10 @@ doctrine:
             default:
                 mappings:
                     AcmeDemoBundle: ~
+                    PonenciaBundle: ~
+                    PonenteBundle:  ~
+                    UsuarioBundle:  ~
+                    ComunBundle:    ~
 
 # Swiftmailer Configuration
 swiftmailer:
