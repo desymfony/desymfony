@@ -2,7 +2,6 @@
 
 DIR=`php -r "echo dirname(dirname(realpath('$0')));"`
 VENDOR="$DIR/vendor"
-VERSION=`cat "$DIR/VERSION"`
 BUNDLES=$VENDOR/bundles
 
 # initialization
@@ -49,7 +48,7 @@ install_git()
 install_git assetic https://github.com/kriswallsmith/assetic.git #v1.0.0alpha1
 
 # Symfony
-install_git symfony https://github.com/symfony/symfony.git #v$VERSION
+install_git symfony https://github.com/symfony/symfony.git
 
 # Doctrine ORM
 install_git doctrine https://github.com/doctrine/doctrine2.git 2.0.4

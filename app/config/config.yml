@@ -5,9 +5,9 @@ imports:
 framework:
     charset:       UTF-8
     error_handler: null
+    secret: %secret%
     csrf_protection:
         enabled: true
-        secret: %csrf_secret%
     router:        { resource: "%kernel.root_dir%/config/routing.yml" }
     validation:    { enabled: true, annotations: true }
     templating:    { engines: ['twig'] } #assets_version: SomeVersionScheme

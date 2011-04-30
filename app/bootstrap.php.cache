@@ -247,6 +247,7 @@ interface BundleInterface
     function boot();
     function shutdown();
     function build(ContainerBuilder $container);
+    function getContainerExtension();
     function getParent();
     function getName();
     function getNamespace();
@@ -264,6 +265,7 @@ abstract class Bundle extends ContainerAware implements BundleInterface
 {
     protected $name;
     protected $reflected;
+    protected $extension;
     public function boot()
     {
     }
@@ -272,14 +274,30 @@ abstract class Bundle extends ContainerAware implements BundleInterface
     }
     public function build(ContainerBuilder $container)
     {
-        $class = $this->getNamespace().'\\DependencyInjection\\'.str_replace('Bundle', 'Extension', $this->getName());
-        if (class_exists($class)) {
-            $extension = new $class();
-            $alias = Container::underscore(str_replace('Bundle', '', $this->getName()));
-            if ($alias !== $extension->getAlias()) {
-                throw new \LogicException(sprintf('The extension alias for the default extension of a bundle must be the underscored version of the bundle name ("%s" vs "%s")', $alias, $extension->getAlias()));
+    }
+    public function getContainerExtension()
+    {
+        if (null === $this->extension) {
+            $basename = preg_replace('/Bundle$/', '', $this->getName());
+            $class = $this->getNamespace().'\\DependencyInjection\\'.$basename.'Extension';
+            if (class_exists($class)) {
+                $extension = new $class();
+                                $expectedAlias = Container::underscore($basename);
+                if ($expectedAlias != $extension->getAlias()) {
+                    throw new \LogicException(sprintf(
+                        'The extension alias for the default extension of a '.
+                        'bundle must be the underscored version of the '.
+                        'bundle name ("%s" vs "%s")',
+                        $expectedAlias, $extension->getAlias()
+                    ));
+                }
+                $this->extension = $extension;
+            } else {
+                $this->extension = false;
             }
-            $container->registerExtension($extension);
+        }
+        if ($this->extension) {
+            return $this->extension;
         }
     }
     public function getNamespace()
@@ -516,14 +534,18 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Loader\IniFileLoader;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Loader\ClosureLoader;
+use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\MergeExtensionConfigurationPass;
+use Symfony\Component\HttpKernel\DependencyInjection\AddClassesToCachePass;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension as DIExtension;
 use Symfony\Component\Config\Loader\LoaderResolver;
 use Symfony\Component\Config\Loader\DelegatingLoader;
 use Symfony\Component\Config\ConfigCache;
+use Symfony\Component\ClassLoader\ClassCollectionLoader;
 abstract class Kernel implements KernelInterface
 {
     protected $bundles;
@@ -535,6 +557,7 @@ abstract class Kernel implements KernelInterface
     protected $booted;
     protected $name;
     protected $startTime;
+    protected $classes;
     const VERSION = '2.0.0-DEV';
     public function __construct($environment, $debug)
     {
@@ -543,6 +566,7 @@ abstract class Kernel implements KernelInterface
         $this->booted = false;
         $this->rootDir = $this->getRootDir();
         $this->name = preg_replace('/[^a-zA-Z0-9_]+/', '', basename($this->rootDir));
+        $this->classes = array();
         if ($this->debug) {
             ini_set('display_errors', 1);
             error_reporting(-1);
@@ -681,6 +705,19 @@ abstract class Kernel implements KernelInterface
     {
         return $this->container;
     }
+    public function loadClassCache($name = 'classes', $extension = '.php')
+    {
+        if (!$this->booted) {
+            $this->boot();
+        }
+        if ($this->classes) {
+            ClassCollectionLoader::load($this->classes, $this->getCacheDir(), $name, $this->debug, true, $extension);
+        }
+    }
+    public function addClassesToCache(array $classes)
+    {
+        $this->classes = array_unique(array_merge($this->classes, $classes));
+    }
     public function getStartTime()
     {
         return $this->debug ? $this->startTime : -INF;
@@ -792,16 +829,20 @@ abstract class Kernel implements KernelInterface
     }
     protected function buildContainer()
     {
-        $parameterBag = new ParameterBag($this->getKernelParameters());
-        $container = new ContainerBuilder($parameterBag);
-        $container->getCompilerPassConfig()->setMergePass(new MergeExtensionConfigurationPass());
+        $container = new ContainerBuilder(new ParameterBag($this->getKernelParameters()));
+        $extensions = array();
         foreach ($this->bundles as $bundle) {
             $bundle->build($container);
+            if ($extension = $bundle->getContainerExtension()) {
+                $container->registerExtension($extension);
+                $extensions[] = $extension->getAlias();
+            }
             if ($this->debug) {
                 $container->addObjectResource($bundle);
             }
         }
         $container->addObjectResource($this);
+                $container->getCompilerPassConfig()->setMergePass(new MergeExtensionConfigurationPass($extensions));
         if (null !== $cont = $this->registerContainerConfiguration($this->getContainerLoader($container))) {
             $container->merge($cont);
         }
@@ -815,7 +856,9 @@ abstract class Kernel implements KernelInterface
                 exit(sprintf("Unable to write in the %s directory (%s)\n", $name, $dir));
             }
         }
+        $container->addCompilerPass(new AddClassesToCachePass($this));
         $container->compile();
+        $this->addClassesToCache($container->getParameter('kernel.compiled_classes'));
         return $container;
     }
     protected function dumpContainer(ConfigCache $cache, ContainerBuilder $container, $class, $baseClass)
@@ -1029,7 +1072,8 @@ class FileBag extends ParameterBag
         foreach (array_keys($data['name']) as $key) {
             $files[$key] = $this->fixPhpFilesArray(array(
                 'error'    => $data['error'][$key],
-                'name'     => $data['name'][$key], 'type' => $data['type'][$key],
+                'name'     => $data['name'][$key],
+                'type'     => $data['type'][$key],
                 'tmp_name' => $data['tmp_name'][$key],
                 'size'     => $data['size'][$key]
             ));
@@ -1213,7 +1257,6 @@ class HeaderBag
 namespace Symfony\Component\HttpFoundation
 {
 use Symfony\Component\HttpFoundation\SessionStorage\NativeSessionStorage;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 class Request
 {
     public $attributes;
