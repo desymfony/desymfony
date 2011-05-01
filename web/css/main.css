@@ -1,0 +1,28 @@
+body {
+  font: 13px/1.4 Arial, sans-serif;
+}
+
+header {
+  height: 30px;
+}
+header nav ul li {
+  float: left;
+  list-style: none;
+  padding: 0 1em;
+}
+
+article {
+  overflow: auto;
+}
+
+footer {
+  border-top: 1px solid #CCC;
+  clear: both;
+  margin-top: 2em;
+  padding-top: .5em;
+}
+
+
+#ponentes section h2 {
+  clear: left;
+}
