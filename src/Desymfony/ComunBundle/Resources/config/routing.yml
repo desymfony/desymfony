@@ -1,7 +1,0 @@
-portada:
-    pattern:  /
-    defaults: { _controller: ComunBundle:Default:index }
-
-estatica:
-    pattern:  /sitio/{pagina}
-    defaults: { _controller: ComunBundle:Default:estatica }

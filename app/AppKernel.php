@@ -19,10 +19,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Acme\DemoBundle\AcmeDemoBundle(),
             
-            new Desymfony\PonenciaBundle\PonenciaBundle(),
-            new Desymfony\PonenteBundle\PonenteBundle(),
-            new Desymfony\UsuarioBundle\UsuarioBundle(),
-            new Desymfony\ComunBundle\ComunBundle(),
+            new Desymfony\DesymfonyBundle\DesymfonyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,3 +1,0 @@
-ponentes:
-    pattern:  /ponentes
-    defaults: { _controller: PonenteBundle:Default:index }
