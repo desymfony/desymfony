@@ -1,0 +1,15 @@
+registro:
+    pattern:  /registro
+    defaults: { _controller: DesymfonyBundle:Usuario:registro }
+
+perfil:
+    pattern:  /perfil
+    defaults: { _controller: DesymfonyBundle:Usuario:perfil }
+
+login:
+    pattern:  /login
+    defaults: { _controller: DesymfonyBundle:Usuario:login }
+
+logoff:
+    pattern:  /logoff
+    defaults: { _controller: DesymfonyBundle:Usuario:logoff }
