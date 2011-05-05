@@ -1,0 +1,11 @@
+ponencias:
+    pattern:  /ponencias
+    defaults: { _controller: DesymfonyBundle:Ponencia:index }
+
+ponencia:
+    pattern:  /ponencia/{slug}
+    defaults: { _controller: DesymfonyBundle:Ponencia:ponencia }
+
+apuntarse:
+    pattern:  /me-apunto-a-{slug}
+    defaults: { _controller: DesymfonyBundle:Ponencia:apuntarse }
