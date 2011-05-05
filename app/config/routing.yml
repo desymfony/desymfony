@@ -15,17 +15,17 @@
 
 # Rutas del proyecto Desymfony
 _ponencias:
-    resource: @PonenciaBundle/Resources/config/routing.yml
+    resource: @DesymfonyBundle/Resources/config/ponencia_routing.yml
 
 _admin_ponencias:
-    resource: @PonenciaBundle/Resources/config/admin_routing.yml
+    resource: @DesymfonyBundle/Resources/config/admin_ponencia_routing.yml
     prefix:   /admin/ponencia
 
 _ponentes:
-    resource: @PonenteBundle/Resources/config/routing.yml
+    resource: @DesymfonyBundle/Resources/config/ponente_routing.yml
 
 _usuarios:
-    resource: @UsuarioBundle/Resources/config/routing.yml
+    resource: @DesymfonyBundle/Resources/config/usuario_routing.yml
 
 _comun:
-    resource: @ComunBundle/Resources/config/routing.yml
+    resource: @DesymfonyBundle/Resources/config/routing.yml

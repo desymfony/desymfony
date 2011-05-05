@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Acme\DemoBundle\AcmeDemoBundle(),
             
+            new Desymfony\DesymfonyBundle\DesymfonyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
