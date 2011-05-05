@@ -1,0 +1,7 @@
+portada:
+    pattern:  /
+    defaults: { _controller: DesymfonyBundle:Default:index }
+
+estatica:
+    pattern:  /sitio/{pagina}
+    defaults: { _controller: DesymfonyBundle:Default:estatica }
