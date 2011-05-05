@@ -4,7 +4,6 @@ imports:
 
 framework:
     charset:       UTF-8
-    error_handler: null
     secret: %secret%
     csrf_protection:
         enabled: true
@@ -51,10 +50,6 @@ doctrine:
             default:
                 mappings:
                     AcmeDemoBundle: ~
-                    PonenciaBundle: ~
-                    PonenteBundle:  ~
-                    UsuarioBundle:  ~
-                    ComunBundle:    ~
 
 # Swiftmailer Configuration
 swiftmailer:
