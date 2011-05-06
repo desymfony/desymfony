@@ -23,7 +23,7 @@
         <li><a href="#">Ponencias</a></li>
         <li><a href="#">Ponentes</a></li>
         <li><a href="#">Registro</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="{{ path('estatica', { 'pagina': 'contacto'}) }}">Contacto</a></li>
       </ul>
     </nav>
   </header>
@@ -32,7 +32,9 @@
   {% block javascripts %}{% endblock %}
   
   <footer>
-    &copy; 2011 - desymfony
+    <a href="{{ path('estatica', { 'pagina': 'copyright'}) }}">&copy; 2011 - desymfony</a> |
+    <a href="{{ path('estatica', { 'pagina': 'privacidad'}) }}">Privacidad</a> |
+    <a href="{{ path('estatica', { 'pagina': 'condiciones'}) }}">Condiciones de uso</a> |
   </footer>
 </div>
 </body>
