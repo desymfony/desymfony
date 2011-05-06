@@ -10,4 +10,14 @@ class DefaultController extends Controller
     {
         return $this->render('DesymfonyBundle:Default:index.html.twig');
     }
+    
+    /**
+     * Muestra el contenido de una página estática (contacto, privacidad, etc.)
+     *
+     * @param string $pagina Nombre de la página que debe mostrarse
+     */
+    public function estaticaAction($pagina)
+    {
+        return $this->render(sprintf('DesymfonyBundle:Estaticas:%s.html.twig', $pagina));
+    }
 }

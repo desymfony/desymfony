@@ -5,3 +5,5 @@ portada:
 estatica:
     pattern:  /sitio/{pagina}
     defaults: { _controller: DesymfonyBundle:Default:estatica }
+    requirements:
+      pagina: contacto|copyright|condiciones|privacidad
