@@ -59,8 +59,12 @@ class Ponente
     protected $linkedin;
 
     /**
-     * @OneToMany(targetEntity="Ponencia", mappedBy="ponente")
+     * @orm:OneToMany(targetEntity="Ponencia", mappedBy="ponente")
      */
     private $ponencias;
+
+    public function __construct() {
+      $this->ponencias = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 }

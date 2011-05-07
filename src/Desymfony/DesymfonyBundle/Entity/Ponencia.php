@@ -55,12 +55,16 @@ class Ponencia
     protected $ponente;
 
     /**
-     * @ManyToMany(targetEntity="Usuario", mappedBy="ponencias")
-     * @JoinTable(name="ponencias_usuarios",
-     *      joinColumns={@JoinColumn(name="usuario_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="ponencia_id", referencedColumnName="id")}
+     * @orm:ManyToMany(targetEntity="Usuario", mappedBy="ponencias")
+     * @orm:JoinTable(name="ponencias_usuarios",
+     *      joinColumns={@orm:JoinColumn(name="usuario_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@orm:JoinColumn(name="ponencia_id", referencedColumnName="id")}
      *      )
      */
     protected $usuarios;
+
+    public function __construct() {
+        $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 }

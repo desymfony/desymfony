@@ -54,7 +54,11 @@ class Usuario
     protected $password;
 
     /**
-    * @ManyToMany(targetEntity="Ponencia", mappedBy="usuarios")
+    * @orm:ManyToMany(targetEntity="Ponencia", mappedBy="usuarios")
     */
     protected $ponencias;
+
+    public function __construct() {
+        $this->ponencias = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 }
