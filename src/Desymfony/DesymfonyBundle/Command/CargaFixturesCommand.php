@@ -9,8 +9,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Output\Output;
 
-use Doctrine\ORM\Query\ResultSetMapping;
-
 use Desymfony\DesymfonyBundle\Entity\Ponente;
 use Desymfony\DesymfonyBundle\Entity\Ponencia;
 use Desymfony\DesymfonyBundle\Entity\Usuario;
