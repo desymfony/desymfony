@@ -57,8 +57,8 @@ class Ponencia
     /**
      * @orm:ManyToMany(targetEntity="Usuario", inversedBy="ponencias")
      * @orm:JoinTable(name="ponencia_usuario",
-     *      joinColumns={@orm:JoinColumn(name="usuario_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@orm:JoinColumn(name="ponencia_id", referencedColumnName="id")}
+     *      joinColumns={@orm:JoinColumn(name="ponencia_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@orm:JoinColumn(name="usuario_id", referencedColumnName="id")}
      * )
      */
     protected $usuarios;
