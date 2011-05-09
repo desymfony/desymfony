@@ -2,6 +2,7 @@
 
 namespace Desymfony\DesymfonyBundle\Entity;
 
+use Desymfony\DesymfonyBundle\Resources\util\Util;
 
 /**
  * Desymfony\DesymfonyBundle\Entity
@@ -86,6 +87,7 @@ class Ponencia
     public function setTitulo($titulo)
     {
         $this->titulo = $titulo;
+        $this->setSlug(Util::slugify($titulo));
     }
 
     /**
