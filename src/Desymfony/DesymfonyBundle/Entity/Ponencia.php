@@ -31,7 +31,7 @@ class Ponencia
     /**
      * @orm:Column(type="text")
      */
-    protected $descriptcion;
+    protected $descripcion;
 
     /**
      * @orm:Column(type="datetime")
