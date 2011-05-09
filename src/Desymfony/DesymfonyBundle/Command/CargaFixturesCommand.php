@@ -9,6 +9,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Output\Output;
 
+use Doctrine\ORM\Query\ResultSetMapping;
+
 use Desymfony\DesymfonyBundle\Entity\Ponente;
 use Desymfony\DesymfonyBundle\Entity\Ponencia;
 use Desymfony\DesymfonyBundle\Entity\Usuario;
@@ -32,9 +34,7 @@ class CargaFixturesCommand extends Command
         $em = $this->em;
         
         // -- Borrar toda la información de la base de datos ------------------
-        $this->delete('Ponencia');
-        $this->delete('Ponente');
-        $this->delete('Usuario');
+        $this->deleteDB();
         
         // -- Cargar datos de PONENTES ----------------------------------------
         $ponentes = array(
@@ -215,5 +215,17 @@ class CargaFixturesCommand extends Command
       }
       
       $this->em->flush();
+    }
+    
+    /**
+     * Borra toda la información de la base de datos
+     *
+     */
+    private function deleteDB()
+    {
+      $this->em->getConnection()->executeUpdate('DELETE FROM ponencia_usuario');
+      $this->em->getConnection()->executeUpdate('DELETE FROM ponente');
+      $this->em->getConnection()->executeUpdate('DELETE FROM ponencia');
+      $this->em->getConnection()->executeUpdate('DELETE FROM usuario');
     }
 }
