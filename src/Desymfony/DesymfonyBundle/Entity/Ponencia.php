@@ -121,23 +121,23 @@ class Ponencia
     }
 
     /**
-     * Set descriptcion
+     * Set descripcion
      *
-     * @param text $descriptcion
+     * @param text $descripcion
      */
-    public function setDescriptcion($descriptcion)
+    public function setDescripcion($descripcion)
     {
-        $this->descriptcion = $descriptcion;
+        $this->descripcion = $descripcion;
     }
 
     /**
-     * Get descriptcion
+     * Get descripcion
      *
-     * @return text $descriptcion
+     * @return text $descripcion
      */
-    public function getDescriptcion()
+    public function getDescripcion()
     {
-        return $this->descriptcion;
+        return $this->descripcion;
     }
 
     /**
