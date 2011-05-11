@@ -2,6 +2,10 @@ portada:
     pattern:  /
     defaults: { _controller: DesymfonyBundle:Default:index }
 
+admin_portada:
+    pattern:  /admin
+    defaults: { _controller: DesymfonyBundle:AdminPonencia:list }
+
 estatica:
     pattern:  /sitio/{pagina}
     defaults: { _controller: DesymfonyBundle:Default:estatica }

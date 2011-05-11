@@ -1,0 +1,41 @@
+{% extends "::admin_base.html.twig" %}
+
+{% block title %}Listado de ponencias | Administración de Desymfony.com{% endblock %}
+{% block pageid 'admin' %}
+
+{% block body %}
+<h1>Listado de ponencias</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Fecha/Hora</th>
+            <th>Título</th>
+            <th>Idioma</th>
+            <th>Apuntados</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        {% for ponencia in ponencias %}
+        <tr>
+            <td>{{ ponencia.fecha | date('d/m/Y H:i') }}</td>
+            <td>{{ ponencia.titulo }}</td>
+            <td>{{ idiomas[ponencia.idioma] }}</td>
+            <td>{{ ponencia.usuarios | length }}</td>
+            <td>
+                <a href="{{ path('admin_ponencia_edit', { 'id': ponencia.id }) }}">Editar</a>
+                <a href="{{ path('admin_ponencia_delete', { 'id': ponencia.id }) }}">Borrar</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">No existe ninguna ponencia</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ path('admin_ponencia_new') }}">Nueva ponencia</a>
+{% endblock %}
