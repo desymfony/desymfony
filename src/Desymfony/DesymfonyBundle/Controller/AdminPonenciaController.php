@@ -4,6 +4,9 @@ namespace Desymfony\DesymfonyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Desymfony\DesymfonyBundle\Entity\Ponencia,
+    Desymfony\DesymfonyBundle\Form\PonenciaType;
+
 class AdminPonenciaController extends Controller
 {
     public function listAction()
@@ -13,7 +16,30 @@ class AdminPonenciaController extends Controller
         ));
     }
     
-    
+    public function newAction()
+    {
+        $peticion = $this->get('request');
+        $em = $this->get('doctrine.orm.entity_manager');
+
+        $ponencia = new Ponencia();
+        $formulario = $this->get('form.factory')->create(new PonenciaType());
+        $formulario->setData($ponencia);
+
+        if ($peticion->getMethod() == 'POST') {
+            $formulario->bindRequest($peticion);
+
+            if ($formulario->isValid()) {
+                $em->persist($ponencia);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('admin_ponencia_list'));
+            }
+        }
+
+        return $this->render('DesymfonyBundle:AdminPonencia:new.html.twig', array(
+            'formulario' => $formulario->createView(),
+        ));
+    }
     
     
     

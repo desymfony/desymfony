@@ -67,7 +67,17 @@ class Ponente
       $this->ponencias = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
+    public function __toString()
+    {
+        return $this->nombreCompleto();
+    }
+    
+    public function nombreCompleto()
+    {
+        return $this->getNombre().' '.$this->getApellidos();
+    }
+    
+    
     /**
      * Get id
      *
