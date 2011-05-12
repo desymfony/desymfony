@@ -1,5 +1,6 @@
+/* -- Sitio web público -----------------------------------------------------*/
 body {
-  font: 13px/1.4 Arial, sans-serif;
+  font: 16px/1.4 Arial, sans-serif;
 }
 
 header {
@@ -9,6 +10,9 @@ header nav ul li {
   float: left;
   list-style: none;
   padding: 0 1em;
+}
+header h1 {
+  font-size: 19px;
 }
 
 article {
@@ -25,4 +29,40 @@ footer {
 
 #ponentes section h2 {
   clear: left;
+}
+
+
+h1 {
+  font-size: 22px;
+}
+
+
+/* -- Parte de administración -----------------------------------------------*/
+#admin table {
+  width: 100%;
+}
+
+#admin thead th {
+  font-weight: bold;
+}
+
+#admin tr, #admin th, #admin td {
+  border: solid #CCC;
+  border-width: 1px 0;
+  padding: .25em;
+}
+
+#admin a[href*="edit"] {
+  color: #00BD2C;
+}
+#admin a[href*="delete"] {
+  color: #BD2C00;
+}
+
+#admin a[href*="edit"], #admin a[href*="delete"] {
+  text-decoration: none;
+  margin-right: 1em;
+}
+#admin a[href*="edit"]:hover, #admin a[href*="delete"]:hover {
+  text-decoration: underline;
 }
