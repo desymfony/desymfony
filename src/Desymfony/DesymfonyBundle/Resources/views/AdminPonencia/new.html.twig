@@ -1,0 +1,14 @@
+{% extends "::admin_base.html.twig" %}
+
+{% block title %}Crear nueva ponencia{% endblock %}
+{% block pageid 'admin' %}
+
+{% block body %}
+<h1>Crear una nueva ponencia</h1>
+
+<form action="{{ path('admin_ponencia_new') }}" method="post" {{ form_enctype(formulario) }}>
+    {{ form_widget(formulario) }}
+
+    <input type="submit" />
+</form>
+{% endblock %}
