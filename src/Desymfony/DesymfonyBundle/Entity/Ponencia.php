@@ -21,6 +21,8 @@ class Ponencia
 
     /**
      * @orm:Column(type="string")
+     * @assert:NotBlank()
+     * @assert:MaxLength(255)
      */
     protected $titulo;
 
@@ -31,21 +33,27 @@ class Ponencia
 
     /**
      * @orm:Column(type="text")
+     * @assert:NotBlank()
+     * @assert:MinLength(50)
      */
     protected $descripcion;
 
     /**
      * @orm:Column(type="datetime")
+     * @assert:DateTime()
      */
     protected $fecha;
 
     /**
      * @orm:Column(type="integer")
+     * @assert:Type("integer")
+     * @assert:Min(0)
      */
     protected $duracion;
 
     /**
      * @orm:Column(type="string", length="2")
+     * @assert:Choice({"es", "en"})
      */
     protected $idioma;
 
