@@ -22,11 +22,12 @@
         <li><a href="#">Inicio</a></li>
         <li><a href="#">Ponencias</a></li>
         <li><a href="#">Ponentes</a></li>
-        <li><a href="#">Registro</a></li>
+        <li><a href="{{ path('registro') }}">Registro</a></li>
         <li><a href="{{ path('estatica', { 'pagina': 'contacto'}) }}">Contacto</a></li>
         <li><a href="{{ path('admin_portada') }}">Admin</a></li>
       </ul>
     </nav>
+    <div class="clear"></div>
   </header>
   
   {% block body %}{% endblock %}

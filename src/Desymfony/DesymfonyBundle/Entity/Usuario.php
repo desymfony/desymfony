@@ -2,6 +2,11 @@
 
 namespace Desymfony\DesymfonyBundle\Entity;
 
+use Desymfony\DesymfonyBundle\Validator\DNI;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
+
 
 /**
  * Desymfony\DesymfonyBundle\Entity
@@ -230,5 +235,16 @@ class Usuario
     public function getPonencias()
     {
         return $this->ponencias;
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('nombre',    new NotBlank());
+        $metadata->addPropertyConstraint('apellidos', new NotBlank());
+        $metadata->addPropertyConstraint('dni',       new DNI());
+        $metadata->addPropertyConstraint('email',     new Email());
+        $metadata->addPropertyConstraint('email',     new NotBlank());
+        $metadata->addPropertyConstraint('telefono',  new NotBlank());
+        $metadata->addPropertyConstraint('password',  new NotBlank());
     }
 }

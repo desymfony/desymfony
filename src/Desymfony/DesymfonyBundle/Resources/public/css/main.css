@@ -36,6 +36,22 @@ h1 {
   font-size: 22px;
 }
 
+/* -- Formulario de registro -----------------------------------------------*/
+label{ display: inline-block; width: 120px; margin-bottom: 10px; }
+input{ border: solid 1px #aaa; padding: 4px; }
+textarea{ border: solid 1px #aaa; padding: 4px; }
+
+#register_form ul{
+    list-style: none;
+    margin-left: 120px;
+}
+
+#register_form ul li{
+    padding-left: 0;
+    margin-left: 0;
+    color: red;
+    font-size: 10px;
+}
 
 /* -- Parte de administración -----------------------------------------------*/
 #admin table {
