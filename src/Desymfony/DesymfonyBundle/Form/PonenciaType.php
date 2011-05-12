@@ -13,7 +13,9 @@ class PonenciaType extends AbstractType
         $builder->add('descripcion');
         $builder->add('fecha');
         $builder->add('duracion');
-        $builder->add('idioma');
+        $builder->add('idioma', 'choice', array(
+            'choices' => array('es' => 'Español', 'en' => 'Inglés')
+        ));
         $builder->add('ponente', 'entity', array(
             'class'         => 'Desymfony\\DesymfonyBundle\\Entity\\Ponente',
             'query_builder' => function ($repositorio) {
