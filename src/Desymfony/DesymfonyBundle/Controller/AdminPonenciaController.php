@@ -41,6 +41,35 @@ class AdminPonenciaController extends Controller
         ));
     }
     
+    public function editAction($id)
+    {
+        $peticion = $this->get('request');
+        $em = $this->get('doctrine.orm.entity_manager');
+        
+        if(null == $ponencia = $this->entidad('Ponencia')->findOneById($id)) {
+            throw new NotFoundHttpException('No existe la ponencia que se quiere modificar');
+        }
+        
+        $formulario = $this->get('form.factory')->create(new PonenciaType());
+        $formulario->setData($ponencia);
+
+        if ($peticion->getMethod() == 'POST') {
+            $formulario->bindRequest($peticion);
+
+            if ($formulario->isValid()) {
+                $em->persist($ponencia);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('admin_ponencia_list'));
+            }
+        }
+
+        return $this->render('DesymfonyBundle:AdminPonencia:edit.html.twig', array(
+            'formulario' => $formulario->createView(),
+            'ponencia'   => $ponencia
+        ));
+    }
+    
     
     
     

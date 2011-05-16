@@ -1,0 +1,16 @@
+{% extends "::admin_base.html.twig" %}
+
+{% block title %}Editando la ponencia {{ ponencia.titulo }}{% endblock %}
+{% block pageid 'admin' %}
+
+{% block body %}
+<h1>Editando la ponencia <em>{{ ponencia.titulo }}</em></h1>
+
+<form action="{{ path('admin_ponencia_edit', { 'id': ponencia.id }) }}" method="post" {{ form_enctype(formulario) }}>
+    {{ form_widget(formulario) }}
+
+    <input type="submit" />
+</form>
+
+<a href="{{ path('admin_ponencia_list') }}">Volver al listado</a>
+{% endblock %}

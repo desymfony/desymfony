@@ -69,10 +69,13 @@ textarea{ border: solid 1px #aaa; padding: 4px; }
 }
 
 #admin a[href*="edit"] {
-  color: #00BD2C;
 }
 #admin a[href*="delete"] {
   color: #BD2C00;
+}
+
+#admin table a + a {
+  margin-left: 1em;
 }
 
 #admin a[href*="edit"], #admin a[href*="delete"] {
