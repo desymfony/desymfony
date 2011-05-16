@@ -6,7 +6,7 @@ use Desymfony\DesymfonyBundle\Validator\DNI;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
-
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Desymfony\DesymfonyBundle\Entity
@@ -14,8 +14,32 @@ use Symfony\Component\Validator\Constraints\Email;
  * @orm:Table(name="usuario")
  * @orm:Entity(repositoryClass="Desymfony\DesymfonyBundle\Entity\UsuarioRepository")
  */
-class Usuario
+class Usuario implements UserInterface
 {
+    /*
+     * Implementation of UserInterface
+     */
+
+    public function getRoles(){
+        return array('ROLE_USER');
+    }
+
+    public function getSalt(){
+        return false;
+    }
+
+    public function getUsername(){
+        return $this->email;
+    }
+
+    public function eraseCredentials(){
+
+    }
+
+    public function equals(UserInterface $user){
+        return $user->getUsername() == $this->getUsername();
+    }
+
     /**
      * @orm:Id
      * @orm:Column(type="integer")
