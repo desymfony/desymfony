@@ -39,11 +39,11 @@ doctrine:
         default_connection: default
         connections:
             default:
-                driver:   %database_driver%
-                host:     %database_host%
-                dbname:   %database_name%
-                user:     %database_user%
-                password: %database_password%
+                driver:   pdo_mysql
+                host:     localhost
+                dbname:   desymfony
+                user:     root
+                password: root
                 charset:  UTF8
 
     orm:

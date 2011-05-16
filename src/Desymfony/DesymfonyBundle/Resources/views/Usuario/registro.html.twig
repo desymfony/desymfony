@@ -7,7 +7,9 @@
 <h1>Registro</h1>
 
 <div class="grid_12" id="register_form" >
-
+    <p>
+        ¿Ya estás registrado? Entonces, <a href="{{ path('login') }}">accede aquí</a>
+    </p>
     {% if( app.session.flash('notice') ) %}
     <div class="notice">
         <p>
