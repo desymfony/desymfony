@@ -5,6 +5,7 @@ namespace Desymfony\DesymfonyBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Desymfony\DesymfonyBundle\Form\UsuarioType;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class UsuarioController extends Controller
 {
@@ -58,9 +59,19 @@ class UsuarioController extends Controller
                 $session->setFlash('notice', 'Gracias por registrarte en Desymfony 2011');
 
                 // Guardamos el objeto en base de datos
+                $entity = $form->getData();
                 $em = $this->get('doctrine.orm.entity_manager');
-                $em->persist($form->getData());
+                $em->persist($entity);
                 $em->flush();
+
+                // Logueamos al usuario
+                $token = new UsernamePasswordToken(
+                            $entity->getUsername(),
+                            $entity->getPassword(),
+                            'main',
+                            $entity->getRoles()
+                        );
+                $this->get('security.context')->setToken($token);
 
                 return $this->redirect($this->generateUrl('registro'));
             }
