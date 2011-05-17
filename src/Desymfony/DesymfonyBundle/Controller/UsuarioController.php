@@ -40,12 +40,12 @@ class UsuarioController extends Controller
 
     public function perfilAction()
     {
-        return $this->render('DesymfonyBundle:Usuario:perfil.html.twig');
+        $usuario = $this->get('security.context')->getToken()->getUser();
+        return $this->render('DesymfonyBundle:Usuario:perfil.html.twig', array('usuario' => $usuario));
     }
 
     public function registroAction()
     {
-
         $form = $this->get('form.factory')->create(new UsuarioType(), array());
         
         $request = $this->get('request');
@@ -59,18 +59,13 @@ class UsuarioController extends Controller
                 $session->setFlash('notice', 'Gracias por registrarte en Desymfony 2011');
 
                 // Guardamos el objeto en base de datos
-                $entity = $form->getData();
+                $usuario = $form->getData();
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($entity);
                 $em->flush();
 
                 // Logueamos al usuario
-                $token = new UsernamePasswordToken(
-                            $entity->getUsername(),
-                            $entity->getPassword(),
-                            'main',
-                            $entity->getRoles()
-                        );
+                $token = new UsernamePasswordToken($usuario, null, 'main', $usuario->getRoles());
                 $this->get('security.context')->setToken($token);
 
                 return $this->redirect($this->generateUrl('registro'));
