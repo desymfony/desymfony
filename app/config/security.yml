@@ -1,16 +1,15 @@
 security:
     firewalls:
         secured_area:
-            pattern:    ^/perfil
+            pattern:    ^/
+            anonymous:  ~
             form_login:
                 login_path:  /login
                 check_path:  /perfil/check
             logout:
                 path:   /perfil/logoff
                 target: /
-        public_area:
-            pattern: ^/
-            anonymous: ~
+                
     access_control:
         - { path: ^/perfil, roles: ROLE_USER }
 
