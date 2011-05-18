@@ -20,7 +20,7 @@
     <nav class="grid_10">
       <ul>
         <li><a href="#">Inicio</a></li>
-        <li><a href="#">Ponencias</a></li>
+        <li><a href="{{ path('ponencias') }}">Ponencias</a></li>
         <li><a href="#">Ponentes</a></li>
         {% if is_granted('ROLE_USER') %}
             <li><a href="{{ path('logoff') }}">Salir</a></li>
