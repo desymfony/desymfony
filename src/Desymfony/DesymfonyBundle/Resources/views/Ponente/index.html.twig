@@ -4,6 +4,28 @@
 {% block pageid 'ponentes' %}
 
 {% block body %}
-<h1>PONENTES</h1>
-{% for ponente in ponentes %
+    <h1>PONENTES</h1>
+    {% for ponente in ponentes %}
+        <div class="grid_12 alpha">
+            <h2>{{ ponente.nombre }} {{ ponente.apellidos }}</h2>
+            <p>{{ ponente.biografia }}</p>
+            <p>Imparte las siguientes ponencias</p>
+            <ul>
+            {% for ponencia in ponente.ponencias %}
+              <li>
+                <a href="{{ path('ponencia', { 'slug': ponencia.slug})  }}">{{ ponencia.titulo }}</a>
+              </li>
+            {% endfor %}
+            </li>
+        </div>
+        <div class="grid_4 omega">
+            <p><b>Más información</b></p>
+            <ul>
+              <li><a href="{{ ponente.twitter }}">Twitter</a></li>
+              <li><a href="{{ ponente.linkedin }}">Linkedin</a></li>
+            </ul>
+            </div>
+        <div class="clear"></div>
+        <br />
+    {% endfor %}
 {% endblock %}
