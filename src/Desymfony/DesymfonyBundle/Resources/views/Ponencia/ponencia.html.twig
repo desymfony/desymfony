@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PONENCIAS{% endblock %}
+{% block pageid 'ponencias' %}
+
+{% block body %}
+<h1>Ponencia</h1>
+<div class="grid_2 alpha">
+    <p><a href="#" >Apuntarse</a></p>
+</div>
+<div class="grid_14 omega">
+<h2><a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}">{{ ponencia.titulo }}</a></h2>
+<p>{{ ponencia.descripcion }}</p>
+</div>
+<div class="clear"></div>
+{% endblock %}

@@ -14,4 +14,17 @@ class PonenciaController extends Controller
 
         return $this->render('DesymfonyBundle:Ponencia:index.html.twig', array('ponencias' => $ponencias));
     }
+
+    public function ponenciaAction($slug)
+    {
+        $em       = $this->get('doctrine.orm.entity_manager');
+        $ponencia = $em->getRepository('\Desymfony\DesymfonyBundle\Entity\Ponencia')
+                       ->findOneBy(array('slug' => $slug));
+
+        if($ponencia){
+            return $this->render('DesymfonyBundle:Ponencia:ponencia.html.twig', array('ponencia' => $ponencia));
+        }else{
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+        }
+    }
 }
