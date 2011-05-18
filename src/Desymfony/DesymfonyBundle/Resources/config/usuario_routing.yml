@@ -11,8 +11,8 @@ login:
     defaults: { _controller: DesymfonyBundle:Usuario:login }
 
 login_check:
-    pattern: /perfil/check
+    pattern: /check
 
 logoff:
-    pattern:  /perfil/logoff
+    pattern:  /logoff
     defaults: { _controller: DesymfonyBundle:Usuario:logoff }
