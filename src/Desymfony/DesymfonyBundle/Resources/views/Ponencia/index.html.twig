@@ -4,15 +4,35 @@
 {% block pageid 'ponencias' %}
 
 {% block body %}
-<h1>Ponencias</h1>
-{% for ponencia in ponencias %}
-<div class="grid_2 alpha">
-    <p><a href="#" >Apuntarse</a></p>
-</div>
-<div class="grid_14 omega">
-<h2><a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}">{{ ponencia.titulo }}</a></h2>
-<p>{{ ponencia.descripcion }}</p>
-</div>
-<div class="clear"></div>
-{% endfor %}
+<article id="contenido">
+    <section id="principal" class="grid_12">
+      <h1>Ponencias</h1>
+
+      <h2>Primer día (1 de julio)</h2>
+      {% for ponencia in ponencias %}
+      <div>
+        <div class="grid_2 alpha">
+          9:00 - 10:00
+          <a href="{{ path('apuntarse', {'slug': ponencia.slug} ) }}" class="btn">Me apunto</a>
+        </div>
+        <div class="grid_10 omega">
+          <a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}">{{ ponencia.titulo }}</a>
+          <p>{{ ponencia.descripcion|resumen(150) }}</p>
+        </div>
+        <div class="clear"></div>
+      </div>
+      {% endfor %}
+    </section>
+
+    <section id="secundario" class="grid_4">
+
+      <h3>¿Echas en falta algún tema?</h3>
+      <p>Accede a la sección <a href="#"><em>Call for papers</em></a> y envíanos tu propuesta</p>
+
+      <div>
+        BLOQUE COMUN CON LA INFORMACION DEL USUARIO
+      </div>
+
+    </section>
+</article>
 {% endblock %}

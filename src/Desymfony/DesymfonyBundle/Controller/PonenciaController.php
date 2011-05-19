@@ -24,7 +24,7 @@ class PonenciaController extends Controller
         if($ponencia){
             return $this->render('DesymfonyBundle:Ponencia:ponencia.html.twig', array('ponencia' => $ponencia));
         }else{
-            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+            return $this->createNotFoundException();
         }
     }
 }
