@@ -70,6 +70,19 @@ class AdminPonenciaController extends Controller
         ));
     }
     
+    public function showAction($id)
+    {
+        $peticion = $this->get('request');
+        $em = $this->get('doctrine.orm.entity_manager');
+        
+        if(null == $ponencia = $this->entidad('Ponencia')->findOneById($id)) {
+            throw new NotFoundHttpException('No existe la ponencia que se quiere ver');
+        }
+        
+        return $this->render('DesymfonyBundle:AdminPonencia:show.html.twig', array(
+            'ponencia'   => $ponencia
+        ));
+    }
     
     
     
