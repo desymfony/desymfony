@@ -20,16 +20,23 @@
     <nav class="grid_10">
       <ul>
         <li><a href="#">Inicio</a></li>
-        <li><a href="#">Ponencias</a></li>
-        <li><a href="#">Ponentes</a></li>
-        {% if is_granted('ROLE_USER') %}
-            <li><a href="{{ path('logoff') }}">Salir</a></li>
-        {% else %}
+
+        <li><a href="{{ path('ponencias') }}">Ponencias</a></li>
+
+        <li><a href="{{ path('ponentes') }}">Ponentes</a></li>
+
+        {% if not is_granted(['ROLE_USER', 'ROLE_ADMIN']) %}
             <li><a href="{{ path('registro') }}">Registro</a></li>
         {% endif %}
+
         <li><a href="{{ path('estatica', { 'pagina': 'contacto'}) }}">Contacto</a></li>
+
         {% if is_granted('ROLE_ADMIN') %}
         <li><a href="{{ path('admin_portada') }}">Admin</a></li>
+        {% endif %}
+
+        {% if is_granted(['ROLE_USER', 'ROLE_ADMIN']) %}
+            <li><a href="{{ path('logoff') }}">Salir</a></li>
         {% endif %}
       </ul>
     </nav>
