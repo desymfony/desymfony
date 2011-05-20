@@ -21,8 +21,15 @@ class PonenciaController extends Controller
         $ponencia = $em->getRepository('\Desymfony\DesymfonyBundle\Entity\Ponencia')
                        ->findOneBy(array('slug' => $slug));
 
+        $ponente = $ponencia->getPonente();
+
         if($ponencia){
-            return $this->render('DesymfonyBundle:Ponencia:ponencia.html.twig', array('ponencia' => $ponencia));
+            return $this->render('DesymfonyBundle:Ponencia:ponencia.html.twig',
+                                    array(
+                                        'ponencia' => $ponencia,
+                                        'ponente' => $ponente
+                                        )
+                    );
         }else{
             return $this->createNotFoundException();
         }

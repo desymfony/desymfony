@@ -4,13 +4,40 @@
 {% block pageid 'ponencias' %}
 
 {% block body %}
-<h1>Ponencia</h1>
-<div class="grid_2 alpha">
-    <p><a href="#" >Apuntarse</a></p>
-</div>
-<div class="grid_14 omega">
-<h2><a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}">{{ ponencia.titulo }}</a></h2>
-<p>{{ ponencia.descripcion }}</p>
-</div>
-<div class="clear"></div>
+<article id="contenido">
+
+    <section id="principal" class="grid_12">
+      <h1>{{ ponencia.titulo }}</h1>
+
+      <p>{{ ponencia.descripcion }}</p>
+
+      <div class="grid_3 alpha">
+        <strong>Fecha:</strong> {{ ponencia.fecha|date("d M") }}
+      </div>
+      <div class="grid_3">
+        <strong>Hora:</strong> 9:00 - 10:00
+      </div>
+      <div class="grid_3">
+        <strong>Idioma:</strong> {{ ponencia.idioma|replace( {'es' : 'Español', 'en' : 'Inglés' }) }}
+      </div>
+      <div class="grid_3 omega">
+        <a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}" class="btn">Me apunto</a>
+        <a href="#" class="btn apuntado">Apuntado</a>
+      </div>
+
+      <div>
+        <strong>Impartida por:</strong> <a href="{{ path('ponentes') }}">{{ ponente.nombre }} {{ ponente.apellidos }}</a>
+      </div>
+    </section>
+
+    <section id="secundario" class="grid_4">
+
+      <div>
+        BLOQUE COMUN CON LA INFORMACION DEL USUARIO
+      </div>
+
+    </section>
+    <div class="clear"></div>
+
+</article>
 {% endblock %}
