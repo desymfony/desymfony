@@ -8,6 +8,9 @@ class PonenteController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('DesymfonyBundle:Ponente:index.html.twig');
+        $dql      = "SELECT p FROM Desymfony\DesymfonyBundle\Entity\Ponente p ORDER BY p.nombre ASC";
+        $em       = $this->get('doctrine.orm.entity_manager');
+        $ponentes = $em->createQuery($dql)->getResult();
+        return $this->render('DesymfonyBundle:Ponente:index.html.twig', array('ponentes' => $ponentes));
     }
 }

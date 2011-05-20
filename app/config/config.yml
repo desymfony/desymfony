@@ -2,6 +2,8 @@ imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
 
+desymfony: {}
+
 framework:
     charset:       UTF-8
     secret: %secret%

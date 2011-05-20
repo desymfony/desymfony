@@ -61,7 +61,7 @@ class UsuarioController extends Controller
                 // Guardamos el objeto en base de datos
                 $usuario = $form->getData();
                 $em = $this->get('doctrine.orm.entity_manager');
-                $em->persist($entity);
+                $em->persist($usuario);
                 $em->flush();
 
                 // Logueamos al usuario
