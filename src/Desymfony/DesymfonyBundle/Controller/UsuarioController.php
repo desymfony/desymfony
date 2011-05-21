@@ -68,7 +68,7 @@ class UsuarioController extends Controller
                 $token = new UsernamePasswordToken($usuario, null, 'main', $usuario->getRoles());
                 $this->get('security.context')->setToken($token);
 
-                return $this->redirect($this->generateUrl('registro'));
+                return $this->redirect($this->generateUrl('/'));
             }
         }
         return $this->render('DesymfonyBundle:Usuario:registro.html.twig', array('form' => $form->createView()));

@@ -11,9 +11,10 @@ security:
                 target: /
                 
     access_control:
-        - { path: ^/perfil  , roles: ROLE_USER }
-        - { path: ^/admin   , roles: ROLE_ADMIN }
-        - { path: ^/registro, roles: IS_ANONYMOUS }
+        - { path: ^/perfil        , roles: ROLE_USER }
+        - { path: ^/me-apunto-a-* , roles: ROLE_USER }
+        - { path: ^/admin         , roles: ROLE_ADMIN }
+        - { path: ^/registro      , roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
     providers:
 #        in_memory:

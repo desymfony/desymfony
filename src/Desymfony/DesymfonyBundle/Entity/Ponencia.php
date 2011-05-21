@@ -233,10 +233,29 @@ class Ponencia
      *
      * @param Desymfony\DesymfonyBundle\Entity\Usuario $usuarios
      */
-    public function addUsuarios(\Desymfony\DesymfonyBundle\Entity\Usuario $usuarios)
+    public function addUsuarios(\Desymfony\DesymfonyBundle\Entity\Usuario $usuario)
     {
-        $this->usuarios[] = $usuarios;
+        if(!$this->hasUsuario($usuario)){
+            $this->usuarios[] = $usuario;
+            return true;
+        }
+
+        return false;
     }
+
+    public function hasUsuario(\Desymfony\DesymfonyBundle\Entity\Usuario $usuario)
+    {        
+        foreach($this->usuarios as $value)
+        {
+            if($value->getId() == $usuario->getId()){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
 
     /**
      * Get usuarios

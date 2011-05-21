@@ -13,7 +13,7 @@
       <div>
         <div class="grid_2 alpha">
           9:00 - 10:00
-          <a href="{{ path('apuntarse', {'slug': ponencia.slug} ) }}" class="btn">Me apunto</a>
+          {% render "DesymfonyBundle:Ponencia:meApunto" with {'ponencia': ponencia } %}
         </div>
         <div class="grid_10 omega">
           <a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}">{{ ponencia.titulo }}</a>

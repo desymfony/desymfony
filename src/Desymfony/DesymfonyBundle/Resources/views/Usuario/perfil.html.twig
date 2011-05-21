@@ -25,6 +25,16 @@
         <p>
            <b>Dirección</b> {{ usuario.direccion }}
         </p>
+        <h2>Ponencias a las que asistirás</h2>
+        <ul>
+        {% for ponencia in usuario.ponencias %}
+          <li>
+            <a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}" >{{ ponencia.titulo }}</a>
+          </li>
+        {% else %}
+          <li>Todavía no te has apuntado a ninguna ponencia<li>
+        {% endfor %}
+        </ul>
     </div>
 
     <div class="grid_4 omega">
