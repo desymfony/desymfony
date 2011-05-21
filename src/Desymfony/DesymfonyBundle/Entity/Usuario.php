@@ -248,7 +248,24 @@ class Usuario implements UserInterface
      */
     public function addPonencias(\Desymfony\DesymfonyBundle\Entity\Ponencia $ponencias)
     {
-        $this->ponencias[] = $ponencias;
+        if(!$this->hasPonencia($ponencias)){
+            $this->ponencias[] = $ponencias;
+            return true;
+        }
+
+        return false;
+    }
+
+    public function hasPonencia(\Desymfony\DesymfonyBundle\Entity\Ponencia $ponencia)
+    {        
+        foreach($this->ponencias as $value)
+        {
+            if($value->getId() == $ponencia->getId()){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
