@@ -1,0 +1,44 @@
+{% extends "::admin_base.html.twig" %}
+
+{% block title %}Usuarios apuntados a la ponencia {{ ponencia.titulo }}{% endblock %}
+{% block pageid 'admin' %}
+
+{% block body %}
+<h1>Usuarios apuntados a la ponencia <em>{{ ponencia.titulo }}</em></h1>
+
+<ul>
+    <li><strong>Fecha</strong> {{ ponencia.fecha | date('d/m/Y H:i') }}</li>
+    <li><strong>Ponente</strong> {{ ponencia.ponente.nombre }} {{ ponencia.ponente.apellidos }}</li>
+    <li><strong>Duración</strong> {{ ponencia.duracion }}</li>
+    <li><strong>Idioma</strong> {{ idiomas[ponencia.idioma] }}</li>
+</ul>
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>DNI</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        {% for usuario in ponencia.usuarios %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ usuario.dni }}</td>
+            <td>{{ usuario.nombre }} {{ usuario.apellidos }} </td>
+            <td>{{ usuario.telefono }}</td>
+            <td>{{ usuario.email }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">No hay ningún usuario apuntado</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

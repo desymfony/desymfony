@@ -16,6 +16,6 @@ admin_ponencia_delete:
     defaults: { _controller: DesymfonyBundle:AdminPonencia:delete }
 
 admin_ponencia_apuntados:
-    pattern:  /{id}/apuntados
-    defaults: { _controller: DesymfonyBundle:AdminPonencia:apuntados }
+    pattern:  /show/{id}
+    defaults: { _controller: DesymfonyBundle:AdminPonencia:show }
 
