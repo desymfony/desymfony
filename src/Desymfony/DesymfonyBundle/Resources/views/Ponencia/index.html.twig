@@ -12,7 +12,7 @@
       {% for ponencia in ponencias %}
       <div>
         <div class="grid_2 alpha">
-          9:00 - 10:00
+          {{ ponencia.hora |  date('H:i') }} - {{ ponencia.horaFinalizacion |  date('H:i') }}
           {% render "DesymfonyBundle:Ponencia:meApunto" with {'ponencia': ponencia } %}
         </div>
         <div class="grid_10 omega">

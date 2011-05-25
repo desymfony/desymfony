@@ -12,6 +12,7 @@ class PonenciaType extends AbstractType
         $builder->add('titulo');
         $builder->add('descripcion');
         $builder->add('fecha');
+        $builder->add('hora');
         $builder->add('duracion');
         $builder->add('idioma', 'choice', array(
             'choices' => array('es' => 'Español', 'en' => 'Inglés')

@@ -5,7 +5,7 @@
 
 {% block body %}
 <ul>
-    <li><strong>Fecha</strong> {{ ponencia.fecha | date('d/m/Y H:i') }}</li>
+    <li><strong>Fecha</strong> {{ ponencia.fecha | date('d/m/Y') }} {{ ponencia.hora | date('H:i') }}</li>
     <li><strong>Ponente</strong> {{ ponencia.ponente.nombre }} {{ ponencia.ponente.apellidos }}</li>
     <li><strong>Duración</strong> {{ ponencia.duracion }}</li>
     <li><strong>Idioma</strong> {{ idiomas[ponencia.idioma] }}</li>
@@ -21,7 +21,7 @@
             <th>Email</th>
         </tr>
     </thead>
-    
+
     <tbody>
         {% for usuario in ponencia.usuarios %}
         <tr>
