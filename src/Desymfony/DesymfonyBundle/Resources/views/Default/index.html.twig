@@ -47,7 +47,7 @@
 
   <section id="secundario" class="grid_4">
 
-    {% if is_granted(['ROLE_USER', 'ROLE_ADMIN']) %}
+    {% if is_granted(['ROLE_USER']) %}
     {# si ha hecho login #}
       <div class="usuario conectado">
         <p>Estás conectado como <strong>{{ usuario.nombre }} {{ usuario.apellidos }}</strong></p>
