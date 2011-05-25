@@ -4,8 +4,6 @@
 {% block pageid 'admin' %}
 
 {% block body %}
-<h1>Usuarios apuntados a la ponencia <em>{{ ponencia.titulo }}</em></h1>
-
 <ul>
     <li><strong>Fecha</strong> {{ ponencia.fecha | date('d/m/Y H:i') }}</li>
     <li><strong>Ponente</strong> {{ ponencia.ponente.nombre }} {{ ponencia.ponente.apellidos }}</li>
