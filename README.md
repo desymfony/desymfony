@@ -47,6 +47,33 @@ php /proyectos/desymfony/app/console doctrine:fixtures load
 
 El comando anterior crea varias ponencias y ponentes de prueba, 100 usuarios aleatorios y asigna 50 usuarios a cada ponencia. 
 
-La parte pública de la aplicación (`http://desymfony.local/app_dev.php`) permite crear nuevos usuarios en la sección **registro**.
+#### Parte pública o *frontend* ####
 
-La parte de administración de la aplicación se accede desde `http://desymfony.local/app_dev.php/admin` (o sólo `http://desymfony.local/admin` para el entorno de producción). Las credenciales por defecto para acceder al *backend* son `usuario: desymfony` y `password: desymfony`. Puedes cambiar las credenciales en el archivo 'app/config/security.yml'.
+Puedes acceder a la parte pública en `http://desymfony.local/app_dev.php` (entorno de desarrollo) y `http://desymfony.local/` (entorno de producción).
+
+La aplicación es tan sencilla que todas sus secciones son auto-explicativas.
+
+Si quieres crear más usuarios de prueba, puedes hacerlo en la sección *registro*. Para acceder a la aplicación como un usuario registrado, pincha el enlace *accede aquí* dentro de la sección *registro*.
+
+#### Parte de administración o *backend* ####
+
+La parte de administración de la aplicación se accede desde `http://desymfony.local/app_dev.php/admin` (entorno de desarrollo) o `http://desymfony.local/admin` (entorno de producción).
+
+Las credenciales por defecto para acceder al *backend* son:
+
+  * **usuario**: `desymfony`
+  * **password**: `desymfony`
+
+Puedes cambiar las credenciales en el archivo 'app/config/security.yml'.
+
+Sobre los autores
+-----------------
+
+El proyecto ha sido desarrollado por:
+
+  * Albert Jessurum (@ajessu)
+  * Nacho Martín (@nacmartin)
+  * Javier López (@loalf)
+  * Marcos Labad (@esmiz)
+  * David Castelló (@dcastello)
+  * Javier Eguiluz (@javiereguiluz)
