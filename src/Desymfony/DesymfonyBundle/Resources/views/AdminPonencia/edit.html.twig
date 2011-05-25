@@ -4,8 +4,6 @@
 {% block pageid 'admin' %}
 
 {% block body %}
-<h1>Editando la ponencia <em>{{ ponencia.titulo }}</em></h1>
-
 <form action="{{ path('admin_ponencia_edit', { 'id': ponencia.id }) }}" method="post" {{ form_enctype(formulario) }}>
     {{ form_widget(formulario) }}
 

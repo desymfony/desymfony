@@ -13,28 +13,33 @@
   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body id="{% block pageid '' %}">
-<div class="container_16">
+
   <header>
-    <h1 class="grid_4"><a href="#">Administración</a></h1>
+    <div class="container_16">
+      <h1 class="grid_4 alpha"><a href="{{ path('admin_portada') }}">Desymfony - Backend</a></h1>
     
-    <nav class="grid_12">
-      <ul>
-        <li><a href="{{ path('admin_ponencia_list') }}">Ponencias</a></li>
-        <li><a href="#">Ponentes</a></li>
-        <li><a href="#">Usuarios</a></li>
-        <li><a href="{{ path('portada') }}">Sitio web público</a></li>
-      </ul>
-    </nav>
+      <nav class="grid_12">
+        <ul>
+          <li><a href="{{ path('admin_ponencia_list') }}">Ponencias</a></li>
+          <li><a href="{{ path('portada') }}">Sitio web público</a></li>
+          <li>Conectado como {{ app.user.username }} - <a href="{{ path('logoff') }}">Desconectar</a></li>
+        </ul>
+      </nav>
+      
+      <h1>{{ block('title') }}</h1>
+    </div>
   </header>
   
-  {% block body %}{% endblock %}
-  {% block javascripts %}{% endblock %}
-  
-  <footer>
-    <a href="{{ path('estatica', { 'pagina': 'copyright'}) }}">&copy; 2011 - desymfony</a> |
-    <a href="{{ path('estatica', { 'pagina': 'privacidad'}) }}">Privacidad</a> |
-    <a href="{{ path('estatica', { 'pagina': 'condiciones'}) }}">Condiciones de uso</a> |
-  </footer>
-</div>
+  <div class="container_16">
+    {% block body %}{% endblock %}
+    
+    {% block javascripts %}{% endblock %}
+    <footer>
+      <a href="{{ path('estatica', { 'pagina': 'copyright'}) }}">&copy; 2011 - desymfony</a>
+      <a href="{{ path('estatica', { 'pagina': 'privacidad'}) }}">Privacidad</a>
+      <a href="{{ path('estatica', { 'pagina': 'condiciones'}) }}">Condiciones de uso</a>
+    </footer>
+  </div>
+
 </body>
 </html>
