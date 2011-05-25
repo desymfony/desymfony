@@ -11,10 +11,12 @@ class DefaultController extends Controller
         $em = $this->get('doctrine.orm.entity_manager');
         $ponenciasDia1 = $em->getRepository('DesymfonyBundle:Ponencia')->getTodasDeFecha('2011-07-01');
         $ponenciasDia2 = $em->getRepository('DesymfonyBundle:Ponencia')->getTodasDeFecha('2011-07-02');
+        $usuario = $this->get('security.context')->getToken()->getUser();
 
         return $this->render('DesymfonyBundle:Default:index.html.twig', array(
             'ponenciasDia1' => $ponenciasDia1,
             'ponenciasDia2' => $ponenciasDia2,
+            'usuario'       => $usuario,
         ));
     }
 

@@ -50,16 +50,16 @@
     {% if is_granted(['ROLE_USER', 'ROLE_ADMIN']) %}
     {# si ha hecho login #}
       <div class="usuario conectado">
-        <p>Estás conectado como <strong>Fabien Potencier</strong></p>
+        <p>Estás conectado como <strong>{{ usuario.nombre }} {{ usuario.apellidos }}</strong></p>
 
-        <p>Estás apuntado a <strong>5</strong> ponencias</p>
+        <p>Estás apuntado a <strong>{{ usuario.numeroPonencias }}</strong> ponencias</p>
 
-        <a href="#">Ver / modificar mis datos/<a>
+        <a href="{{ path('perfil') }}">Ver / modificar mis datos/<a>
       </div>
     {% else %}
     {# si no ha hecho login #}
       <div class="usuario anonimo">
-        <a href="#" class="cta">Regístrate</a>
+        <a href="{{ path('registro') }}" class="cta">Regístrate</a>
 
         <p>¿Ya estás registrado? <a href="#">Haz login</a></p>
 
