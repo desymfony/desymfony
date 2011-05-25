@@ -39,10 +39,16 @@ class Ponencia
     protected $descripcion;
 
     /**
-     * @orm:Column(type="datetime")
-     * @assert:DateTime()
+     * @orm:Column(type="date")
+     * @assert:Date()
      */
     protected $fecha;
+
+    /**
+     * @orm:Column(type="time")
+     * @assert:Time()
+     */
+    protected $hora;
 
     /**
      * @orm:Column(type="integer")
@@ -151,7 +157,7 @@ class Ponencia
     /**
      * Set fecha
      *
-     * @param datetime $fecha
+     * @param date $fecha
      */
     public function setFecha($fecha)
     {
@@ -161,11 +167,31 @@ class Ponencia
     /**
      * Get fecha
      *
-     * @return datetime $fecha
+     * @return date $fecha
      */
     public function getFecha()
     {
         return $this->fecha;
+    }
+
+    /**
+     * Set hora
+     *
+     * @param time $hora
+     */
+    public function setHora($hora)
+    {
+        $this->hora = $hora;
+    }
+
+    /**
+     * Get hora
+     *
+     * @return time $hora
+     */
+    public function getHora()
+    {
+        return $this->hora;
     }
 
     /**
@@ -244,7 +270,7 @@ class Ponencia
     }
 
     public function hasUsuario(\Desymfony\DesymfonyBundle\Entity\Usuario $usuario)
-    {        
+    {
         foreach($this->usuarios as $value)
         {
             if($value->getId() == $usuario->getId()){
