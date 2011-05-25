@@ -45,7 +45,7 @@ class Usuario implements UserInterface
      * @orm:Column(type="integer")
      * @orm:GeneratedValue(strategy="IDENTITY")
      */
-    protected $id; 
+    protected $id;
 
     /**
     * @orm:Column(type="string")
@@ -257,7 +257,7 @@ class Usuario implements UserInterface
     }
 
     public function hasPonencia(\Desymfony\DesymfonyBundle\Entity\Ponencia $ponencia)
-    {        
+    {
         foreach($this->ponencias as $value)
         {
             if($value->getId() == $ponencia->getId()){
@@ -276,6 +276,16 @@ class Usuario implements UserInterface
     public function getPonencias()
     {
         return $this->ponencias;
+    }
+
+    /**
+     * Get numero de ponencias
+     *
+     * @return integer $numeroPonencias
+     */
+    public function getNumeroPonencias()
+    {
+        return count($this->ponencias);
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
