@@ -195,6 +195,16 @@ class Ponencia
     }
 
     /**
+     * Get horaFinalizacion
+     *
+     * @return time $horafinalizacion
+     */
+    public function getHoraFinalizacion()
+    {
+        return $this->hora->add(new \DateInterval('PT'. $this->duracion . 'M'));
+    }
+
+    /**
      * Set duracion
      *
      * @param integer $duracion

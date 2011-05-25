@@ -12,10 +12,10 @@
       <p>{{ ponencia.descripcion }}</p>
 
       <div class="grid_3 alpha">
-        <strong>Fecha:</strong> {{ ponencia.fecha|date("d M") }}
+        <strong>Fecha:</strong> {{ ponencia.fecha | date("d M") }}
       </div>
       <div class="grid_3">
-        <strong>Hora:</strong> 9:00 - 10:00
+        <strong>Hora:</strong> {{ ponencia.hora | date("H:i") }} - {{ ponencia.horaFinalizacion | date("H:i") }}
       </div>
       <div class="grid_3">
         <strong>Idioma:</strong> {{ ponencia.idioma|replace( {'es' : 'Español', 'en' : 'Inglés' }) }}
