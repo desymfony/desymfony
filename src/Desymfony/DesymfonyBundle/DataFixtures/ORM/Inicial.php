@@ -24,7 +24,7 @@ class LoadUserData implements FixtureInterface
                 'linkedin'  => 'http://es.linkedin.com/in/loalf',
                 'twitter'   => 'http://www.twitter.com/loalf'
             ),
-            'nachoMartin'   => array(  
+            'nachoMartin'   => array(
                 'nombre'    => 'Ignacio',
                 'apellidos' => 'Martín',
                 'biografia' => 'Nacho es un programador y emprendedor con una buena lista de proyectos Symfony a sus espaldas. Entusiasta del software libre y de las buenas prácticas, cuando no está frente a una consola con un Vim abierto nota que le falta algo.',
@@ -91,7 +91,8 @@ class LoadUserData implements FixtureInterface
         $ponencia = new Ponencia();
         $ponencia->setTitulo('El modelo. Doctrine2');
         $ponencia->setDescripcion('Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-        $ponencia->setFecha(new \DateTime('now'));
+        $ponencia->setFecha(new \DateTime('2011-07-01'));
+        $ponencia->setHora(new \DateTime('9:00:00'));
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
@@ -104,7 +105,8 @@ class LoadUserData implements FixtureInterface
         $ponencia = new Ponencia();
         $ponencia->setTitulo('La vista. Twig');
         $ponencia->setDescripcion('Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.');
-        $ponencia->setFecha(new \DateTime('now'));
+        $ponencia->setFecha(new \DateTime('2011-07-01'));
+        $ponencia->setHora(new \DateTime('10:00:00'));
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
@@ -117,7 +119,8 @@ class LoadUserData implements FixtureInterface
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Formularios');
         $ponencia->setDescripcion('Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-        $ponencia->setFecha(new \DateTime('now'));
+        $ponencia->setFecha(new \DateTime('2011-07-02'));
+        $ponencia->setHora(new \DateTime('9:00:00'));
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
@@ -130,7 +133,8 @@ class LoadUserData implements FixtureInterface
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Backend');
         $ponencia->setDescripcion('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-        $ponencia->setFecha(new \DateTime('now'));
+        $ponencia->setFecha(new \DateTime('2011-07-02'));
+        $ponencia->setHora(new \DateTime('10:00:00'));
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
