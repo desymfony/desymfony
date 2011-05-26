@@ -47,7 +47,7 @@ Una vez configurado el acceso a la base de datos, debes crear la base de datos
 del proyecto y toda su estructura de tablas. Para ello, ejecuta los dos
 siguientes comandos:
 
-´´´
+```
 php app/console doctrine:database:create
 php app/console doctrine:schema:create
 ```
