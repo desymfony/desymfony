@@ -5,9 +5,6 @@ imports:
 desymfony: {}
 
 framework:
-    annotations:
-        cache: file
-        debug: true
     charset:       UTF-8
     secret:        %secret%
     csrf_protection:
