@@ -13,44 +13,50 @@
   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body id="{% block pageid '' %}">
-<div class="container_16">
   <header>
-    <h1 class="grid_6"><a href="#">Jornadas Symfony 2011</a></h1>
+    <div class="container_16">
+      <h1 class="grid_6"><a href="#">Jornadas Symfony 2011</a></h1>
+    
+      <nav class="grid_10">
+        <ul>
+          <li><a href="{{ path('portada') }}">Inicio</a></li>
+          <li><a href="{{ path('ponencias') }}">Ponencias</a></li>
+          <li><a href="{{ path('ponentes') }}">Ponentes</a></li>
+          <li><a href="{{ app.user ? path('perfil') : path('registro') }}">
+            {{ app.user ? 'Mi perfil' : 'Regístrate' }}
+          </a></li>
+          <li><a href="{{ path('estatica', { 'pagina': 'contacto'}) }}">Contacto</a></li>
 
-    <nav class="grid_10">
-      <ul>
-        <li><a href="{{ path('portada') }}">Inicio</a></li>
+          {% if is_granted('ROLE_ADMIN') %}
+          <li><a href="{{ path('admin_portada') }}">Admin</a></li>
+          {% endif %}
 
-        <li><a href="{{ path('ponencias') }}">Ponencias</a></li>
-
-        <li><a href="{{ path('ponentes') }}">Ponentes</a></li>
-
-        {% if not is_granted(['ROLE_USER', 'ROLE_ADMIN']) %}
-            <li><a href="{{ path('registro') }}">Registro</a></li>
-        {% endif %}
-
-        <li><a href="{{ path('estatica', { 'pagina': 'contacto'}) }}">Contacto</a></li>
-
-        {% if is_granted('ROLE_ADMIN') %}
-        <li><a href="{{ path('admin_portada') }}">Admin</a></li>
-        {% endif %}
-
-        {% if is_granted(['ROLE_USER', 'ROLE_ADMIN']) %}
-            <li><a href="{{ path('logoff') }}">Salir</a></li>
-        {% endif %}
-      </ul>
-    </nav>
-    <div class="clear"></div>
+          {% if app.user %}
+          <li><a href="{{ path('logoff') }}">Salir</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
   </header>
-
-  {% block body %}{% endblock %}
-  {% block javascripts %}{% endblock %}
-
-  <footer>
-    <a href="{{ path('estatica', { 'pagina': 'copyright'}) }}">&copy; 2011 - desymfony</a> |
-    <a href="{{ path('estatica', { 'pagina': 'privacidad'}) }}">Privacidad</a> |
-    <a href="{{ path('estatica', { 'pagina': 'condiciones'}) }}">Condiciones de uso</a> |
-  </footer>
-</div>
+  
+  <div class="container_16">
+    <article id="contenido">
+      <section id="principal" class="grid_12">
+        {% block body %}{% endblock %}
+      </section>
+    
+      <section id="lateral" class="grid_4">
+        {% block lateral %}{% endblock %}
+      </section>
+    </article>
+  
+    {% block javascripts %}{% endblock %}
+  
+    <footer>
+      <a href="{{ path('estatica', { 'pagina': 'copyright'}) }}">&copy; {{ 'now' | date('Y') }} - desymfony</a>
+      <a href="{{ path('estatica', { 'pagina': 'privacidad'}) }}">Privacidad</a>
+      <a href="{{ path('estatica', { 'pagina': 'condiciones'}) }}">Condiciones de uso</a>
+    </footer>
+  </div>
 </body>
 </html>
