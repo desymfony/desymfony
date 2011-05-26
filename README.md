@@ -47,7 +47,7 @@ acceder al proyecto en el entorno de desarrollo. El entorno de producción es
 accesible en `http://desymfony.local/`
 
 Si se produce algún error, es posible que el servidor no tenga permiso de 
-escritura en los directorios de la caché y e los logs. Ejecuta `chmod -R 777 
+escritura en los directorios de la caché y de los logs. Ejecuta `chmod -R 777 
 /proyectos/desymfony/app/cache /proyectos/desymfony/app/logs` y el error ya no 
 debería repetirse.
 
@@ -85,7 +85,7 @@ Las credenciales por defecto para acceder al *backend* son:
   * **usuario**: `desymfony`
   * **password**: `desymfony`
 
-Puedes cambiar las credenciales en el archivo 'app/config/security.yml'.
+Puedes cambiar las credenciales en el archivo `app/config/security.yml`.
 
 Sobre los autores
 -----------------
