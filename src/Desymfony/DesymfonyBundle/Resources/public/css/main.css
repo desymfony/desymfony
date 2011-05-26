@@ -123,6 +123,7 @@ textarea{ border: solid 1px #aaa; padding: 4px; }
 }
 
 #admin table {
+  clear: both;
   margin-bottom: 2em;
   width: 100%;
 }
