@@ -54,7 +54,6 @@ doctrine:
         entity_managers:
             default:
                 mappings:
-                    AcmeDemoBundle:  ~
                     DesymfonyBundle: ~
 
 # Swiftmailer Configuration
