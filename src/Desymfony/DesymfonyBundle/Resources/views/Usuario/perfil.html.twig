@@ -3,10 +3,9 @@
 {% block title %}Registro{% endblock %}
 
 {% block body %}
-
-<div class="grid_16" >
     <h1>Tu perfil</h1>
     <div class="grid_12 alpha" >
+        {# Lo que viene a continuación en esta plantilla es ideal para hacer un macro #}
         <p>
            <b>Nombre</b> {{ usuario.nombre }}
         </p>
@@ -36,8 +35,9 @@
         {% endfor %}
         </ul>
     </div>
+{% endblock %}
 
-    <div class="grid_4 omega">
+{% block lateral %}
         <h3>Ventajas de asistir a las jornadas</h3>
         <ul>
             <li>Lorem ipsum et dolor</li>
@@ -50,9 +50,4 @@
             <li>Lorem ipsum et dolor</li>
             <li>Lorem ipsum et dolor</li>
         </ul>
-    </div>
-    <div class="clear"></div>
-</div>
-<div class="clear"></div>
-
 {% endblock %}
