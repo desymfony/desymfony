@@ -13,8 +13,8 @@ realizar algunas simplificaciones en su funcionamiento y arquitectura. No
 obstante, la aplicación sigue la filosofía y buenas prácticas recomendadas por 
 Symfony2.
 
-Cómo descargar y probar el proyecto
------------------------------------
+Instalación y configuración
+---------------------------
 
 ### Instalación ###
 
@@ -24,9 +24,46 @@ Cómo descargar y probar el proyecto
   3. Descarga/actualiza las librerías externas de Symfony2: 
   `/proyectos/desymfony/bin/vendors.sh` (espera un buen rato)
 
-Para probarlo más cómodamente, crea un *host virtual* en tu servidor web local. 
-Añade en primer lugar `127.0.0.1    desymfony.local` en el archivo `/etc/hosts`. 
-Después, configura el *host* en el servidor web:
+### Configuración de la base de datos ###
+
+La aplicación necesita una base de datos de tipo SQL para guardar su 
+información. Por defecto el proyecto utiliza una base de datos local llamada
+`desymfony` a la que puede acceder un usuario llamado también `desymfony` y 
+cuya contraseña es `desymfony`.
+
+Si quieres utilizar otros valores o tu base de datos no es MySQL, puedes 
+configurarlo en las primeras líneas del archivo `app/config/parameters.ini`:
+
+```ini
+[parameters]
+    database_driver="pdo_mysql"
+    database_host="localhost"
+    database_name="desymfony"
+    database_user="desymfony"
+    database_password="desymfony"
+```
+
+Una vez configurado el acceso a la base de datos, debes crear la base de datos 
+del proyecto y toda su estructura de tablas. Para ello, ejecuta los dos
+siguientes comandos:
+
+´´´
+php app/console doctrine:database:create
+php app/console doctrine:schema:create
+```
+
+### Configuración del servidor web ###
+
+Para probar el proyecto fácilmente, es recomendable crear un *host virtual* en 
+tu servidor web local. Añade en primer lugar la siguiente línea en el archivo 
+`/etc/hosts`:
+
+```
+127.0.0.1    desymfony.local
+```
+
+Después, configura el *host* en el servidor web añadiendo lo siguiente en su 
+archivo de configuración:
 
 ```
 # Desymfony 2011
@@ -42,18 +79,20 @@ Después, configura el *host* en el servidor web:
 </VirtualHost>
 ```
 
-Reinicia el servidor web y accede a `http://desymfony.local/app_dev.php` para 
-acceder al proyecto en el entorno de desarrollo. El entorno de producción es 
-accesible en `http://desymfony.local/`
-
-Si se produce algún error, es posible que el servidor no tenga permiso de 
-escritura en los directorios de la caché y de los logs. Ejecuta `chmod -R 777 
-/proyectos/desymfony/app/cache /proyectos/desymfony/app/logs` y el error ya no 
-debería repetirse.
+Para terminar, no olvides reiniciar el servidor web.
 
 ### Probando el proyecto ###
 
-Para probar mejor el proyecto, es recomendable cargar los datos de prueba 
+Después de la configuración anterior, ya puedes acceder al entorno de 
+desarrollo de la aplicación en `http://desymfony.local/app_dev.php`. El 
+entorno de producción es accesible en `http://desymfony.local/`
+
+Si se produce algún error, es posible que el servidor web no tenga permiso de 
+escritura en los directorios de la caché y de los logs. Ejecuta `chmod -R 777 
+/proyectos/desymfony/app/cache /proyectos/desymfony/app/logs` y el error ya no 
+debería mostrarse.
+
+Para probar mejor el proyecto, es muy recomendable cargar los datos de prueba 
 (*fixtures*) de la aplicación ejecutando el siguiente comando:
 
 ```
