@@ -11,30 +11,24 @@ class PonenciaController extends Controller
 {
     public function indexAction()
     {
-        $em        = $this->get('doctrine.orm.entity_manager');
-        $ponencias = $em->getRepository('\Desymfony\DesymfonyBundle\Entity\Ponencia')->findAll();
-
-        return $this->render('DesymfonyBundle:Ponencia:index.html.twig', array('ponencias' => $ponencias));
+        $ponencias = $this->entidad('Ponencia')->findAll();
+        
+        return $this->render('DesymfonyBundle:Ponencia:index.html.twig', array(
+            'ponencias' => $ponencias
+        ));
     }
 
     public function ponenciaAction($slug)
     {
-        $em       = $this->get('doctrine.orm.entity_manager');
-        $ponencia = $em->getRepository('\Desymfony\DesymfonyBundle\Entity\Ponencia')
-                       ->findOneBy(array('slug' => $slug));
-
-        if($ponencia){
-
-            $ponente = $ponencia->getPonente();
-            return $this->render('DesymfonyBundle:Ponencia:ponencia.html.twig',
-                                    array(
-                                        'ponencia' => $ponencia,
-                                        'ponente' => $ponente
-                                        )
-                    );
-        }else{
-            return $this->createNotFoundException();
+        $ponencia = $this->entidad('Ponencia')->findOneBy(array('slug' => $slug));
+        
+        if (!$ponencia) {
+            throw new NotFoundHttpException("No existe la ponencia indicada");
         }
+        
+        return $this->render('DesymfonyBundle:Ponencia:ponencia.html.twig', array(
+            'ponencia' => $ponencia
+        ));
     }
 
     public function meApuntoAction($ponencia)
@@ -57,39 +51,49 @@ class PonenciaController extends Controller
          * sabe como resolver
          */
 
-        return $this->render('DesymfonyBundle:Ponencia:meApunto.html.twig',
-                                array('usuario' => $usuario, 'ponencia' => $ponencia)
-                            );
+        return $this->render('DesymfonyBundle:Ponencia:meApunto.html.twig', array(
+            'usuario'  => $usuario,
+            'ponencia' => $ponencia
+        ));
     }
 
     public function apuntarseAction($slug)
     {
-        $em       = $this->get('doctrine.orm.entity_manager');
-        $ponencia = $em->getRepository('\Desymfony\DesymfonyBundle\Entity\Ponencia')
-                       ->findOneBy(array('slug' => $slug));
-
+        $em = $this->get('doctrine.orm.entity_manager');
+        $ponencia = $this->entidad('Ponencia')->findOneBy(array('slug' => $slug));
+        
         $request = $this->get('request');
         $request = new Request();
-
-        if($ponencia){
-
+        
+        if ($ponencia) {
             $usuario = $this->get('security.context')->getToken()->getUser();
-            if($ponencia->addUsuarios($usuario)){;
+            
+            if ($ponencia->addUsuarios($usuario)) {
                 $em->persist($ponencia);
                 $em->flush();
             }
             
-            if($request->isXmlHttpRequest()){
+            if ($request->isXmlHttpRequest()) {
                 return new Response();
-            }else{
+            }
+            else {
                 $session = $this->get('request')->getSession();
                 $session->setFlash('notice', sprintf("Te has apuntado a %s", $ponencia->getTitulo()));
+                
                 return $this->redirect($this->generateUrl('ponencia', array('slug' => $ponencia->getSlug())));
             }
-
-        }else{
-            return $this->createNotFoundException();
         }
     }
     
+    
+    /**
+     * Obtiene el repositorio de la entidad indicada
+     *
+     * @param string $entidad Nombre de la entidad de la que se quiere obtener el repositorio
+     */
+    private function entidad($entidad)
+    {
+        return $this->get('doctrine.orm.entity_manager')
+               ->getRepository('Desymfony\\DesymfonyBundle\\Entity\\'.$entidad);
+    }
 }

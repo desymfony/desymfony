@@ -1,6 +1,6 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}PONENCIAS{% endblock %}
+{% block title %}{{ ponencia.titulo }}{% endblock %}
 {% block pageid 'ponencias' %}
 
 {% block body %}
@@ -18,14 +18,14 @@
         <strong>Hora:</strong> 9:00 - 10:00
       </div>
       <div class="grid_3">
-        <strong>Idioma:</strong> {{ ponencia.idioma|replace( {'es' : 'Español', 'en' : 'Inglés' }) }}
+        <strong>Idioma:</strong> {{ idiomas[ponencia.idioma] }}
       </div>
       <div class="grid_3 omega">
         {% render "DesymfonyBundle:Ponencia:meApunto" with {'ponencia': ponencia } %}
       </div>
 
       <div>
-        <strong>Impartida por:</strong> <a href="{{ path('ponentes') }}">{{ ponente.nombre }} {{ ponente.apellidos }}</a>
+        <strong>Impartida por:</strong> <a href="{{ path('ponentes') }}">{{ ponencia.ponente }}</a>
       </div>
     </section>
 
