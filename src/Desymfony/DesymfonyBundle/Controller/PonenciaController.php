@@ -3,7 +3,7 @@
 namespace Desymfony\DesymfonyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Exception\NotFoundException;
 use Desymfony\DesymfonyBundle\Entity\Ponencia;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -60,7 +60,7 @@ class PonenciaController extends Controller
 
     public function apuntarseAction($slug)
     {
-        $em = $this->get('doctrine.orm.entity_manager');
+        $em = $this->get('doctrine')->getEntityManager();
         $ponencia = $this->entidad('Ponencia')->findOneBy(array('slug' => $slug));
         
         $request = $this->get('request');
@@ -94,7 +94,7 @@ class PonenciaController extends Controller
      */
     private function entidad($entidad)
     {
-        return $this->get('doctrine.orm.entity_manager')
+        return $this->get('doctrine')->getEntityManager()
                ->getRepository('Desymfony\\DesymfonyBundle\\Entity\\'.$entidad);
     }
 }
