@@ -1,28 +1,29 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Registro{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block body %}
+<h1>Accede a tu cuenta</h1>
 
-<div class="grid_16" >
-    <h1>Accede a tu cuenta</h1>
+{% if error %}
+    <div class="error">{{ error.message }}</div>
+{% endif %}
 
-    {% if error %}
-        <div class="error">{{ error.message }}</div>
-    {% endif %}
+<form action="{{ path("login_check") }}" method="post" id="login">
+    <div>
+        <label for="username">Email</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+    </div>
 
-    <form action="{{ path("login_check") }}" method="post" id="login">
-        <div>
-            <label for="username">Email</label>
-            <input type="text" id="username" name="_username" value="{{ last_username }}" />
-        </div>
+    <div>
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="_password" />
+    </div>
 
-        <div>
-            <label for="password">Contraseña</label>
-            <input type="password" id="password" name="_password" />
-        </div>
+    <input type="submit" class="symfony-button-grey" value="LOGIN" />
+</form>
+{% endblock %}
 
-        <input type="submit" class="symfony-button-grey" value="LOGIN" />
-    </form>
-</div>
+{% block lateral %}
+{# En esta página no mostramos nada en el lateral #}
 {% endblock %}
