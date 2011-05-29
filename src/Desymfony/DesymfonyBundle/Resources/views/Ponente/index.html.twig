@@ -8,7 +8,7 @@
     {% for ponente in ponentes %}
         <div class="grid_9 alpha">
             <h2>{{ ponente.nombre }} {{ ponente.apellidos }}</h2>
-            <p>{{ ponente.biografia }}</p>
+            <p>{{ ponente.biografia|auto_link_text|raw }}</p>
             <p>Imparte las siguientes ponencias</p>
             <ul>
             {% for ponencia in ponente.ponencias %}
