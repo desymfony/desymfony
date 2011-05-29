@@ -4,6 +4,7 @@
 {% block pageid 'ponentes' %}
 
 {% block body %}
+
     <h1>PONENTES</h1>
     {% for ponente in ponentes %}
         <div class="grid_9 alpha">
@@ -11,6 +12,7 @@
             <p>{{ ponente.biografia|auto_link_text|raw }}</p>
             <p>Imparte las siguientes ponencias</p>
             <ul>
+
             {% for ponencia in ponente.ponencias %}
             <li>
                 <a href="{{ path('ponencia', { 'slug': ponencia.slug})  }}">{{ ponencia.titulo }}</a>
@@ -40,4 +42,5 @@
 Accede a las <a href="#">sección de Call for Papers</a> y envía tu propuesta.
 
 {{ parent() }}
+
 {% endblock %}
