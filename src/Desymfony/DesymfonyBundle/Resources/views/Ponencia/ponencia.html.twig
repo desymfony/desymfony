@@ -4,39 +4,26 @@
 {% block pageid 'ponencias' %}
 
 {% block body %}
-<article id="contenido">
+<h1>{{ ponencia.titulo }}</h1>
+<p>{{ ponencia.descripcion }}</p>
 
-    <section id="principal" class="grid_12">
-      <h1>{{ ponencia.titulo }}</h1>
+<div class="grid_3 alpha">
+    <strong>Fecha:</strong> {{ ponencia.fecha | date("d M") }}
+</div>
 
-      <p>{{ ponencia.descripcion }}</p>
+<div class="grid_3">
+    <strong>Hora:</strong> {{ ponencia.hora | date("H:i") }} - {{ ponencia.horaFinalizacion | date("H:i") }}
+</div>
 
-      <div class="grid_3 alpha">
-        <strong>Fecha:</strong> {{ ponencia.fecha | date("d M") }}
-      </div>
-      <div class="grid_3">
-        <strong>Hora:</strong> {{ ponencia.hora | date("H:i") }} - {{ ponencia.horaFinalizacion | date("H:i") }}
-      </div>
-      <div class="grid_3">
-        <strong>Idioma:</strong> {{ idiomas[ponencia.idioma] }}
-      </div>
-      <div class="grid_3 omega">
-        {% render "DesymfonyBundle:Ponencia:meApunto" with {'ponencia': ponencia } %}
-      </div>
+<div class="grid_3">
+    <strong>Idioma:</strong> {{ idiomas[ponencia.idioma] }}
+</div>
 
-      <div>
-        <strong>Impartida por:</strong> <a href="{{ path('ponentes') }}">{{ ponencia.ponente }}</a>
-      </div>
-    </section>
+<div class="grid_3 omega">
+    {% render "DesymfonyBundle:Ponencia:meApunto" with {'ponencia': ponencia } %}
+</div>
 
-    <section id="secundario" class="grid_4">
-
-      <div>
-        BLOQUE COMUN CON LA INFORMACION DEL USUARIO
-      </div>
-
-    </section>
-    <div class="clear"></div>
-
-</article>
+<div>
+    <strong>Impartida por:</strong> <a href="{{ path('ponentes') }}">{{ ponencia.ponente }}</a>
+</div>
 {% endblock %}
