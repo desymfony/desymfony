@@ -1,53 +1,53 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Registro{% endblock %}
+{% block title %}Mi perfil{% endblock %}
 
 {% block body %}
-    <h1>Tu perfil</h1>
-    <div class="grid_12 alpha" >
-        {# Lo que viene a continuación en esta plantilla es ideal para hacer un macro #}
-        <p>
-           <b>Nombre</b> {{ usuario.nombre }}
-        </p>
-        <p>
-           <b>Apellidos</b> {{ usuario.apellidos }}
-        </p>
-        <p>
-           <b>Email</b> {{ usuario.email }}
-        </p>
-        <p>
-           <b>DNI</b> {{ usuario.dni }}
-        </p>
-        <p>
-           <b>Teléfono</b> {{ usuario.telefono }}
-        </p>
-        <p>
-           <b>Dirección</b> {{ usuario.direccion }}
-        </p>
-        <h2>Ponencias a las que asistirás</h2>
-        <ul>
-        {% for ponencia in usuario.ponencias %}
-          <li>
-            <a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}" >{{ ponencia.titulo }}</a>
-          </li>
-        {% else %}
-          <li>Todavía no te has apuntado a ninguna ponencia<li>
-        {% endfor %}
-        </ul>
-    </div>
+<h1>Mi perfil</h1>
+
+{# Lo que viene a continuación en esta plantilla es ideal para hacer un macro #}
+<p>
+    <b>Nombre</b> {{ usuario.nombre }}
+</p>
+<p>
+    <b>Apellidos</b> {{ usuario.apellidos }}
+</p>
+<p>
+    <b>Email</b> {{ usuario.email }}
+</p>
+<p>
+    <b>DNI</b> {{ usuario.dni }}
+</p>
+<p>
+    <b>Teléfono</b> {{ usuario.telefono }}
+</p>
+<p>
+    <b>Dirección</b> {{ usuario.direccion }}
+</p>
+
+<h2>Ponencias a las que te has apuntado</h2>
+<ul>
+    {% for ponencia in usuario.ponencias %}
+    <li>
+        <a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}" >{{ ponencia.titulo }}</a>
+    </li>
+    {% else %}
+    <li>Todavía no te has apuntado a ninguna ponencia<li>
+    {% endfor %}
+</ul>
 {% endblock %}
 
 {% block lateral %}
-        <h3>Ventajas de asistir a las jornadas</h3>
-        <ul>
-            <li>Lorem ipsum et dolor</li>
-            <li>Lorem ipsum et dolor</li>
-            <li>Lorem ipsum et dolor</li>
-        </ul>
-        <h3>Preguntas frecuentes</h3>
-        <ul>
-            <li>Lorem ipsum et dolor</li>
-            <li>Lorem ipsum et dolor</li>
-            <li>Lorem ipsum et dolor</li>
-        </ul>
+<h3>Ventajas de asistir a las jornadas</h3>
+<ul>
+    <li>Lorem ipsum et dolor</li>
+    <li>Lorem ipsum et dolor</li>
+    <li>Lorem ipsum et dolor</li>
+</ul>
+<h3>Preguntas frecuentes</h3>
+<ul>
+    <li>Lorem ipsum et dolor</li>
+    <li>Lorem ipsum et dolor</li>
+    <li>Lorem ipsum et dolor</li>
+</ul>
 {% endblock %}

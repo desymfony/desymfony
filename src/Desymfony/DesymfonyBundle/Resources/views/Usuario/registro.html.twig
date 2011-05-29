@@ -6,79 +6,76 @@
 
 <h1>Registro</h1>
 
-<div class="grid_12" id="register_form" >
+{% if( app.session.flash('notice') ) %}
+<div class="notice">
+    <p>{{ app.session.flash('notice') }}</p>
+</div>
+{% endif %}
+
+{{ form_errors(form) }}
+
+<form id="register_form" action="{{ path('registro') }}" method="post" {{ form_enctype(form) }}>
+
+    {{ form_errors(form.nombre) }}
     <p>
-        ¿Ya estás registrado? Entonces, <a href="{{ path('login') }}">accede aquí</a>
+        {{ form_label(form.nombre) }}
+        {{ form_widget(form.nombre) }}
     </p>
-    {% if( app.session.flash('notice') ) %}
-    <div class="notice">
+
+    {{ form_errors(form.apellidos) }}
+    <p>
+        {{ form_label(form.apellidos) }}
+        {{ form_widget(form.apellidos) }}
+    </p>
+
+    <div class="grid_6 alpha">
+        {{ form_errors(form.dni) }}
         <p>
-            {{ app.session.flash('notice') }}
+            {{ form_label(form.dni) }}
+            {{ form_widget(form.dni) }}
         </p>
     </div>
-    {% endif %}
-
-    {{ form_errors(form) }}
-
-    <form action="{{ path('registro') }}" method="post" {{ form_enctype(form) }}>
-
-        {{ form_errors(form.nombre) }}
+    
+    <div class="grid_6 omega">
+        {{ form_errors(form.telefono) }}
         <p>
-            {{ form_label(form.nombre) }}
-            {{ form_widget(form.nombre) }}
+            {{ form_label(form.telefono) }}
+            {{ form_widget(form.telefono) }}
         </p>
+    </div>
+    <div class="clear"></div>
 
-        {{ form_errors(form.apellidos) }}
-        <p>
-            {{ form_label(form.apellidos) }}
-            {{ form_widget(form.apellidos) }}
-        </p>
+    {{ form_errors(form.direccion) }}
+    <p>
+        {{ form_label(form.direccion) }}
+        {{ form_widget(form.direccion) }}
+    </p>
 
-        <div class="grid_6 alpha">
-            {{ form_errors(form.dni) }}
-            <p>
-                {{ form_label(form.dni) }}
-                {{ form_widget(form.dni) }}
-            </p>
-        </div>
-        <div class="grid_6 omega">
-            {{ form_errors(form.telefono) }}
-            <p>
-                {{ form_label(form.telefono) }}
-                {{ form_widget(form.telefono) }}
-            </p>
-        </div>
-        <div class="clear"></div>
-
-        {{ form_errors(form.direccion) }}
-        <p>
-            {{ form_label(form.direccion) }}
-            {{ form_widget(form.direccion) }}
-        </p>
-
-        <p>
-            {{ form_errors(form.password) }}
-            {{ form_widget(form.password) }}
-        </p>
+    <p>
+        {{ form_errors(form.password) }}
+        {{ form_widget(form.password) }}
+    </p>
 
     {{ form_rest(form) }}
 
-        <input type="submit" value="Registrate" />
-    </form>
-</div>
+    <input type="submit" value="Registrate" />
+</form>
 {% endblock %}
 
 {% block lateral %}
-    <h3>Ventajas de asistir a las jornadas</h3>
-    <ul>
-        <li>Lorem ipsum et dolor</li>
-        <li>Lorem ipsum et dolor</li>
-        <li>Lorem ipsum et dolor</li>
-    </ul>
-    <h3>Preguntas frecuentes</h3>
-    <ul>
-        <li>Lorem ipsum et dolor</li>
-        <li>Lorem ipsum et dolor</li>
-        <li>Lorem ipsum et dolor</li>
-    </ul>
+<p>¿Ya estás registrado? Entonces, <a href="{{ path('login') }}">accede aquí</a></p>
+
+<h3>Ventajas de asistir a las jornadas</h3>
+<ul>
+    <li>Lorem ipsum et dolor</li>
+    <li>Lorem ipsum et dolor</li>
+    <li>Lorem ipsum et dolor</li>
+</ul>
+
+<h3>Preguntas frecuentes</h3>
+<ul>
+    <li>Lorem ipsum et dolor</li>
+    <li>Lorem ipsum et dolor</li>
+    <li>Lorem ipsum et dolor</li>
+</ul>
 {% endblock %}

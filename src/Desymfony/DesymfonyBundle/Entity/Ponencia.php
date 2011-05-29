@@ -2,78 +2,81 @@
 
 namespace Desymfony\DesymfonyBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Desymfony\DesymfonyBundle\Resources\util\Util;
 
 /**
  * Desymfony\DesymfonyBundle\Entity
  *
- * @orm:Table(name="ponencia")
- * @orm:Entity(repositoryClass="Desymfony\DesymfonyBundle\Entity\PonenciaRepository")
+ * @ORM\Table(name="ponencia")
+ * @ORM\Entity(repositoryClass="Desymfony\DesymfonyBundle\Entity\PonenciaRepository")
  */
 class Ponencia
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="IDENTITY")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
 
     /**
-     * @orm:Column(type="string")
-     * @assert:NotBlank()
-     * @assert:MaxLength(255)
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     * @Assert\MaxLength(255)
      */
     protected $titulo;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $slug;
 
     /**
-     * @orm:Column(type="text")
-     * @assert:NotBlank()
-     * @assert:MinLength(50)
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+     * @Assert\MinLength(50)
      */
     protected $descripcion;
 
     /**
-     * @orm:Column(type="date")
-     * @assert:Date()
+     * @ORM\Column(type="date")
+     * @Assert\Date()
      */
     protected $fecha;
 
     /**
-     * @orm:Column(type="time")
-     * @assert:Time()
+     * @ORM\Column(type="time")
+     * @Assert\Time()
      */
     protected $hora;
 
     /**
-     * @orm:Column(type="integer")
-     * @assert:Type("integer")
-     * @assert:Min(0)
+     * @ORM\Column(type="integer")
+     * @Assert\Type("integer")
+     * @Assert\Min(0)
      */
     protected $duracion;
 
     /**
-     * @orm:Column(type="string", length="2")
-     * @assert:Choice({"es", "en"})
+     * @ORM\Column(type="string", length="2")
+     * @Assert\Choice({"es", "en"})
      */
     protected $idioma;
 
     /**
-     * @orm:ManyToOne(targetEntity="Ponente", inversedBy="ponencias", cascade={"remove"})
-     * @orm:JoinColumn(name="ponente_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Ponente", inversedBy="ponencias", cascade={"remove"})
+     * @ORM\JoinColumn(name="ponente_id", referencedColumnName="id")
      */
     protected $ponente;
 
     /**
-     * @orm:ManyToMany(targetEntity="Usuario", inversedBy="ponencias")
-     * @orm:JoinTable(name="ponencia_usuario",
-     *      joinColumns={@orm:JoinColumn(name="ponencia_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@orm:JoinColumn(name="usuario_id", referencedColumnName="id")}
+     * @ORM\ManyToMany(targetEntity="Usuario", inversedBy="ponencias")
+     * @ORM\JoinTable(name="ponencia_usuario",
+     *      joinColumns={@ORM\JoinColumn(name="ponencia_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="usuario_id", referencedColumnName="id")}
      * )
      */
     protected $usuarios;
