@@ -13,9 +13,7 @@
     <ul>
         {% for ponencia in ponenciasDia1 %}
         <li>
-            <span>{{ ponencia.hora|date('H:i') }}</span>
-            <a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}">{{ ponencia.titulo }}</a>
-            <p>{{ ponencia.descripcion }}</p>
+        {% include 'DesymfonyBundle:Ponencia:bloquePequeno.html.twig' with {'ponencia': ponencia } %}
         </li>
         {% else %}
         <li>
@@ -31,9 +29,7 @@
     <ul>
         {% for ponencia in ponenciasDia2 %}
         <li>
-            <span>{{ ponencia.hora|date('H:i') }}</span>
-            <a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}">{{ ponencia.titulo }}</a>
-            <p>{{ ponencia.descripcion }}</p>
+            {% include 'DesymfonyBundle:Ponencia:bloquePequeno.html.twig' with {'ponencia': ponencia } %}
         </li>
         {% else %}
         <li>
