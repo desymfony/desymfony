@@ -126,6 +126,12 @@ Las credenciales por defecto para acceder al *backend* son:
 
 Puedes cambiar las credenciales en el archivo `app/config/security.yml`.
 
+### Sobre tests ###
+
+Para correr los tests hay que generar los proxies de entidades con
+
+    php console --env=test doctrine:generate:proxies
+
 Sobre los autores
 -----------------
 
