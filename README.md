@@ -22,7 +22,7 @@ Instalación y configuración
   2. Clona el repositorio en ese directorio:
   `git clone git@github.com:desymfony/desymfony.git /proyectos/desymfony`
   3. Descarga/actualiza las librerías externas de Symfony2: 
-  `/proyectos/desymfony/bin/vendors.sh` (espera un buen rato)
+  `/proyectos/desymfony/bin/vendors.php` (espera un buen rato)
 
 ### Configuración de la base de datos ###
 
@@ -125,6 +125,12 @@ Las credenciales por defecto para acceder al *backend* son:
   * **password**: `desymfony`
 
 Puedes cambiar las credenciales en el archivo `app/config/security.yml`.
+
+### Sobre tests ###
+
+Para correr los tests hay que generar los proxies de entidades con
+
+    php console --env=test doctrine:generate:proxies
 
 Sobre los autores
 -----------------
