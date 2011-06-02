@@ -13,8 +13,10 @@ class PonenciaController extends Controller
 {
     public function indexAction()
     {
-        $ponencias = $this->entidad('Ponencia')->findAll();
-
+        $em = $this->get('doctrine')->getEntityManager();
+        
+        $ponencias = $em->getRepository('DesymfonyBundle:Ponencia')->findAll();
+        
         return $this->render('DesymfonyBundle:Ponencia:index.html.twig', array(
             'ponencias' => $ponencias
         ));
@@ -22,12 +24,14 @@ class PonenciaController extends Controller
 
     public function ponenciaAction($slug)
     {
-        $ponencia = $this->entidad('Ponencia')->findOneBy(array('slug' => $slug));
-
+        $em = $this->get('doctrine')->getEntityManager();
+        
+        $ponencia = $em->getRepository('DesymfonyBundle:Ponencia')->findOneBy(array('slug' => $slug));
+        
         if (!$ponencia) {
             throw new NotFoundHttpException("No existe la ponencia indicada");
         }
-
+        
         return $this->render('DesymfonyBundle:Ponencia:ponencia.html.twig', array(
             'ponencia' => $ponencia
         ));
@@ -62,7 +66,8 @@ class PonenciaController extends Controller
     public function apuntarseAction($slug)
     {
         $em = $this->get('doctrine')->getEntityManager();
-        $ponencia = $this->entidad('Ponencia')->findOneBy(array('slug' => $slug));
+        
+        $ponencia = $em->getRepository('DesymfonyBundle:Ponencia')->findOneBy(array('slug' => $slug));
 
         $request = $this->get('request');
         $request = new Request();
@@ -87,15 +92,4 @@ class PonenciaController extends Controller
         }
     }
 
-
-    /**
-     * Obtiene el repositorio de la entidad indicada
-     *
-     * @param string $entidad Nombre de la entidad de la que se quiere obtener el repositorio
-     */
-    private function entidad($entidad)
-    {
-        return $this->get('doctrine')->getEntityManager()
-               ->getRepository('Desymfony\\DesymfonyBundle\\Entity\\'.$entidad);
-    }
 }
