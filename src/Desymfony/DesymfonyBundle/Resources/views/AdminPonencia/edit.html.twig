@@ -1,13 +1,19 @@
 {% extends "::admin_base.html.twig" %}
 
-{% block title %}Editando la ponencia {{ ponencia.titulo }}{% endblock %}
+{% block title%}Editando la ponencia {{ ponencia.titulo }}{% endblock %}
 {% block pageid 'admin' %}
 
 {% block body %}
+{% if app.session.flash('notice') %}
+<div class="notice">
+    <p>{{ app.session.flash('notice') }}</p>
+</div>
+{% endif %}
+
 <form action="{{ path('admin_ponencia_edit', { 'id': ponencia.id }) }}" method="post" {{ form_enctype(formulario) }}>
     {{ form_widget(formulario) }}
 
-    <input type="submit" />
+    <input type="submit" value="Guardar cambios" />
 </form>
 
 <a href="{{ path('admin_ponencia_list') }}">Volver al listado</a>
