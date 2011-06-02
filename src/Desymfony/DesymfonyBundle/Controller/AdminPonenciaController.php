@@ -3,7 +3,7 @@
 namespace Desymfony\DesymfonyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Routing\Exception\NotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Desymfony\DesymfonyBundle\Entity\Ponencia,
     Desymfony\DesymfonyBundle\Form\PonenciaType;
@@ -12,8 +12,10 @@ class AdminPonenciaController extends Controller
 {
     public function listAction()
     {
+        $em = $this->get('doctrine')->getEntityManager();
+        
         return $this->render('DesymfonyBundle:AdminPonencia:list.html.twig', array(
-            'ponencias' => $this->entidad('Ponencia')->findAll()
+            'ponencias' => $em->getRepository('DesymfonyBundle:Ponencia')->findAll()
         ));
     }
     
@@ -51,7 +53,7 @@ class AdminPonenciaController extends Controller
         $peticion = $this->get('request');
         $em = $this->get('doctrine')->getEntityManager();
         
-        if(null == $ponencia = $this->entidad('Ponencia')->findOneById($id)) {
+        if(null == $ponencia = $em->find('DesymfonyBundle:Ponencia', $id)) {
             throw new NotFoundHttpException('No existe la ponencia que se quiere modificar');
         }
         
@@ -80,27 +82,12 @@ class AdminPonenciaController extends Controller
         $peticion = $this->get('request');
         $em = $this->get('doctrine')->getEntityManager();
         
-        if(null == $ponencia = $this->entidad('Ponencia')->findOneById($id)) {
+        if(null == $ponencia = $em->find('DesymfonyBundle:Ponencia', $id)) {
             throw new NotFoundHttpException('No existe la ponencia que se quiere ver');
         }
         
         return $this->render('DesymfonyBundle:AdminPonencia:show.html.twig', array(
             'ponencia'   => $ponencia
         ));
-    }
-    
-    
-    
-    
-    
-    /**
-     * Obtiene el repositorio de la entidad indicada
-     *
-     * @param string $entidad Nombre de la entidad de la que se quiere obtener el repositorio
-     */
-    private function entidad($entidad)
-    {
-        return $this->get('doctrine')->getEntityManager()
-               ->getRepository('Desymfony\\DesymfonyBundle\\Entity\\'.$entidad);
     }
 }
