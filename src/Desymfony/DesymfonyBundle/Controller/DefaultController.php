@@ -8,7 +8,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $em = $this->get('doctrine.orm.entity_manager');
+        $em = $this->get('doctrine')->getEntityManager();
         $ponenciasDia1 = $em->getRepository('DesymfonyBundle:Ponencia')->getTodasDeFecha('2011-07-01');
         $ponenciasDia2 = $em->getRepository('DesymfonyBundle:Ponencia')->getTodasDeFecha('2011-07-02');
         $usuario = $this->get('security.context')->getToken()->getUser();

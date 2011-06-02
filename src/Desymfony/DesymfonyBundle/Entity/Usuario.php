@@ -2,17 +2,19 @@
 
 namespace Desymfony\DesymfonyBundle\Entity;
 
-use Desymfony\DesymfonyBundle\Validator\DNI;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+use Desymfony\DesymfonyBundle\Validator\DNI;
+
 /**
  * Desymfony\DesymfonyBundle\Entity
  *
- * @orm:Table(name="usuario")
- * @orm:Entity(repositoryClass="Desymfony\DesymfonyBundle\Entity\UsuarioRepository")
+ * @ORM\Table(name="usuario")
+ * @ORM\Entity(repositoryClass="Desymfony\DesymfonyBundle\Entity\UsuarioRepository")
  */
 class Usuario implements UserInterface
 {
@@ -41,49 +43,49 @@ class Usuario implements UserInterface
     }
 
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="IDENTITY")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
 
     /**
-    * @orm:Column(type="string")
+    * @ORM\Column(type="string")
     */
     protected $nombre;
 
     /**
-    * @orm:Column(type="string")
+    * @ORM\Column(type="string")
     */
     protected $apellidos;
 
     /**
-    * @orm:Column(type="string")
+    * @ORM\Column(type="string")
     */
     protected $dni;
 
     /**
-    * @orm:Column(type="string")
+    * @ORM\Column(type="string")
     */
     protected $direccion;
 
     /**
-    * @orm:Column(type="string")
+    * @ORM\Column(type="string")
     */
     protected $telefono;
 
     /**
-    * @orm:Column(type="string")
+    * @ORM\Column(type="string")
     */
     protected $email;
 
     /**
-    * @orm:Column(type="string")
+    * @ORM\Column(type="string")
     */
     protected $password;
 
     /**
-    * @orm:ManyToMany(targetEntity="Ponencia", mappedBy="usuarios")
+    * @ORM\ManyToMany(targetEntity="Ponencia", mappedBy="usuarios")
     */
     protected $ponencias;
 

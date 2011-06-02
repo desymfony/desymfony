@@ -45,34 +45,34 @@ install_git()
 }
 
 # Assetic
-install_git assetic https://github.com/kriswallsmith/assetic.git #v1.0.0alpha1
+install_git assetic https://github.com/kriswallsmith/assetic.git origin/HEAD
 
 # Symfony
 install_git symfony https://github.com/symfony/symfony.git
 
 # Doctrine ORM
-install_git doctrine https://github.com/doctrine/doctrine2.git 2.0.4
+install_git doctrine https://github.com/doctrine/doctrine2.git 2.0.5
 
 # Doctrine DBAL
-install_git doctrine-dbal https://github.com/doctrine/dbal.git 2.0.4
+install_git doctrine-dbal https://github.com/doctrine/dbal.git 2.0.5
 
 # Doctrine Common
-install_git doctrine-common https://github.com/doctrine/common.git 2.0.2
+install_git doctrine-common https://github.com/doctrine/common.git origin/3.0.x
 
 # Swiftmailer
 install_git swiftmailer https://github.com/swiftmailer/swiftmailer.git origin/4.1
 
 # Twig
-install_git twig https://github.com/fabpot/Twig.git
+install_git twig https://github.com/fabpot/Twig.git origin/HEAD
 
 # Twig Extensions
-install_git twig-extensions https://github.com/fabpot/Twig-extensions.git
+install_git twig-extensions https://github.com/fabpot/Twig-extensions.git origin/HEAD
 
 # Monolog
-install_git monolog https://github.com/Seldaek/monolog.git
+install_git monolog https://github.com/Seldaek/monolog.git origin/HEAD
 
 # Doctrine Fixtures
-install_git doctrine-fixtures https://github.com/doctrine/data-fixtures.git
+install_git doctrine-fixtures https://github.com/doctrine/data-fixtures.git origin/HEAD
 
 # SensioFrameworkExtraBundle
 mkdir -p $BUNDLES/Sensio/Bundle
