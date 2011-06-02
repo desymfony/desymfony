@@ -1,5 +1,10 @@
 security:
     firewalls:
+        admin:
+            pattern:    ^/admin
+            http_basic: true
+            logout:     true
+            stateless:  true
         secured_area:
             pattern:    ^/
             anonymous:  ~

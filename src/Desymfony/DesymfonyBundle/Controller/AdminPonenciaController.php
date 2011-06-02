@@ -32,13 +32,17 @@ class AdminPonenciaController extends Controller
             if ($formulario->isValid()) {
                 $em->persist($ponencia);
                 $em->flush();
-
-                return $this->redirect($this->generateUrl('admin_ponencia_list'));
+                
+                $peticion->getSession()->setFlash('notice', 'Se ha creado correctamente la ponencia');
+                
+                return $this->redirect($this->generateUrl('admin_ponencia_edit', array(
+                    'id' => $ponencia->getId()
+                )));
             }
         }
 
-        return $this->render('DesymfonyBundle:AdminPonencia:edit.html.twig', array(
-            'formulario' => $formulario->createView(),
+        return $this->render('DesymfonyBundle:AdminPonencia:new.html.twig', array(
+            'formulario' => $formulario->createView()
         ));
     }
     
