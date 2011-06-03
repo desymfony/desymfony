@@ -43,21 +43,20 @@ class PonenciaController extends Controller
         
         $ponencia = $em->getRepository('DesymfonyBundle:Ponencia')->findOneBy(array('slug' => $slug));
 
-        $request = $this->get('request');
-        $request = new Request();
+        $request = $this->get('request');        
 
         if ($ponencia) {
+            
             $usuario = $this->get('security.context')->getToken()->getUser();
 
             if ($ponencia->addUsuarios($usuario)) {
                 $em->persist($ponencia);
                 $em->flush();
             }
-
+            
             if ($request->isXmlHttpRequest()) {
-                return new Response();
-            }
-            else {
+                return $this->render('DesymfonyBundle:Ponencia:meApunto.html.twig',array('ponencia' => $ponencia));
+            }else {
                 $session = $this->get('request')->getSession();
                 $session->setFlash('notice', sprintf("Te has apuntado a %s", $ponencia->getTitulo()));
 
