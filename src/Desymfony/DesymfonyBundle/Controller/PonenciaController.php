@@ -33,52 +33,25 @@ class PonenciaController extends Controller
         ));
     }
 
-    public function meApuntoAction($ponencia)
-    {
-        $usuario = $this->get('security.context')->getToken()->getUser();
-
-        /*
-         * Parece que aquí hay un bug de Symfony2 y el usuario no se serializa
-         * correctamente.
-         *
-         * Podría pensarse que da lo mismo
-         *
-         * $apuntado = $ponencia->hasUsuario($usuario);
-         *
-         * o bien
-         *
-         * $apuntado = $usuarios->hasPonencia($ponencia);
-         *
-         * pero lo cierto es que lo segundo da un error que parece ser que nadie
-         * sabe como resolver
-         */
-
-        return $this->render('DesymfonyBundle:Ponencia:meApunto.html.twig', array(
-            'usuario'  => $usuario,
-            'ponencia' => $ponencia
-        ));
-    }
-
     public function apuntarseAction($slug)
     {
         $em = $this->get('doctrine')->getEntityManager();
         $ponencia = $this->entidad('Ponencia')->findOneBy(array('slug' => $slug));
 
-        $request = $this->get('request');
-        $request = new Request();
+        $request = $this->get('request');        
 
         if ($ponencia) {
+            
             $usuario = $this->get('security.context')->getToken()->getUser();
 
             if ($ponencia->addUsuarios($usuario)) {
                 $em->persist($ponencia);
                 $em->flush();
             }
-
+            
             if ($request->isXmlHttpRequest()) {
-                return new Response();
-            }
-            else {
+                return $this->render('DesymfonyBundle:Ponencia:meApunto.html.twig',array('ponencia' => $ponencia));
+            }else {
                 $session = $this->get('request')->getSession();
                 $session->setFlash('notice', sprintf("Te has apuntado a %s", $ponencia->getTitulo()));
 

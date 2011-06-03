@@ -4,17 +4,19 @@ namespace Desymfony\DesymfonyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 use Desymfony\DesymfonyBundle\Validator\DNI;
+
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Desymfony\DesymfonyBundle\Entity
  *
  * @ORM\Table(name="usuario")
  * @ORM\Entity(repositoryClass="Desymfony\DesymfonyBundle\Entity\UsuarioRepository")
+ * @UniqueEntity(fields="email")
  */
 class Usuario implements UserInterface
 {
@@ -51,36 +53,53 @@ class Usuario implements UserInterface
 
     /**
     * @ORM\Column(type="string")
+    * @Assert\NotBlank()
+    * @Assert\MinLength(3)
+    * @Assert\MaxLength(20)
     */
     protected $nombre;
 
     /**
     * @ORM\Column(type="string")
+    * @Assert\NotBlank()
+    * @Assert\MinLength(3)
+    * @Assert\MaxLength(20)
     */
     protected $apellidos;
 
     /**
     * @ORM\Column(type="string")
+    * @Assert\NotBlank()
+    * @DNI()
     */
     protected $dni;
 
     /**
     * @ORM\Column(type="string")
+    * @Assert\NotBlank()
+    * @Assert\MinLength(5)
+    * @Assert\MaxLength(100)
     */
     protected $direccion;
 
     /**
     * @ORM\Column(type="string")
+    * @Assert\NotBlank()
     */
     protected $telefono;
 
     /**
     * @ORM\Column(type="string")
+    * @Assert\NotBlank()
+    * @Assert\Email()    
     */
     protected $email;
 
     /**
     * @ORM\Column(type="string")
+    * @Assert\NotBlank()
+    * @Assert\MinLength(5)
+    * @Assert\MaxLength(10)
     */
     protected $password;
 
@@ -290,14 +309,50 @@ class Usuario implements UserInterface
         return count($this->ponencias);
     }
 
+    /*
+     * Dejo comentado este código para que se viera como se haría mediante código PHP
+     * Creo que en ocasiones puede ser preferible esta manera por tener todas las
+     * validaciones a un sólo vistazo
+
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
-        $metadata->addPropertyConstraint('nombre',    new NotBlank());
-        $metadata->addPropertyConstraint('apellidos', new NotBlank());
-        $metadata->addPropertyConstraint('dni',       new DNI());
-        $metadata->addPropertyConstraint('email',     new Email());
-        $metadata->addPropertyConstraint('email',     new NotBlank());
-        $metadata->addPropertyConstraint('telefono',  new NotBlank());
-        $metadata->addPropertyConstraint('password',  new NotBlank());
+        // Validación global
+        $metadata->addConstraint(new UniqueEntity(array('fields' => 'email')));
+
+        // Nombre
+        $metadata->addPropertyConstraint('nombre',    new Assert\NotBlank()   );
+        $metadata->addPropertyConstraint('nombre',    new Assert\MinLength(3) );
+        $metadata->addPropertyConstraint('nombre',    new Assert\MaxLength(20));
+
+        // Apellidos
+        $metadata->addPropertyConstraint('apellidos', new Assert\NotBlank()   );
+        $metadata->addPropertyConstraint('apellidos', new Assert\MinLength(3) );
+        $metadata->addPropertyConstraint('apellidos', new Assert\MaxLength(20));
+
+        // DNI
+        $metadata->addPropertyConstraint('dni'      , new Assert\NotBlank()   );
+        $metadata->addPropertyConstraint('dni'      , new DNI() );
+        
+        // Dirección
+        $metadata->addPropertyConstraint('direccion', new Assert\NotBlank()   );
+        $metadata->addPropertyConstraint('direccion', new Assert\MinLength(5) );
+        $metadata->addPropertyConstraint('direccion', new Assert\MaxLength(100));
+
+        // Telefóno
+        $metadata->addPropertyConstraint('telefono' , new Assert\NotBlank());
+
+        // Contraseña
+        $metadata->addPropertyConstraint('password',  new Assert\NotBlank());
+        $metadata->addPropertyConstraint('password',  new Assert\MinLength(5) );
+        $metadata->addPropertyConstraint('password',  new Assert\MaxLength(10));
+
+        // Email
+        $metadata->addPropertyConstraint('email'   ,  new Assert\NotBlank());
+        $metadata->addPropertyConstraint('email'   ,  new Assert\Email() );
+
+
+        $metadata->addPropertyConstraint('password',  new Assert\NotBlank());
     }
+     * 
+     */
 }
