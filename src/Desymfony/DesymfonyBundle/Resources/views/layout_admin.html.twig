@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block header %}
+  <header>
+    <div class="container_16">
+      <h1 class="grid_4 alpha"><a href="{{ path('admin_portada') }}">Desymfony - Backend</a></h1>
+
+      <nav class="grid_12">
+        <ul>
+          <li><a href="{{ path('admin_ponencia_list') }}">Ponencias</a></li>
+          <li><a href="{{ path('portada') }}">Sitio web público</a></li>
+          <li>Conectado como {{ app.user.username }} - <a href="{{ path('logoff') }}">Desconectar</a></li>
+        </ul>
+      </nav>
+
+      <h1>{{ block('title') }}</h1>
+    </div>
+  </header>
+{% endblock %}
