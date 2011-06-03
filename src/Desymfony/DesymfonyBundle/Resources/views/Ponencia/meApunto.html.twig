@@ -1,5 +1,5 @@
 {% if is_granted('ROLE_USER') %}
-    {% if usuario.hasPonencia(ponencia) %}
+    {% if app.user.hasPonencia(ponencia) %}
         <a href="#" class="btn apuntado">Apuntado</a>
     {% else %}
         <a href="{{ path('apuntarse', {'slug': ponencia.slug} ) }}" class="btn">Me apunto</a>

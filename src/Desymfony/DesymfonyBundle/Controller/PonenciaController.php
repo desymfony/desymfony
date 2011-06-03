@@ -37,32 +37,6 @@ class PonenciaController extends Controller
         ));
     }
 
-    public function meApuntoAction($ponencia)
-    {
-        $usuario = $this->get('security.context')->getToken()->getUser();
-
-        /*
-         * Parece que aquí hay un bug de Symfony2 y el usuario no se serializa
-         * correctamente.
-         *
-         * Podría pensarse que da lo mismo
-         *
-         * $apuntado = $ponencia->hasUsuario($usuario);
-         *
-         * o bien
-         *
-         * $apuntado = $usuarios->hasPonencia($ponencia);
-         *
-         * pero lo cierto es que lo segundo da un error que parece ser que nadie
-         * sabe como resolver
-         */
-
-        return $this->render('DesymfonyBundle:Ponencia:meApunto.html.twig', array(
-            'usuario'  => $usuario,
-            'ponencia' => $ponencia
-        ));
-    }
-
     public function apuntarseAction($slug)
     {
         $em = $this->get('doctrine')->getEntityManager();

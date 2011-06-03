@@ -34,8 +34,8 @@
           {% if is_granted(['ROLE_USER']) %}
           {# si ha hecho login #}
             <div class="usuario conectado">
-              <p>Estás conectado como <strong>{{ usuario }}</strong></p>
-              <p>Estás apuntado a <strong>{{ usuario.numeroPonencias }}</strong> ponencias</p>
+              <p>Estás conectado como <strong>{{ app.user.nombre }}</strong></p>
+              <p>Estás apuntado a <strong>{{ app.user.numeroPonencias }}</strong> ponencias</p>
               <a href="{{ path('perfil') }}">Ver / modificar mis datos/</a>
             </div>
           {% else %}
