@@ -8,6 +8,7 @@
   <link href="{{ asset('bundles/desymfony/css/reset.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('bundles/desymfony/css/960.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('bundles/desymfony/css/main.css') }}" rel="stylesheet" type="text/css" />
+
   {% block stylesheets %}{% endblock %}
 
   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
@@ -50,9 +51,9 @@
             {% if is_granted(['ROLE_USER']) %}
             {# si ha hecho login #}
               <div class="usuario conectado">
-                <p>Estás conectado como <strong>{{ usuario }}</strong></p>
+                <p>Estás conectado como <strong>{{ app.user.nombre }}</strong></p>
 
-                <p>Estás apuntado a <strong>{{ usuario.numeroPonencias }}</strong> ponencias</p>
+                <p>Estás apuntado a <strong>{{ app.user.numeroPonencias }}</strong> ponencias</p>
 
                 <a href="{{ path('perfil') }}">Ver / modificar mis datos/<a>
               </div>
