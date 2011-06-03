@@ -1,9 +1,9 @@
-{% extends "::base.html.twig" %}
+{% extends "DesymfonyBundle::layout.html.twig" %}
 
 {% block title %}{{ ponencia.titulo }}{% endblock %}
 {% block pageid 'ponencias' %}
 
-{% block body %}
+{% block contenido %}
 <h1>{{ ponencia.titulo }}</h1>
 <p>{{ ponencia.descripcion }}</p>
 

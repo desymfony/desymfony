@@ -1,23 +1,16 @@
-{% extends "::base.html.twig" %}
+{% extends "DesymfonyBundle::layout.html.twig" %}
 
 {% block title %}PONENCIAS{% endblock %}
 {% block pageid 'ponencias' %}
 
-{% block body %}
+{% block contenido %}
 <h1>Ponencias</h1>
 
 <h2>Primer día (1 de julio)</h2>
 
 {% for ponencia in ponencias %}
 <div>
-  <div class="grid_2 alpha">
-    {{ ponencia.hora |  date('H:i') }} - {{ ponencia.horaFinalizacion | date('H:i') }}
-    {% render "DesymfonyBundle:Ponencia:meApunto" with {'ponencia': ponencia } %}
-  </div>
-  <div class="grid_10 omega">
-    <a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}">{{ ponencia.titulo }}</a>
-    <p>{{ ponencia.descripcion|resumen(150) }}</p>
-  </div>
+{% include 'DesymfonyBundle:Ponencia:bloqueGrande.html.twig' with {'ponencia': ponencia } %}
 </div>
 {% endfor %}
 {% endblock %}
