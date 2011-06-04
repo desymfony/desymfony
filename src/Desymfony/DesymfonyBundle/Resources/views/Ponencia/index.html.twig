@@ -1,6 +1,6 @@
 {% extends "DesymfonyBundle::layout.html.twig" %}
 
-{% block title %}PONENCIAS{% endblock %}
+{% block title %}Ponencias{% endblock %}
 {% block pageid 'ponencias' %}
 
 {% block contenido %}
@@ -8,10 +8,18 @@
 
 <h2>Primer día (1 de julio)</h2>
 
-{% for ponencia in ponencias %}
-<div>
-{% include 'DesymfonyBundle:Ponencia:bloqueGrande.html.twig' with {'ponencia': ponencia } %}
-</div>
+{% for ponencia in ponenciasDia1 %}
+  <div>
+  {% include 'DesymfonyBundle:Ponencia:bloqueGrande.html.twig' with {'ponencia': ponencia } %}
+  </div>
+{% endfor %}
+
+<h2>Segundo día (2 de julio)</h2>
+
+{% for ponencia in ponenciasDia2 %}
+  <div>
+  {% include 'DesymfonyBundle:Ponencia:bloqueGrande.html.twig' with {'ponencia': ponencia } %}
+  </div>
 {% endfor %}
 {% endblock %}
 

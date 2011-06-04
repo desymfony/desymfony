@@ -1,28 +1,29 @@
 {% extends "DesymfonyBundle::layout.html.twig" %}
 
 {% block title %}Mi perfil{% endblock %}
+{% block pageid 'usuario' %}
 
 {% block contenido %}
 <h1>Mi perfil</h1>
 
 {# Lo que viene a continuación en esta plantilla es ideal para hacer un macro #}
 <p>
-    <b>Nombre</b> {{ usuario.nombre }}
+    <strong>Nombre</strong> {{ usuario.nombre }}
 </p>
 <p>
-    <b>Apellidos</b> {{ usuario.apellidos }}
+    <strong>Apellidos</strong> {{ usuario.apellidos }}
 </p>
 <p>
-    <b>Email</b> {{ usuario.email }}
+    <strong>Email</strong> {{ usuario.email }}
 </p>
 <p>
-    <b>DNI</b> {{ usuario.dni }}
+    <strong>DNI</strong> {{ usuario.dni }}
 </p>
 <p>
-    <b>Teléfono</b> {{ usuario.telefono }}
+    <strong>Teléfono</strong> {{ usuario.telefono }}
 </p>
 <p>
-    <b>Dirección</b> {{ usuario.direccion }}
+    <strong>Dirección</strong> {{ usuario.direccion }}
 </p>
 
 <h2>Ponencias a las que te has apuntado</h2>
