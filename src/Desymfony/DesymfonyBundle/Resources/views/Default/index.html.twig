@@ -1,25 +1,20 @@
 {% extends "DesymfonyBundle::layout.html.twig" %}
 
-{% block title %}PORTADA{% endblock %}
+{% block title %}Jornadas Symfony 2011{% endblock %}
 {% block pageid 'portada' %}
 
 {% block contenido %}
-
 <p><strong>Jornadas Symfony 2011</strong> es la conferencia más importante del mundo hispano dedicada a Symfony, el mejor framework para desarrollar aplicaciones PHP.</p>
 
 <div class="grid_6 alpha">
     <h2>Ponencias del <strong>primer día</strong> (1 de julio)</h2>
 
     <ul>
-        {% for ponencia in ponenciasDia1 %}
-        <li>
-        {% include 'DesymfonyBundle:Ponencia:bloquePequeno.html.twig' with {'ponencia': ponencia } %}
-        </li>
-        {% else %}
-        <li>
-            No hay ninguna ponencia
-        </li>
-        {% endfor %}
+    {% for ponencia in ponenciasDia1 %}
+        <li>{% include 'DesymfonyBundle:Ponencia:bloquePequeno.html.twig' with {'ponencia': ponencia } %}</li>
+    {% else %}
+        <li>No hay ninguna ponencia</li>
+    {% endfor %}
     </ul>
 </div>
 
@@ -27,15 +22,11 @@
     <h2>Ponencias del <strong>segundo día</strong> (2 de julio)</h2>
 
     <ul>
-        {% for ponencia in ponenciasDia2 %}
-        <li>
-            {% include 'DesymfonyBundle:Ponencia:bloquePequeno.html.twig' with {'ponencia': ponencia } %}
-        </li>
-        {% else %}
-        <li>
-            No hay ninguna ponencia
-        </li>
-        {% endfor %}
+    {% for ponencia in ponenciasDia2 %}
+        <li>{% include 'DesymfonyBundle:Ponencia:bloquePequeno.html.twig' with {'ponencia': ponencia } %}</li>
+    {% else %}
+        <li>No hay ninguna ponencia</li>
+    {% endfor %}
      </ul>
 </div>
 {% endblock %}

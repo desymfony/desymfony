@@ -18,11 +18,7 @@ class UsuarioType extends AbstractType{
         $builder->add('telefono');
         $builder->add('direccion', 'textarea');
         $builder->add('email','email');
-        $builder->add('password', 'repeated', array(
-                        'type'        => 'password',
-                        'first_name'  => 'contraseña',
-                        'second_name' => 'repetir la contraseña'
-                     ));
+        $builder->add('password', 'repeated', array('type' => 'password'));
     }
 
     public function getDefaultOptions(array $options)

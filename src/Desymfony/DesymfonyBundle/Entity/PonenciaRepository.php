@@ -7,11 +7,11 @@ use Doctrine\ORM\EntityRepository;
 class PonenciaRepository extends EntityRepository
 {
     /**
-     * Devuelve una consulta con todas las ponencias del dia indicado
+     * Devuelve todas las ponencias del dia indicado
      *
      * @param string $dia Dia de las ponencias
      */
-    public function getTodasDeFecha($fecha)
+    public function findTodasDeFecha($fecha)
     {
         $qb = $this->_em->createQueryBuilder();
 
