@@ -1,6 +1,7 @@
 <?php
+namespace Desymfony\DesymfonyBundle\Tests\Extension;
 
-namespace Desymfony\DesymfonyBundle\Extension;
+use Desymfony\DesymfonyBundle\Extension\DesymfonyTwigExtension;
 
 class DesymfonyTwigExtensionTest extends \PHPUnit_Framework_TestCase{
 

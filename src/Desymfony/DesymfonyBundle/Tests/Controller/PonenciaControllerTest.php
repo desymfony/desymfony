@@ -1,5 +1,5 @@
 <?php
-namespace Desymfony\DesymfonyBundle\Test\Controller;
+namespace Desymfony\DesymfonyBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
