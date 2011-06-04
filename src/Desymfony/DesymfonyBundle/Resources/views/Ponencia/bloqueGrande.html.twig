@@ -4,5 +4,5 @@
 </div>
 <div class="grid_10 omega">
   <a href="{{ path('ponencia', {'slug': ponencia.slug} ) }}">{{ ponencia.titulo }}</a>
-  <p>{{ ponencia.descripcion }}</p>
+  <p>{{ ponencia.descripcion | truncate(300, true) }}</p>
 </div>

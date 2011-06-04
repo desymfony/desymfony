@@ -15,10 +15,12 @@ class PonenciaController extends Controller
     {
         $em = $this->get('doctrine')->getEntityManager();
         
-        $ponencias = $em->getRepository('DesymfonyBundle:Ponencia')->findAll();
+        $ponenciasDia1 = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-01');
+        $ponenciasDia2 = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-02');
         
         return $this->render('DesymfonyBundle:Ponencia:index.html.twig', array(
-            'ponencias' => $ponencias
+            'ponenciasDia1' => $ponenciasDia1,
+            'ponenciasDia2' => $ponenciasDia2,
         ));
     }
 

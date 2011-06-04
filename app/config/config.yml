@@ -22,6 +22,7 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    extensions:       [twig.extension.text]
     globals:
         idiomas: { es: 'Español', en: 'Inglés' }
 

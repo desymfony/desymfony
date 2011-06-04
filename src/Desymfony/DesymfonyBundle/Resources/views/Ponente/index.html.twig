@@ -1,16 +1,17 @@
 {% extends "DesymfonyBundle::layout.html.twig" %}
 
-{% block title %}PONENTES{% endblock %}
+{% block title %}Ponentes{% endblock %}
 {% block pageid 'ponentes' %}
 
 {% block contenido %}
 
-    <h1>PONENTES</h1>
+    <h1>Ponentes</h1>
+    
     {% for ponente in ponentes %}
         <div class="grid_9 alpha">
             <h2>{{ ponente.nombre }} {{ ponente.apellidos }}</h2>
-            <p>{{ ponente.biografia|auto_link_text|raw }}</p>
-            <p>Imparte las siguientes ponencias</p>
+            <p>{{ ponente.biografia|auto_link_text }}</p>
+            <p><strong>Imparte las siguientes ponencias</strong></p>
             <ul>
 
             {% for ponencia in ponente.ponencias %}
@@ -39,7 +40,7 @@
 
 {% block lateral %}
 <h3>¿Quieres ser ponente en las Jornadas Symfony 2011?</h3>
-Accede a las <a href="#">sección de Call for Papers</a> y envía tu propuesta.
+<p>Accede a las <a href="#">sección de Call for Papers</a> y envía tu propuesta.</p>
 
 {{ parent() }}
 {% endblock %}
