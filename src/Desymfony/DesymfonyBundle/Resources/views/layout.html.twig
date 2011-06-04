@@ -5,7 +5,6 @@
 
   <nav class="grid_10">
   <ul>
-    <li><a href="{{ path('portada') }}">Inicio</a></li>
     <li><a href="{{ path('ponencias') }}">Ponencias</a></li>
     <li><a href="{{ path('ponentes') }}">Ponentes</a></li>
     <li><a href="{{ app.user ? path('perfil') : path('registro') }}">
@@ -31,30 +30,29 @@
     </section>
     <section id="lateral" class="grid_4">
       {% block lateral %}
+          <div class="usuario">
           {% if is_granted(['ROLE_USER']) %}
           {# si ha hecho login #}
-            <div class="usuario conectado">
-              <p>Estás conectado como <strong>{{ app.user.nombre }}</strong></p>
+              <h4><a href="{{ path('perfil') }}">{{ app.user.nombre }}</a></h4>
               <p>Estás apuntado a <strong>{{ app.user.numeroPonencias }}</strong> ponencias</p>
-              <a href="{{ path('perfil') }}">Ver / modificar mis datos/</a>
-            </div>
           {% else %}
           {# si no ha hecho login #}
-            <div class="usuario anonimo">
-              <a href="{{ path('registro') }}" class="cta">Regístrate</a>
+              <a href="{{ path('registro') }}" class="btn">Regístrate</a>
               <p>¿Ya estás registrado? <a href="{{ path('login') }}">Haz login</a></p>
-              <p>Las Jornadas Symfony 2011 se celebran del <strong>1 al 3 de julio</strong> de 2011 en la Universidad Jaume I de  Castellón (<a href="#">cómo llegar</a>)</p>
-              <p>El aforo está limitado a las 150 primeras inscripciones recibidas</p>
-              <h3>Ventajas de asistir</h3>
-              <ul>
-                <li>1 curso de 6 horas sobre Symfony2</li>
-                <li>10 sesiones prácticas</li>
-                <li>Varios talleres prácticos</li>
-                <li>Mesas redondas</li>
-                <li>Networking</li>
-              </ul>
-            </div>
           {% endif %}
+          </div>
+          
+          <p>Las Jornadas Symfony 2011 se celebran del <strong>1 al 3 de julio</strong> de 2011 en la Universidad Jaume I de  Castellón</p>
+          <p>El aforo está limitado a las 175 primeras inscripciones recibidas</p>
+          
+          <h3>Ventajas de asistir</h3>
+          <ul>
+              <li>1 curso de 6 horas sobre Symfony2</li>
+              <li>10 sesiones prácticas</li>
+              <li>Varios talleres prácticos</li>
+              <li>Mesas redondas</li>
+              <li>Networking</li>
+          </ul>
       {% endblock %}
     </section>
   </article>
