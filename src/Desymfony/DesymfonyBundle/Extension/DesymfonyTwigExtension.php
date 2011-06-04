@@ -11,7 +11,7 @@ class DesymfonyTwigExtension extends \Twig_Extension{
 
     public function getFilters(){
         return array(
-            'auto_link_text' => new \Twig_Filter_Method($this, 'auto_link_text'),
+            'auto_link_text' => new \Twig_Filter_Method($this, 'auto_link_text', array('is_safe' => array('html'))),
         );
     }
 
