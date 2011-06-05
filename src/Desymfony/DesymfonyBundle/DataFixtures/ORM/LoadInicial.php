@@ -1,12 +1,13 @@
 <?php
 namespace Desymfony\Desymfony\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Desymfony\DesymfonyBundle\Entity\Usuario,
     Desymfony\DesymfonyBundle\Entity\Ponencia,
     Desymfony\DesymfonyBundle\Entity\Ponente;
 
-class LoadUserData implements FixtureInterface
+class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
 {
     protected $manager;
     public function load($manager)
@@ -117,7 +118,7 @@ class LoadUserData implements FixtureInterface
                 'linkedin'  => 'http://www.linkedin.com/in/jllonch',
                 'twitter'   => 'http://twitter.com/jordillonch'
             ),
-            'josePio' => array(
+            'joseantonioPio' => array(
                 'nombre'    => 'Jose Antonio',
                 'apellidos' => 'Pío',
                 'biografia' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -139,12 +140,14 @@ class LoadUserData implements FixtureInterface
             )
         );
 
-        foreach ($ponentes as $datosPonente) {
+        foreach ($ponentes as $referencia => $datosPonente) {
             $ponente = new Ponente();
             
             foreach ($datosPonente as $propiedad => $valor) {
                 $ponente->{'set'.ucfirst($propiedad)}($valor);
             }
+            
+            $this->addReference($referencia, $ponente);
             
             $manager->persist($ponente);
         }
@@ -179,7 +182,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(45);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Eguiluz'))
+            $manager->merge($this->getReference('javierEguiluz'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -193,7 +196,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Martín'))
+            $manager->merge($this->getReference('nachoMartin'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -207,7 +210,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Labad'))
+            $manager->merge($this->getReference('marcosLabad'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -221,7 +224,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'López'))
+            $manager->merge($this->getReference('javierLopez'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -235,7 +238,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Eguiluz'))
+            $manager->merge($this->getReference('javierEguiluz'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -249,7 +252,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Jessurum'))
+            $manager->merge($this->getReference('albertJessurum'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -263,7 +266,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Díez'))
+            $manager->merge($this->getReference('pabloDiez'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -277,7 +280,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Eguiluz'))
+            $manager->merge($this->getReference('javierEguiluz'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -291,7 +294,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Pío'))
+            $manager->merge($this->getReference('joseantonioPio'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -305,7 +308,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Martín'))
+            $manager->merge($this->getReference('nachoMartin'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -319,7 +322,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Marqués'))
+            $manager->merge($this->getReference('asierMarques'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -333,7 +336,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Godel'))
+            $manager->merge($this->getReference('pabloGodel'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -347,7 +350,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Videla'))
+            $manager->merge($this->getReference('alvaroVidela'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -361,7 +364,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Llonch'))
+            $manager->merge($this->getReference('jordiLlonch'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -375,7 +378,7 @@ class LoadUserData implements FixtureInterface
         $ponencia->setDuracion(60);
         $ponencia->setIdioma('es');
         $ponencia->setPonente(
-            $this->manager->getRepository('DesymfonyBundle:Ponente')->findOneBy(array('apellidos' => 'Jessurum'))
+            $manager->merge($this->getReference('albertJessurum'))
         );
         $ponencia = $this->addUsuarios($ponencia);
 
@@ -409,5 +412,12 @@ class LoadUserData implements FixtureInterface
         }
 
         return $entidad;
+    }
+    
+    
+    
+    public function getOrder()
+    {
+        return 1;
     }
 }
