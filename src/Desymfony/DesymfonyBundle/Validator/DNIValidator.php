@@ -11,7 +11,7 @@ class DNIValidator extends ConstraintValidator
     {
         $this->setMessage($constraint->message);
         if(preg_match("/^(\d{1,8})([a-zA-Z]{1})$/",$value, $matches)){
-            return $this->letra_nif($matches[1]) == $matches[2];
+            return $this->letra_nif($matches[1]) == strtoupper($matches[2]);
         }else{
             return false;
         }
