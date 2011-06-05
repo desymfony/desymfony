@@ -4,10 +4,13 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %}{% endblock %} | Desymfony.com</title>
-
-  <link href="{{ asset('bundles/desymfony/css/reset.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('bundles/desymfony/css/960.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('bundles/desymfony/css/main.css') }}" rel="stylesheet" type="text/css" />
+  {% stylesheets output='css/empaquetado/todo.css' filter='yui_css'
+    'bundles/desymfony/css/reset.css'
+    'bundles/desymfony/css/960.css'
+    'bundles/desymfony/css/main.css'
+  %}
+  <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+  {% endstylesheets %}
 
   {% block stylesheets %}{% endblock %}
 
@@ -19,7 +22,7 @@
     {% block header %}{% endblock %}
     </div>
   </header>
-  
+
   <div class="container_16">
     {% block body %}{% endblock %}
 
