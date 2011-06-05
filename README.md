@@ -107,7 +107,7 @@ aleatorios y asigna 50 usuarios a cada ponencia.
 
 Para usar la rama del proyecto optimizada con Assetic, es necesario descargar
 [Yui Compressor](http://yuilibrary.com/downloads/) en el directorio:
-`app/java/`
+`app/Resources/java/`
 
 #### Parte pública o *frontend* ####
 
