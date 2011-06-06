@@ -22,6 +22,6 @@ $loader->registerPrefixes(array(
     'Swift_'           => __DIR__.'/../vendor/swiftmailer/lib/classes',
 ));
 $loader->register();
-$loader->registerPrefixFallback(array(
+$loader->registerPrefixFallbacks(array(
     __DIR__.'/../vendor/symfony/src/Symfony/Component/Locale/Resources/stubs',
 ));
