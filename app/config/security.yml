@@ -1,10 +1,5 @@
 security:
     firewalls:
-        admin:
-            pattern:    ^/admin
-            http_basic: true
-            logout:     true
-            stateless:  true
         secured_area:
             pattern:    ^/
             anonymous:  ~
@@ -14,7 +9,7 @@ security:
             logout:
                 path:   /logoff
                 target: /
-                
+    access_denied_url: /denegado
     access_control:
         - { path: ^/perfil        , roles: ROLE_USER }
         - { path: ^/me-apunto-a-* , roles: ROLE_USER }
@@ -22,10 +17,6 @@ security:
         - { path: ^/registro      , roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
     providers:
-#        in_memory:
-#            users:
-#                ryan:  { password: ryanpass, roles: 'ROLE_USER' }
-#                admin: { password: kitten, roles: 'ROLE_ADMIN' }
         main:
             providers: [in_memory, user_db]
         in_memory:
