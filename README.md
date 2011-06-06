@@ -96,7 +96,7 @@ Para probar mejor el proyecto, es muy recomendable cargar los datos de prueba
 (*fixtures*) de la aplicación ejecutando el siguiente comando:
 
 ```
-php /proyectos/desymfony/app/console doctrine:fixtures load
+php /proyectos/desymfony/app/console doctrine:fixtures:load
 ```
 
 El comando anterior crea varias ponencias y ponentes de prueba, 100 usuarios 
