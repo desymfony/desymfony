@@ -28,16 +28,6 @@ class UsuarioController extends Controller
         ));
     }
 
-    public function loginCheckAction()
-    {
-        
-    }
-
-    public function logoffAction()
-    {
-        
-    }
-
     public function perfilAction()
     {
         $usuario = $this->get('security.context')->getToken()->getUser();
@@ -47,7 +37,7 @@ class UsuarioController extends Controller
     public function registroAction()
     {
         $form = $this->get('form.factory')->create(new UsuarioType(), array());
-        
+
         $request = $this->get('request');
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
@@ -72,5 +62,10 @@ class UsuarioController extends Controller
             }
         }
         return $this->render('DesymfonyBundle:Usuario:registro.html.twig', array('form' => $form->createView()));
+    }
+
+    public function denegadoAction()
+    {
+        return $this->render('DesymfonyBundle:Usuario:denegado.html.twig');
     }
 }
