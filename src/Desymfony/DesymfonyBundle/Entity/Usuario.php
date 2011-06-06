@@ -18,7 +18,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="Desymfony\DesymfonyBundle\Entity\UsuarioRepository")
  * @UniqueEntity(fields="email")
  */
-class Usuario implements UserInterface
+class Usuario implements UserInterface, \Serializable
 {
     /*
      * Implementation of UserInterface
@@ -110,6 +110,24 @@ class Usuario implements UserInterface
 
     public function __construct() {
         $this->ponencias = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    public function __toString()
+    {
+        return $this->getNombre().' '.$this->getApellidos();
+    }
+    
+    public function serialize()
+    {
+        return serialize(array(
+            $this->getEmail()
+        ));
+    }
+
+    public function unserialize($serialized)
+    {
+        $arr = unserialize($serialized);
+        $this->setEmail($arr[0]);
     }
 
     /**
