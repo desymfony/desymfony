@@ -106,7 +106,7 @@ aleatorios y asigna 50 usuarios a cada ponencia.
 ### Configuración de Assetic ###
 
 Para usar la rama del proyecto optimizada con Assetic, es necesario descargar
-[Yui Compressor](http://yuilibrary.com/downloads/) en el directorio:
+[Yui Compressor](http://yuilibrary.com/downloads/), descomprimirlo, y colocar el fichero `.jar` que encontraremos en el directorio `build` de lo que acabamos de descargar en el directorio:
 `app/Resources/java/`
 
 #### Parte pública o *frontend* ####
