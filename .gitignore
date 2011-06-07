@@ -2,6 +2,7 @@ app/cache/*
 app/logs/*
 vendor/*
 web/bundles/*
+web/css/*
 app/bootstrap.php.cache
 app/bootstrap_cache.php.cache
 app/Resources/java/*
