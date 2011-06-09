@@ -9,25 +9,32 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $em = $this->get('doctrine')->getEntityManager();
-        $ponenciasDia1 = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-01');
-        $ponenciasDia2 = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-02');
+        $ponenciasDiaUno = $em->getRepository('DesymfonyBundle:Ponencia')
+            ->findTodasDeFecha('2011-07-01');
+        $ponenciasDiaDos = $em->getRepository('DesymfonyBundle:Ponencia')
+            ->findTodasDeFecha('2011-07-02');
         $usuario = $this->get('security.context')->getToken()->getUser();
 
         return $this->render('DesymfonyBundle:Default:index.html.twig', array(
-            'ponenciasDia1' => $ponenciasDia1,
-            'ponenciasDia2' => $ponenciasDia2,
+            'ponenciasDia1' => $ponenciasDiaUno,
+            'ponenciasDia2' => $ponenciasDiaDos,
             'usuario'       => $usuario,
         ));
     }
 
     /**
-     * Muestra el contenido de una página estática (contacto, privacidad, etc.)
+     * Muestra el contenido de una página estática (contacto, privacidad...)
      *
      * @param string $pagina Nombre de la página que debe mostrarse
      */
     public function estaticaAction($pagina)
     {
-        return $this->render(sprintf('DesymfonyBundle:Estaticas:%s.html.twig', $pagina));
+        return $this->render(
+            sprintf(
+                'DesymfonyBundle:Estaticas:%s.html.twig',
+                $pagina
+            )
+        );
     }
 
 }

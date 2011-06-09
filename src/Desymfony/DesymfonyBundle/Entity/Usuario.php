@@ -24,23 +24,28 @@ class Usuario implements UserInterface, \Serializable
      * Implementation of UserInterface
      */
 
-    public function getRoles(){
+    public function getRoles()
+    {
         return array('ROLE_USER');
     }
 
-    public function getSalt(){
+    public function getSalt()
+    {
         return false;
     }
 
-    public function getUsername(){
+    public function getUsername()
+    {
         return $this->email;
     }
 
-    public function eraseCredentials(){
+    public function eraseCredentials()
+    {
 
     }
 
-    public function equals(UserInterface $user){
+    public function equals(UserInterface $user)
+    {
         return $user->getUsername() == $this->getUsername();
     }
 
@@ -91,7 +96,7 @@ class Usuario implements UserInterface, \Serializable
     /**
     * @ORM\Column(type="string")
     * @Assert\NotBlank()
-    * @Assert\Email()    
+    * @Assert\Email()
     */
     protected $email;
 
@@ -108,15 +113,16 @@ class Usuario implements UserInterface, \Serializable
     */
     protected $ponencias;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->ponencias = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     public function __toString()
     {
         return $this->getNombre().' '.$this->getApellidos();
     }
-    
+
     public function serialize()
     {
         return serialize(array(
@@ -285,21 +291,25 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param Desymfony\DesymfonyBundle\Entity\Ponencia $ponencias
      */
-    public function addPonencias(\Desymfony\DesymfonyBundle\Entity\Ponencia $ponencias)
+    public function addPonencias(
+        \Desymfony\DesymfonyBundle\Entity\Ponencia $ponencias
+    )
     {
-        if(!$this->hasPonencia($ponencias)){
+        if (!$this->hasPonencia($ponencias)) {
             $this->ponencias[] = $ponencias;
+
             return true;
         }
 
         return false;
     }
 
-    public function hasPonencia(\Desymfony\DesymfonyBundle\Entity\Ponencia $ponencia)
+    public function hasPonencia(
+        \Desymfony\DesymfonyBundle\Entity\Ponencia $ponencia
+    )
     {
-        foreach($this->ponencias as $value)
-        {
-            if($value->getId() == $ponencia->getId()){
+        foreach ($this->ponencias as $value) {
+            if ($value->getId() == $ponencia->getId()) {
                 return true;
             }
         }
@@ -328,9 +338,10 @@ class Usuario implements UserInterface, \Serializable
     }
 
     /*
-     * Dejo comentado este código para que se viera como se haría mediante código PHP
-     * Creo que en ocasiones puede ser preferible esta manera por tener todas las
-     * validaciones a un sólo vistazo
+     * Dejo comentado este código para que se viera como se haría mediante 
+     * código PHP
+     * Creo que en ocasiones puede ser preferible esta manera por tener 
+     * todas las validaciones a un sólo vistazo
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
@@ -350,11 +361,13 @@ class Usuario implements UserInterface, \Serializable
         // DNI
         $metadata->addPropertyConstraint('dni'      , new Assert\NotBlank()   );
         $metadata->addPropertyConstraint('dni'      , new DNI() );
-        
+
         // Dirección
         $metadata->addPropertyConstraint('direccion', new Assert\NotBlank()   );
         $metadata->addPropertyConstraint('direccion', new Assert\MinLength(5) );
-        $metadata->addPropertyConstraint('direccion', new Assert\MaxLength(100));
+        $metadata->addPropertyConstraint(
+            'direccion', new Assert\MaxLength(100)
+        );
 
         // Telefóno
         $metadata->addPropertyConstraint('telefono' , new Assert\NotBlank());
@@ -371,6 +384,6 @@ class Usuario implements UserInterface, \Serializable
 
         $metadata->addPropertyConstraint('password',  new Assert\NotBlank());
     }
-     * 
+     *
      */
 }

@@ -7,7 +7,7 @@ class Util
     /**
      * Devuelve el slug de la cadena de texto que se le pasa
      * Código copiado del método urlize() de Doctrine 1
-     * 
+     *
      * @param string $cadena Cadena de texto original
      * @return string Slug calculado para la cadena original
      */
@@ -33,7 +33,7 @@ class Util
 
         return trim($valor, '-');
     }
-    
+
     public static function sinAcentos($string)
     {
         if ( ! preg_match('/[\x80-\xff]/', $string) ) {
@@ -170,7 +170,7 @@ class Util
 
         return $string;
     }
-    
+
     private static function seemsUtf8($string)
     {
       for ($i = 0; $i < strlen($string); $i++) {
@@ -183,9 +183,11 @@ class Util
         else return false; # Does not match any model
         for ($j=0; $j<$n; $j++) { # n bytes matching 10bbbbbb follow ?
           if ((++$i == strlen($string)) || ((ord($string[$i]) & 0xC0) != 0x80))
+
           return false;
         }
       }
+
       return true;
     }
 }

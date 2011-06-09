@@ -20,7 +20,8 @@ class PonenciaType extends AbstractType
         $builder->add('ponente', 'entity', array(
             'class'         => 'Desymfony\\DesymfonyBundle\\Entity\\Ponente',
             'query_builder' => function ($repositorio) {
-                return $repositorio->createQueryBuilder('p')->orderBy('p.nombre', 'ASC');
+                return $repositorio
+                    ->createQueryBuilder('p')->orderBy('p.nombre', 'ASC');
             },
         ));
     }

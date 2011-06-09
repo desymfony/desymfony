@@ -16,14 +16,20 @@ class UsuarioController extends Controller
 
     public function loginAction()
     {
-        if ($this->get('request')->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $this->get('request')->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+        if (
+            $this->get('request')->attributes
+            ->has(SecurityContext::AUTHENTICATION_ERROR)
+        ) {
+            $error = $this->get('request')->attributes
+                ->get(SecurityContext::AUTHENTICATION_ERROR);
         } else {
-            $error = $this->get('request')->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
+            $error = $this->get('request')->getSession()
+                ->get(SecurityContext::AUTHENTICATION_ERROR);
         }
 
         return $this->render('DesymfonyBundle:Usuario:login.html.twig', array(
-            'last_username' => $this->get('request')->getSession()->get(SecurityContext::LAST_USERNAME),
+            'last_username' => $this->get('request')->getSession()
+                               ->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
         ));
     }
@@ -31,7 +37,11 @@ class UsuarioController extends Controller
     public function perfilAction()
     {
         $usuario = $this->get('security.context')->getToken()->getUser();
-        return $this->render('DesymfonyBundle:Usuario:perfil.html.twig', array('usuario' => $usuario));
+
+        return $this->render(
+            'DesymfonyBundle:Usuario:perfil.html.twig',
+            array('usuario' => $usuario)
+        );
     }
 
     public function registroAction()
@@ -46,7 +56,10 @@ class UsuarioController extends Controller
 
                 // Mensaje para notificar al usuario que todo ha salido bien
                 $session = $this->get('request')->getSession();
-                $session->setFlash('notice', 'Gracias por registrarte en Desymfony 2011');
+                $session->setFlash(
+                    'notice',
+                    'Gracias por registrarte en Desymfony 2011'
+                );
 
                 // Guardamos el objeto en base de datos
                 $usuario = $form->getData();
@@ -55,13 +68,19 @@ class UsuarioController extends Controller
                 $em->flush();
 
                 // Logueamos al usuario
-                $token = new UsernamePasswordToken($usuario, null, 'main', $usuario->getRoles());
+                $token = new UsernamePasswordToken(
+                    $usuario, null, 'main', $usuario->getRoles()
+                );
                 $this->get('security.context')->setToken($token);
 
                 return $this->redirect($this->generateUrl('portada'));
             }
         }
-        return $this->render('DesymfonyBundle:Usuario:registro.html.twig', array('form' => $form->createView()));
+
+        return $this->render(
+            'DesymfonyBundle:Usuario:registro.html.twig',
+            array('form' => $form->createView())
+        );
     }
 
     public function denegadoAction()

@@ -64,7 +64,8 @@ class Ponente
      */
     private $ponencias;
 
-    public function __construct() {
+    public function __construct()
+    {
       $this->ponencias = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -72,13 +73,13 @@ class Ponente
     {
         return $this->nombreCompleto();
     }
-    
+
     public function nombreCompleto()
     {
         return $this->getNombre().' '.$this->getApellidos();
     }
-    
-    
+
+
     /**
      * Get id
      *
@@ -254,7 +255,9 @@ class Ponente
      *
      * @param Desymfony\DesymfonyBundle\Entity\Ponencia $ponencias
      */
-    public function addPonencias(\Desymfony\DesymfonyBundle\Entity\Ponencia $ponencias)
+    public function addPonencias(
+      \Desymfony\DesymfonyBundle\Entity\Ponencia $ponencias
+    )
     {
         $this->ponencias[] = $ponencias;
     }
