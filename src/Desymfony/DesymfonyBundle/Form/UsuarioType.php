@@ -7,9 +7,8 @@ use Symfony\Component\Form\FormBuilder;
 
 use Desymfony\DesymfonyBundle\Validator\Constraints\DNI;
 
-new \Symfony\Component\Form\Extension\Core\Type\RepeatedType();
-
-class UsuarioType extends AbstractType{
+class UsuarioType extends AbstractType
+{
 
     public function buildForm(FormBuilder $builder, array $options)
     {
