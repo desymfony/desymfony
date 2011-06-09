@@ -151,6 +151,7 @@ header a {
   font-size: 18px;
 }
 header h1 a {
+  color: #FFF;
   font-size: 28px;
   line-height: 50px;
   text-decoration: none;
