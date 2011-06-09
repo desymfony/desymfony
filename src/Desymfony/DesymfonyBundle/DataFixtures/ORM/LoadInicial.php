@@ -3,6 +3,7 @@ namespace Desymfony\Desymfony\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+
 use Desymfony\DesymfonyBundle\Entity\Usuario,
     Desymfony\DesymfonyBundle\Entity\Ponencia,
     Desymfony\DesymfonyBundle\Entity\Ponente;

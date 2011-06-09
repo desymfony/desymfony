@@ -3,7 +3,6 @@ namespace Desymfony\DesymfonyBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class PonenciaType extends AbstractType
 {

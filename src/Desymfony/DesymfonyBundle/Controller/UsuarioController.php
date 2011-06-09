@@ -3,9 +3,10 @@
 namespace Desymfony\DesymfonyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Desymfony\DesymfonyBundle\Form\UsuarioType;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+
+use Desymfony\DesymfonyBundle\Form\UsuarioType;
 
 class UsuarioController extends Controller
 {
