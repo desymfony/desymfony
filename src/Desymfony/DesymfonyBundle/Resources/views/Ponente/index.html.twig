@@ -6,7 +6,7 @@
 {% block contenido %}
 
     <h1>Ponentes</h1>
-
+    
     {% for ponente in ponentes %}
         <div class="grid_9 alpha">
             <h2>{{ ponente.nombre }} {{ ponente.apellidos }}</h2>
@@ -21,15 +21,15 @@
             {% endfor %}
         </ul>
     </div>
-
+    
     <div class="grid_3 omega">
         <p><strong>Más información</strong></p>
-
+    
         <ul>
             {% if(ponente.twitter) %}
             <li><a href="{{ ponente.twitter }}">Twitter</a></li>
             {% endif %}
-
+        
             {% if(ponente.linkedin) %}
             <li><a href="{{ ponente.linkedin }}">Linkedin</a></li>
             {% endif %}

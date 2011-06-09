@@ -9,11 +9,7 @@ class DefaultControllerTest extends WebTestCase
     {
         $client = $this->createClient();
         $client->request('GET', '/');
-        $this->assertEquals(
-            200,
-            $client->getResponse()->getStatusCode(),
-            "Status 200 en portada"
-        );
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Status 200 en portada");
 
     }
 
@@ -21,28 +17,12 @@ class DefaultControllerTest extends WebTestCase
     {
         $client = $this->createClient();
         $client->request('GET', '/sitio/condiciones');
-        $this->assertEquals(
-            200,
-            $client->getResponse()->getStatusCode(),
-            "Status 200 en estática condiciones"
-        );
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Status 200 en estática condiciones");
         $client->request('GET', '/sitio/contacto');
-        $this->assertEquals(
-            200,
-            $client->getResponse()->getStatusCode(),
-            "Status 200 en estática contacto"
-        );
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Status 200 en estática contacto");
         $client->request('GET', '/sitio/copyright');
-        $this->assertEquals(
-            200,
-            $client->getResponse()->getStatusCode(),
-            "Status 200 en estática copyright"
-        );
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Status 200 en estática copyright");
         $client->request('GET', '/sitio/privacidad');
-        $this->assertEquals(
-            200,
-            $client->getResponse()->getStatusCode(),
-            "Status 200 en estática privacidad"
-        );
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Status 200 en estática privacidad");
     }
 }

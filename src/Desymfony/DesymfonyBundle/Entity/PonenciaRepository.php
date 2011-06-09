@@ -19,11 +19,7 @@ class PonenciaRepository extends EntityRepository
             ->add('from', 'DesymfonyBundle:Ponencia p ')
             ->add('where', 'p.fecha = :fecha')
             ->add('orderBy', 'p.fecha ASC')
-            ->setParameter(
-                'fecha',
-                new \DateTime($fecha),
-                \Doctrine\DBAL\Types\Type::DATETIME
-            );
+            ->setParameter('fecha', new \DateTime($fecha), \Doctrine\DBAL\Types\Type::DATETIME);
 
             $query = $qb->getQuery();
 

@@ -9,10 +9,6 @@ class PonenteControllerTest extends WebTestCase
     {
         $client = $this->createClient();
         $client->request('GET', '/ponentes');
-        $this->assertEquals(
-            200,
-            $client->getResponse()->getStatusCode(),
-            "Status 200 en ponentes"
-        );
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Status 200 en ponentes");
     }
 }
