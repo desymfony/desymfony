@@ -18,7 +18,7 @@
     <tbody>
         {% for ponencia in ponencias %}
         <tr>
-            <td>{{ ponencia.fecha | date('d/m/Y') }} {{ ponencia.hora  | date('H:i') }} </td>
+            <td>{{ ponencia.fecha | date('d/m/Y') }} {{ ponencia.hora | date('H:i') }} </td>
             <td><a href="{{ path('admin_ponencia_edit', { 'id': ponencia.id }) }}">{{ ponencia.titulo }}</a></td>
             <td>{{ idiomas[ponencia.idioma] }}</td>
             <td>{{ ponencia.usuarios | length }}</td>

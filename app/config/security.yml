@@ -22,6 +22,7 @@ security:
         in_memory:
             users:
                 desymfony: { password: desymfony, roles: 'ROLE_ADMIN' }
+                admin:     { password: admin, roles: 'ROLE_ADMIN' }
         user_db:
             entity: { class: Desymfony\DesymfonyBundle\Entity\Usuario, property: email }
     encoders:
