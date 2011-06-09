@@ -33,7 +33,7 @@ class DesymfonyTwigExtension extends \Twig_Extension
 
         preg_match_all($regexp, $string, $matches, \PREG_SET_ORDER);
 
-        foreach ($matches as $key => $match) {
+        foreach ($matches as $match) {
 
             // En este caso no está rodeado por una etiqueta anchor
             if (empty($match[1]) && empty($match[7])) {

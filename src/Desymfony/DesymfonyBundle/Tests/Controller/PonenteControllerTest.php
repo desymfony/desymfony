@@ -8,7 +8,7 @@ class PonenteControllerTest extends WebTestCase
     public function testIndex()
     {
         $client = $this->createClient();
-        $crawler = $client->request('GET', '/ponentes');
+        $client->request('GET', '/ponentes');
         $this->assertEquals(
             200,
             $client->getResponse()->getStatusCode(),
