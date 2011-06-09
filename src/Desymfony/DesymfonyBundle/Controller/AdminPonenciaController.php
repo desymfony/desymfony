@@ -82,7 +82,6 @@ class AdminPonenciaController extends Controller
     
     public function showAction($id)
     {
-        $peticion = $this->get('request');
         $em = $this->get('doctrine')->getEntityManager();
         
         if(null == $ponencia = $em->find('DesymfonyBundle:Ponencia', $id)) {
