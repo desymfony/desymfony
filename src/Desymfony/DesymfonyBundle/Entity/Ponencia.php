@@ -43,13 +43,13 @@ class Ponencia
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\Date()
+     * @Assert\Type(type="\DateTime")
      */
     protected $fecha;
 
     /**
      * @ORM\Column(type="time")
-     * @Assert\Time()
+     * @Assert\Type(type="\DateTime")
      */
     protected $hora;
 
