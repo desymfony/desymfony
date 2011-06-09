@@ -25,6 +25,9 @@ class AdminPonenciaController extends Controller
         $em = $this->get('doctrine')->getEntityManager();
 
         $ponencia = new Ponencia();
+        $ponencia->setFecha(new \DateTime('now'));
+        $ponencia->setHora(new \DateTime('now'));
+        
         $formulario = $this->get('form.factory')->create(new PonenciaType());
         $formulario->setData($ponencia);
 

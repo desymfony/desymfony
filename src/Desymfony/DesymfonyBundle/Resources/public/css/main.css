@@ -14,9 +14,9 @@ lo siguiente:
   * Este es el CSS del proyecto Desymfony (http://github.com/desymfony/desymfony)
   * El objetivo del proyecto es enseñar a programar con Symfony2, no maquetar
     con HTML5/CSS3
-  * Las reglas y selectores de este CSS son mucho peores e ineficientes de lo que
-    deberían ser. La razón es que el código HTML de las páginas debe ser lo más
-    ligero posible y evitar el uso de atributos 'id' y 'class'
+  * Las reglas y selectores de este CSS son menos eficientes de lo que deberían
+    ser. La razón es que el código HTML de las páginas debe ser lo más ligero
+    posible y evitar el uso de atributos 'id' y 'class'
 */
 
 
@@ -151,6 +151,7 @@ header a {
   font-size: 18px;
 }
 header h1 a {
+  color: #FFF;
   font-size: 28px;
   line-height: 50px;
   text-decoration: none;
@@ -380,17 +381,40 @@ footer a:hover {
 
 #admin header {
   background: #333;
-  color: #FAFAFA;
-  margin-bottom: 0;
+  border-color: #DDD;
+  color: #DDD;
+  font-size: 18px;
 }
 #admin header a {
-  color: #FAFAFA;
-  font-weight: normal;
+  color: #DDD;
+}
+#admin header h1 a {
+  color: #FFF;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 40px;
+  padding-top: 5px;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: 0 2px 0px #000;
+}
+
+#admin header nav {
+  position: relative;
+}
+#admin header nav li:nth-child(3n) {
+  color: #F7B800;
+  position: absolute;
+  right: 0;
+}
+#admin header nav li:nth-child(3n) a {
+  display: inline;
 }
 
 #admin header nav + h1 {
   color: #555;
   font-size: 30px;
+  line-height: 1.2;
   margin: .5em 0;
   
   width: 940px;
@@ -401,17 +425,17 @@ footer a:hover {
 #admin table {
   clear: both;
   margin-bottom: 2em;
-  width: 100%;
+  width: 97%;
 }
 
 #admin thead th {
   background: #555;
+  border-right: 1px solid #CCC !important;
   color: #FFF;
   font-size: 13px;
   font-weight: bold;
-  -webkit-box-shadow: #AAA 0px 1px 2px 0px;
+  padding-left: 5px;
 }
-
 
 #admin tr, #admin th, #admin td {
   border: solid #CCC;
@@ -423,18 +447,26 @@ footer a:hover {
   background: #F1F1F1;
 }
 
-#admin tr:hover td {
-  background: #FFC;
-}
-
 #admin table a {
   text-decoration: none;
 }
-#admin tr:hover a {
+#admin table a + a {
+  margin-left: 1em;
+}
+#admin table a[href*="edit"], #admin table a[href*="delete"] {
+  text-decoration: none;
+  margin-right: 1em;
+}
+#admin table a[href*="edit"]:hover, #admin table a[href*="delete"]:hover {
   text-decoration: underline;
 }
 
-#admin a[href*="edit"] {
+#admin tr:hover td {
+  background: #FFC;
+  color: #000;
+}
+#admin tr:hover a {
+  text-decoration: underline;
 }
 #admin a[href*="delete"] {
   color: #BB1B23;
@@ -442,33 +474,68 @@ footer a:hover {
 
 /* botones */
 #admin a[href*="new"], #admin form input[type="submit"] {
-  border: 1px solid #FFF;
-  border-radius: 5px;
-  box-shadow: 0 1px 2px #AAA;
-  color: #FFF;
-  -webkit-box-shadow: 0 1px 2px #AAA;
-  background: #414549;
-  text-shadow: black 0 1px 0;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, rgb(0,0,0)),
+    color-stop(0.50, rgb(55,55,55)),
+    color-stop(0.75, rgb(77,77,77))
+  );
+  background-image: -moz-linear-gradient(
+    center top,
+    rgb(0,0,0) 5%,
+    rgb(55,55,55) 50%,
+    rgb(77,77,77) 75%
+  );
+
+  border: 1px solid #AAA;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+
+  color: #EFEFEF;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+
+  margin: 1em 0;
+  padding: .5em;
+
+  text-align: center;
   text-decoration: none;
-  padding: 1em 1.5em;
-  font-size: 16px;
+
+  text-shadow: 0 1px 0 #000;
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  
+  width: 150px;
+}
+#admin a[href*="new"]:hover, #admin form input[type="submit"]:hover {
+  border-color: #777;
+
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, rgb(77,77,77)),
+    color-stop(0.50, rgb(55,55,55)),
+    color-stop(0.75, rgb(0,0,0))
+  );
+  background-image: -moz-linear-gradient(
+    center top,
+    rgb(77,77,77) 5%,
+    rgb(55,55,55) 50%,
+    rgb(0,0,0) 75%
+  );
+}
+#admin a[href*="new"]:active, #admin form input[type="submit"]:active {
+  border-color: #000;
+  position: relative;
+  top: 1px;
 }
 
-
-#admin table a + a {
-  margin-left: 1em;
-}
-
-#admin a[href*="edit"], #admin a[href*="delete"] {
-  text-decoration: none;
-  margin-right: 1em;
-}
-#admin a[href*="edit"]:hover, #admin a[href*="delete"]:hover {
-  text-decoration: underline;
-}
-
-/* Formularios de administración */
-#admin form div {
+#admin form > div > div {
+  clear: both;
   margin-bottom: 1em;
 }
 #admin form label {
@@ -501,4 +568,11 @@ footer a:hover {
 #admin form div[name*="fecha"] > div {
   display: inline;
   padding-right: 2em;
+}
+
+#admin form + a[href*="list"] {
+  font-size: 16px;
+}
+#admin form + a[href*="list"]:before {
+  content: '< ';
 }
