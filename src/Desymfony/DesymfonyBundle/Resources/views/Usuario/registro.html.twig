@@ -29,6 +29,12 @@
         {{ form_widget(form.apellidos) }}
     </p>
 
+    {{ form_errors(form.email) }}
+    <p>
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+    </p>
+
     <div class="grid_6 alpha">
         {{ form_errors(form.dni) }}
         <p>
@@ -66,6 +72,8 @@
             {{ form_widget(form.password.second) }}
         </p>
     </div>
+    {{ form_errors(form._token) }}
+    {{ form_widget(form._token) }}
 
     <input type="submit" value="Regístrate" />
 </form>
