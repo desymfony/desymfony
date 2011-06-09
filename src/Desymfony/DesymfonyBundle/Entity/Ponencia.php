@@ -81,7 +81,8 @@ class Ponencia
      */
     protected $usuarios;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -274,7 +275,7 @@ class Ponencia
      */
     public function addUsuarios(\Desymfony\DesymfonyBundle\Entity\Usuario $usuario)
     {
-        if(!$this->hasUsuario($usuario)){
+        if (!$this->hasUsuario($usuario)) {
             $this->usuarios[] = $usuario;
             return true;
         }
@@ -284,9 +285,9 @@ class Ponencia
 
     public function hasUsuario(\Desymfony\DesymfonyBundle\Entity\Usuario $usuario)
     {
-        foreach($this->usuarios as $value)
+        foreach ($this->usuarios as $value)
         {
-            if($value->getId() == $usuario->getId()){
+            if ($value->getId() == $usuario->getId()) {
                 return true;
             }
         }

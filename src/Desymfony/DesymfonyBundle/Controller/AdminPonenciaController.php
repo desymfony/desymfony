@@ -13,12 +13,12 @@ class AdminPonenciaController extends Controller
     public function listAction()
     {
         $em = $this->get('doctrine')->getEntityManager();
-        
+
         return $this->render('DesymfonyBundle:AdminPonencia:list.html.twig', array(
             'ponencias' => $em->getRepository('DesymfonyBundle:Ponencia')->findAll()
         ));
     }
-    
+
     public function newAction()
     {
         $peticion = $this->get('request');
@@ -27,7 +27,7 @@ class AdminPonenciaController extends Controller
         $ponencia = new Ponencia();
         $ponencia->setFecha(new \DateTime('now'));
         $ponencia->setHora(new \DateTime('now'));
-        
+
         $formulario = $this->get('form.factory')->create(new PonenciaType());
         $formulario->setData($ponencia);
 
@@ -37,9 +37,9 @@ class AdminPonenciaController extends Controller
             if ($formulario->isValid()) {
                 $em->persist($ponencia);
                 $em->flush();
-                
+
                 $peticion->getSession()->setFlash('notice', 'Se ha creado correctamente la ponencia');
-                
+
                 return $this->redirect($this->generateUrl('admin_ponencia_edit', array(
                     'id' => $ponencia->getId()
                 )));
@@ -50,16 +50,16 @@ class AdminPonenciaController extends Controller
             'formulario' => $formulario->createView()
         ));
     }
-    
+
     public function editAction($id)
     {
         $peticion = $this->get('request');
         $em = $this->get('doctrine')->getEntityManager();
-        
-        if(null == $ponencia = $em->find('DesymfonyBundle:Ponencia', $id)) {
+
+        if (null == $ponencia = $em->find('DesymfonyBundle:Ponencia', $id)) {
             throw new NotFoundHttpException('No existe la ponencia que se quiere modificar');
         }
-        
+
         $formulario = $this->get('form.factory')->create(new PonenciaType());
         $formulario->setData($ponencia);
 
@@ -79,15 +79,15 @@ class AdminPonenciaController extends Controller
             'ponencia'   => $ponencia
         ));
     }
-    
+
     public function showAction($id)
     {
         $em = $this->get('doctrine')->getEntityManager();
-        
-        if(null == $ponencia = $em->find('DesymfonyBundle:Ponencia', $id)) {
+
+        if (null == $ponencia = $em->find('DesymfonyBundle:Ponencia', $id)) {
             throw new NotFoundHttpException('No existe la ponencia que se quiere ver');
         }
-        
+
         return $this->render('DesymfonyBundle:AdminPonencia:show.html.twig', array(
             'ponencia'   => $ponencia
         ));

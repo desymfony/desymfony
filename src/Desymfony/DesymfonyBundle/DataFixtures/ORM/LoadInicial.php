@@ -14,7 +14,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
     public function load($manager)
     {
         $this->manager = $manager;
-        
+
         $nombres = array('Adán', 'Adolfo', 'Agustin', 'Albert', 'Alberto', 'Alejandro',
                          'Andrés', 'Antonio', 'Ariel', 'Benjamin', 'Bernardo', 'Carles',
                          'Carlos', 'Cayetano', 'César', 'Cristian', 'Daniel', 'David',
@@ -26,7 +26,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
                          'Pere', 'Rafael', 'Raúl', 'Rebeca', 'Rosa', 'Rubén', 'Salvador',
                          'Santiago', 'Sergio', 'Susana', 'Verónica', 'Vicente', 'Víctor',
                          'Victoria', 'Vidal');
-        
+
         // -- Cargar datos de PONENTES ----------------------------------------
         $ponentes = array(
             'javierLopez' => array(
@@ -143,37 +143,37 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
 
         foreach ($ponentes as $referencia => $datosPonente) {
             $ponente = new Ponente();
-            
+
             foreach ($datosPonente as $propiedad => $valor) {
                 $ponente->{'set'.ucfirst($propiedad)}($valor);
             }
-            
+
             $this->addReference($referencia, $ponente);
-            
+
             $manager->persist($ponente);
         }
-        
+
         $manager->flush();
-        
+
         // -- Cargar datos de USUARIOS ----------------------------------------
         foreach (range(1, 100) as $i) {
             $usuario = new Usuario();
-            
+
             $usuario->setNombre($nombres[rand(0, count($nombres)-1)]);
             $usuario->setApellidos('Apellido1 Apellido2');
-            
+
             $dni = substr(rand(), 0, 8);
-            $usuario->setDni($dni.substr("TRWAGMYFPDXBNJZSQVHLCKE",strtr($dni,"XYZ","012")%23,1));
-            
+            $usuario->setDni($dni.substr("TRWAGMYFPDXBNJZSQVHLCKE", strtr($dni, "XYZ", "012")%23, 1));
+
             $usuario->setDireccion('Calle '.$i);
             $usuario->setTelefono('600'.substr(rand(), 0, 6));
             $usuario->setEmail('usuario'.$i.'@desymfony.com');
             $usuario->setPassword('usuario'.$i);
-            
+
             $manager->persist($usuario);
         }
         $manager->flush();
-        
+
         // -- Cargar datos de PONENCIAS ---------------------------------------
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Instalación y puesta a punto');
@@ -188,7 +188,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
         $ponencia = $this->addUsuarios($ponencia);
 
         $manager->persist($ponencia);
-        
+
         $ponencia = new Ponencia();
         $ponencia->setTitulo('El modelo. Doctrine2');
         $ponencia->setDescripcion('Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
@@ -244,7 +244,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
         $ponencia = $this->addUsuarios($ponencia);
 
         $manager->persist($ponencia);
-        
+
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Optimización. Assetic. Pruebas unitarias.');
         $ponencia->setDescripcion('Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
@@ -258,7 +258,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
         $ponencia = $this->addUsuarios($ponencia);
 
         $manager->persist($ponencia);
-        
+
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Mandango, un ODM ultrarrápido para PHP, MongoDB ... y Symfony2');
         $ponencia->setDescripcion('Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
@@ -272,7 +272,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
         $ponencia = $this->addUsuarios($ponencia);
 
         $manager->persist($ponencia);
-        
+
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Twig');
         $ponencia->setDescripcion('Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
@@ -286,7 +286,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
         $ponencia = $this->addUsuarios($ponencia);
 
         $manager->persist($ponencia);
-        
+
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Symfony 1, mi viejo amigo');
         $ponencia->setDescripcion('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
@@ -300,7 +300,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
         $ponencia = $this->addUsuarios($ponencia);
 
         $manager->persist($ponencia);
-        
+
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Microframework Silex');
         $ponencia->setDescripcion('Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
@@ -314,7 +314,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
         $ponencia = $this->addUsuarios($ponencia);
 
         $manager->persist($ponencia);
-        
+
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Rendimiento en aplicaciones web con Symfony2');
         $ponencia->setDescripcion('Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
@@ -328,7 +328,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
         $ponencia = $this->addUsuarios($ponencia);
 
         $manager->persist($ponencia);
-        
+
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Creación de aplicaciones móviles con Symfony2');
         $ponencia->setDescripcion('Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
@@ -342,7 +342,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
         $ponencia = $this->addUsuarios($ponencia);
 
         $manager->persist($ponencia);
-        
+
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Reduciendo el acoplamiento entre aplicaciones con RabbitMQ');
         $ponencia->setDescripcion('Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
@@ -356,7 +356,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
         $ponencia = $this->addUsuarios($ponencia);
 
         $manager->persist($ponencia);
-        
+
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Symfony y 3 millones de usuarios, nuestro día a día');
         $ponencia->setDescripcion('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
@@ -370,7 +370,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
         $ponencia = $this->addUsuarios($ponencia);
 
         $manager->persist($ponencia);
-        
+
         $ponencia = new Ponencia();
         $ponencia->setTitulo('Deja los plugins en casa, Habemus Bundles!');
         $ponencia->setDescripcion('Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
@@ -400,7 +400,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
     {
         $usuarios = $this->manager->getRepository('DesymfonyBundle:Usuario')->findAll();
         $total = isset($num) ?: rand(20, 50);
-        
+
         $asistentes = array();
 
         for ($i=0; $i<$total; $i++) {
@@ -416,9 +416,9 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
 
         return $entidad;
     }
-    
-    
-    
+
+
+
     public function getOrder()
     {
         return 1;

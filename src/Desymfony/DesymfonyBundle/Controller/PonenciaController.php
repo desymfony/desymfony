@@ -14,10 +14,10 @@ class PonenciaController extends Controller
     public function indexAction()
     {
         $em = $this->get('doctrine')->getEntityManager();
-        
+
         $ponenciasDia1 = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-01');
         $ponenciasDia2 = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-02');
-        
+
         return $this->render('DesymfonyBundle:Ponencia:index.html.twig', array(
             'ponenciasDia1' => $ponenciasDia1,
             'ponenciasDia2' => $ponenciasDia2,
@@ -27,13 +27,13 @@ class PonenciaController extends Controller
     public function ponenciaAction($slug)
     {
         $em = $this->get('doctrine')->getEntityManager();
-        
+
         $ponencia = $em->getRepository('DesymfonyBundle:Ponencia')->findOneBy(array('slug' => $slug));
-        
+
         if (!$ponencia) {
             throw new NotFoundHttpException("No existe la ponencia indicada");
         }
-        
+
         return $this->render('DesymfonyBundle:Ponencia:ponencia.html.twig', array(
             'ponencia' => $ponencia
         ));
@@ -42,23 +42,23 @@ class PonenciaController extends Controller
     public function apuntarseAction($slug)
     {
         $em = $this->get('doctrine')->getEntityManager();
-        
+
         $ponencia = $em->getRepository('DesymfonyBundle:Ponencia')->findOneBy(array('slug' => $slug));
 
-        $request = $this->get('request');        
+        $request = $this->get('request');
 
         if ($ponencia) {
-            
+
             $usuario = $this->get('security.context')->getToken()->getUser();
 
             if ($ponencia->addUsuarios($usuario)) {
                 $em->persist($ponencia);
                 $em->flush();
             }
-            
+
             if ($request->isXmlHttpRequest()) {
-                return $this->render('DesymfonyBundle:Ponencia:meApunto.html.twig',array('ponencia' => $ponencia));
-            }else {
+                return $this->render('DesymfonyBundle:Ponencia:meApunto.html.twig', array('ponencia' => $ponencia));
+            } else {
                 $session = $this->get('request')->getSession();
                 $session->setFlash('notice', sprintf("Te has apuntado a %s", $ponencia->getTitulo()));
 
