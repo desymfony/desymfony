@@ -165,8 +165,8 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
             $usuario->setDni($dni.substr("TRWAGMYFPDXBNJZSQVHLCKE",strtr($dni,"XYZ","012")%23,1));
             
             $usuario->setDireccion('Calle '.$i);
-            $usuario->setTelefono('600XXXXXX');
-            $usuario->setEmail('usuario'.$i.'@xxx.xx');
+            $usuario->setTelefono('600'.substr(rand(), 0, 6));
+            $usuario->setEmail('usuario'.$i.'@desymfony.com');
             $usuario->setPassword('usuario'.$i);
             
             $manager->persist($usuario);
@@ -392,15 +392,17 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
      * Añade usuarios aleatoriamente a una ponencia asegurándose de que no se repita un mismo usuario
      *
      * @param $entidad Entidad a la que se añaden los usuarios
-     * @param string $limite Número de usuarios que se añade en cada ponencia
+     * @param string $num Número de usuarios que se añade en cada ponencia
      * @return La misma entidad pero con los usuarios añadidos
      */
-    private function addUsuarios($entidad, $num = 50)
+    private function addUsuarios($entidad, $num = null)
     {
         $usuarios = $this->manager->getRepository('DesymfonyBundle:Usuario')->findAll();
+        $total = isset($num) ?: rand(20, 50);
+        
         $asistentes = array();
 
-        for ($i=0; $i<$num; $i++) {
+        for ($i=0; $i<$total; $i++) {
             $asistente = $usuarios[rand(0, count($usuarios)-1)];
 
             while (in_array($asistente->getId(), $asistentes)) {
