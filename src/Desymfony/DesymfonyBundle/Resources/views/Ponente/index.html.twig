@@ -6,11 +6,11 @@
 {% block contenido %}
 
     <h1>Ponentes</h1>
-    
+
     {% for ponente in ponentes %}
         <div class="grid_9 alpha">
             <h2>{{ ponente.nombre }} {{ ponente.apellidos }}</h2>
-            <p>{{ ponente.biografia|auto_link_text }}</p>
+            <p>{{ ponente.biografia | auto_link_text }}</p>
             <p><strong>Imparte las siguientes ponencias</strong></p>
             <ul>
 
@@ -18,19 +18,23 @@
             <li>
                 <a href="{{ path('ponencia', { 'slug': ponencia.slug})  }}">{{ ponencia.titulo }}</a>
             </li>
+            {% else %}
+            <li>
+                <p>No imparte ninguna ponencia</p>
+            </li>
             {% endfor %}
         </ul>
     </div>
-    
+
     <div class="grid_3 omega">
         <p><strong>Más información</strong></p>
-    
+
         <ul>
-            {% if(ponente.twitter) %}
+            {% if ponente.twitter %}
             <li><a href="{{ ponente.twitter }}">Twitter</a></li>
             {% endif %}
-        
-            {% if(ponente.linkedin) %}
+
+            {% if ponente.linkedin %}
             <li><a href="{{ ponente.linkedin }}">Linkedin</a></li>
             {% endif %}
         </ul>

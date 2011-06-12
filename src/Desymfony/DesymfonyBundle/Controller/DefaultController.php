@@ -9,14 +9,12 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $em = $this->get('doctrine')->getEntityManager();
-        $ponenciasDia1 = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-01');
-        $ponenciasDia2 = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-02');
-        $usuario = $this->get('security.context')->getToken()->getUser();
+        $ponenciasDiaUno = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-01');
+        $ponenciasDiaDos = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-02');
 
         return $this->render('DesymfonyBundle:Default:index.html.twig', array(
-            'ponenciasDia1' => $ponenciasDia1,
-            'ponenciasDia2' => $ponenciasDia2,
-            'usuario'       => $usuario,
+            'ponenciasDiaUno' => $ponenciasDiaUno,
+            'ponenciasDiaDos' => $ponenciasDiaDos,
         ));
     }
 
