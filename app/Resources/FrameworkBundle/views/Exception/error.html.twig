@@ -1,25 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Ocurrió un Error: {{ status_text }}</title>
-    </head>
-    <body>
-        <h1>Vaya! Ocurrió un Error</h1>
-        <h2>El servidor devolvió el siguiente error "{{ status_code }} {{ status_text }}".</h2>
+{% extends "DesymfonyBundle::layout.html.twig" %}
 
-        {% if status_code == '404' %}
-        <div>
-           El archivo que buscabas no está en esta dirección, puede que hayas introducido incorrectamente la dirección, que el enlace que has seguido sea erróneo o que la página haya desaparecido. <br/><br/>
-           Si crees que se trata de un error, escríbenos a info@desymfony.com          
-        </div>
-        {% else %}
-       <div>
-           Ocurrió un error en la aplicación, algo está gravemente estropeado o estamos realizando tareas de mantenimiento.  Puedes intentar recargar la página, o repetir la acción que acabas de hacer. <br/><br/>
-           Si el problema persiste, escríbenos a info@desymfony.com
-        </div>
+{% block title %}Ocurrió un Error: {{ status_text }}{% endblock %}
+{% block pageid 'error' %}
 
-        {% endif %}
+{% block contenido %}
+    <h1>Vaya! Ocurrió un Error</h1>
+    <h2>El servidor devolvió el siguiente error "{{ status_code }} {{ status_text }}".</h2>
 
-    </body>
-</html>
+    {% if status_code == '404' %}
+    <div>
+       <p>El archivo que buscabas no está en esta dirección, puede que hayas
+       introducido incorrectamente la dirección, que el enlace que has seguido
+       sea erróneo o que la página haya desaparecido. </p>
+       <p>Si crees que se trata de un error, escríbenos a <strong>info@desymfony.com</strong></p>
+    </div>
+    {% else %}
+   <div>
+       <p>Ocurrió un error en la aplicación, algo está gravemente estropeado o
+       estamos realizando tareas de mantenimiento.  Puedes intentar recargar
+       la página, o repetir la acción que acabas de hacer. </p>
+       <p>Si el problema persiste, escríbenos a <strong>info@desymfony.com</strong></p>
+    </div>
+    {% endif %}
+{% endblock %}
