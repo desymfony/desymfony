@@ -113,6 +113,16 @@ Si quieres crear más usuarios de prueba, puedes hacerlo en la sección
 *registro*. Para acceder a la aplicación como un usuario registrado, pincha el 
 enlace *accede aquí* dentro de la sección *registro*.
 
+Las credenciales por defecto para acceder al *frontend como usuario* son:
+
+  * **usuario**: usuario**X**@desymfony.com
+  * **password**: usuario**X**
+
+    Donde la **X** es un cualquier numero del 1 al 100, dependiendo del usuario
+
+    **Nota**: Estos usuarios solo funcionan si has usado el comando
+    `doctrine:fixtures:load`, para cargar datos de prueba.
+
 #### Parte de administración o *backend* ####
 
 La parte de administración de la aplicación se accede desde 

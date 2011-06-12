@@ -3,14 +3,24 @@ namespace Desymfony\Desymfony\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 use Desymfony\DesymfonyBundle\Entity\Usuario,
     Desymfony\DesymfonyBundle\Entity\Ponencia,
     Desymfony\DesymfonyBundle\Entity\Ponente;
 
-class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
+class LoadInicial extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
+
     protected $manager;
+    private   $container;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
     public function load($manager)
     {
         $this->manager = $manager;
@@ -156,6 +166,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
         $manager->flush();
 
         // -- Cargar datos de USUARIOS ----------------------------------------
+        $factory = $this->container->get('security.encoder_factory');
         foreach (range(1, 100) as $i) {
             $usuario = new Usuario();
 
@@ -168,7 +179,10 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface
             $usuario->setDireccion('Calle '.$i);
             $usuario->setTelefono('600'.substr(rand(), 0, 6));
             $usuario->setEmail('usuario'.$i.'@desymfony.com');
-            $usuario->setPassword('usuario'.$i);
+
+            $codificador = $factory->getEncoder($usuario);
+            $password = $codificador->encodePassword('usuario'.$i, $usuario->getSalt());
+            $usuario->setPassword($password);
 
             $manager->persist($usuario);
         }
