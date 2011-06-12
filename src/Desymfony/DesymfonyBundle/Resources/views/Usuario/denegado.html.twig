@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Ocurrió un Error: 403</title>
-    </head>
-    <body>
-        <h1>Acceso Denegado</h1>
+{% extends "DesymfonyBundle::layout.html.twig" %}
 
-        <div>
-           Se ha intentado acceder a una página para lo cual es necesario tener el permiso correspondiente (distinto del actual). <br/><br/>
-           Si crees que se trata de un error, escríbenos a info@desymfony.com
-        </div>
+{% block title %}Ocurrió un Error: Acceso Denegado{% endblock %}
+{% block pageid 'error' %}
 
-    </body>
-</html>
+{% block contenido %}
+    <h1>Acceso Denegado</h1>
+
+    <div>
+       <p>Se ha intentado acceder a una página para lo cual es necesario
+       tener el permiso correspondiente (distinto del actual). </p>
+       <p>Si crees que se trata de un error, escríbenos a <strong>info@desymfony.com</strong></p>
+    </div>
+{% endblock %}
