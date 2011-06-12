@@ -49,8 +49,16 @@ class UsuarioController extends Controller
                 $session = $this->get('request')->getSession();
                 $session->setFlash('notice', 'Gracias por registrarte en Desymfony 2011');
 
-                // Guardamos el objeto en base de datos
+                // Obtenemos el usuario
                 $usuario = $form->getData();
+
+                // Codificamos el password
+                $factory = $this->get('security.encoder_factory');
+                $codificador = $factory->getEncoder($usuario);
+                $password = $codificador->encodePassword($usuario->getPassword(), $usuario->getSalt());
+                $usuario->setPassword($password);
+
+                // Guardamos el objeto en base de datos
                 $em = $this->get('doctrine')->getEntityManager();
                 $em->persist($usuario);
                 $em->flush();
