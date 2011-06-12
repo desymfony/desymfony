@@ -1,10 +1,10 @@
 /*
- ____                                         ___                          
-/\  _`\                                     /'___\                         
-\ \ \/\ \    __    ____  __  __    ___ ___ /\ \__/  ___    ___   __  __    
- \ \ \ \ \ /'__`\ /',__\/\ \/\ \ /' __` __`\ \ ,__\/ __`\/' _ `\/\ \/\ \   
-  \ \ \_\ \\  __//\__, `\ \ \_\ \/\ \/\ \/\ \ \ \_/\ \L\ \\ \/\ \ \ \_\ \  
-   \ \____/ \____\/\____/\/`____ \ \_\ \_\ \_\ \_\\ \____/ \_\ \_\/`____ \ 
+ ____                                         ___
+/\  _`\                                     /'___\
+\ \ \/\ \    __    ____  __  __    ___ ___ /\ \__/  ___    ___   __  __
+ \ \ \ \ \ /'__`\ /',__\/\ \/\ \ /' __` __`\ \ ,__\/ __`\/' _ `\/\ \/\ \
+  \ \ \_\ \\  __//\__, `\ \ \_\ \/\ \/\ \/\ \ \ \_/\ \L\ \\ \/\ \ \ \_\ \
+   \ \____/ \____\/\____/\/`____ \ \_\ \_\ \_\ \_\\ \____/ \_\ \_\/`____ \
     \/___/ \/____/\/___/  `/___/> \/_/\/_/\/_/\/_/ \/___/ \/_/\/_/`/___/> \
                              /\___/                                  /\___/
                              \/__/                                   \/__/
@@ -208,7 +208,8 @@ footer a:hover {
    ------------------------------------------------------------------------- */
 #portada   #principal h2,
 #ponencias #principal h2,
-#ponentes  #principal h2 {
+#ponentes  #principal h2,
+#error     #principal h2 {
   color: #177915;
   font-size: 18px;
 }
@@ -218,7 +219,8 @@ footer a:hover {
 #ponentes  #principal h1,
 #registro  #principal h1,
 #usuario   #principal h1,
-#pagina    #principal h1 {
+#pagina    #principal h1,
+#error     #principal h1 {
   color: #164B7B;
   font-size: 28px;
   margin-bottom: .4em;
@@ -266,7 +268,7 @@ footer a:hover {
   margin: 1em 0;
   padding: .5em;
   text-align: center;
-  
+
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -416,7 +418,7 @@ footer a:hover {
   font-size: 30px;
   line-height: 1.2;
   margin: .5em 0;
-  
+
   width: 940px;
   display: inline;
   float: left;
@@ -507,7 +509,7 @@ footer a:hover {
 
   text-shadow: 0 1px 0 #000;
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  
+
   width: 150px;
 }
 #admin a[href*="new"]:hover, #admin form input[type="submit"]:hover {
