@@ -27,4 +27,4 @@ security:
             entity: { class: Desymfony\DesymfonyBundle\Entity\Usuario, property: email }
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
-        Desymfony\DesymfonyBundle\Entity\Usuario: plaintext
+        Desymfony\DesymfonyBundle\Entity\Usuario: sha512
