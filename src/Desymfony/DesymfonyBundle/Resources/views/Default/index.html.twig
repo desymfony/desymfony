@@ -10,7 +10,7 @@
     <h2>Ponencias del <strong>primer día</strong> (1 de julio)</h2>
 
     <ul>
-    {% for ponencia in ponenciasDia1 %}
+    {% for ponencia in ponenciasDiaUno %}
         <li>{% include 'DesymfonyBundle:Ponencia:bloquePequeno.html.twig' with {'ponencia': ponencia } %}</li>
     {% else %}
         <li>No hay ninguna ponencia</li>
@@ -22,7 +22,7 @@
     <h2>Ponencias del <strong>segundo día</strong> (2 de julio)</h2>
 
     <ul>
-    {% for ponencia in ponenciasDia2 %}
+    {% for ponencia in ponenciasDiaDos %}
         <li>{% include 'DesymfonyBundle:Ponencia:bloquePequeno.html.twig' with {'ponencia': ponencia } %}</li>
     {% else %}
         <li>No hay ninguna ponencia</li>
