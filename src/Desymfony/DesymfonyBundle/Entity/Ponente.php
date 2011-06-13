@@ -71,10 +71,10 @@ class Ponente
 
     public function __toString()
     {
-        return $this->nombreCompleto();
+        return $this->getNombreCompleto();
     }
 
-    public function nombreCompleto()
+    public function getNombreCompleto()
     {
         return $this->getNombre().' '.$this->getApellidos();
     }

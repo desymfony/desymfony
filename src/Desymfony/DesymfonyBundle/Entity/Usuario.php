@@ -116,8 +116,13 @@ class Usuario implements UserInterface, \Serializable
     {
         $this->ponencias = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+    
     public function __toString()
+    {
+        return $this->getNombreCompleto();
+    }
+
+    public function getNombreCompleto()
     {
         return $this->getNombre().' '.$this->getApellidos();
     }
