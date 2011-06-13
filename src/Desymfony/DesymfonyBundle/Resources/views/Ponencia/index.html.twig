@@ -10,7 +10,7 @@
 
 {% for ponencia in ponenciasDia1 %}
   <div>
-  {% include 'DesymfonyBundle:Ponencia:bloqueGrande.html.twig' with {'ponencia': ponencia } %}
+  {% include 'DesymfonyBundle:Ponencia:bloqueGrande.html.twig' %}
   </div>
 {% endfor %}
 
@@ -18,7 +18,7 @@
 
 {% for ponencia in ponenciasDia2 %}
   <div>
-  {% include 'DesymfonyBundle:Ponencia:bloqueGrande.html.twig' with {'ponencia': ponencia } %}
+  {% include 'DesymfonyBundle:Ponencia:bloqueGrande.html.twig' %}
   </div>
 {% endfor %}
 {% endblock %}
