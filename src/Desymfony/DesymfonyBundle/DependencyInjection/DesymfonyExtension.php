@@ -16,9 +16,4 @@ class DesymfonyExtension extends Extension
         $definition->addTag('twig.extension');
         $container->setDefinition('desymfony_twig_extension', $definition);
     }
-
-    public function getAlias() {
-          return 'desymfony'; // that's how we'll call this extension in configuration files
-    }
-
 }
