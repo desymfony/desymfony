@@ -13,8 +13,8 @@ login:
 login_check:
     pattern: /check
 
-logoff:
-    pattern:  /logoff
+logout:
+    pattern:  /logout
     defaults: { _controller: DesymfonyBundle:Usuario:logoff }
 
 denegado:
