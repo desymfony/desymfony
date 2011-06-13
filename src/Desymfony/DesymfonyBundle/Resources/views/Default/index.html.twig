@@ -11,7 +11,7 @@
 
     <ul>
     {% for ponencia in ponenciasDia1 %}
-        <li>{% include 'DesymfonyBundle:Ponencia:bloquePequeno.html.twig' with {'ponencia': ponencia } %}</li>
+        <li>{% include 'DesymfonyBundle:Ponencia:bloquePequeno.html.twig' %}</li>
     {% else %}
         <li>No hay ninguna ponencia</li>
     {% endfor %}
@@ -23,7 +23,7 @@
 
     <ul>
     {% for ponencia in ponenciasDia2 %}
-        <li>{% include 'DesymfonyBundle:Ponencia:bloquePequeno.html.twig' with {'ponencia': ponencia } %}</li>
+        <li>{% include 'DesymfonyBundle:Ponencia:bloquePequeno.html.twig' %}</li>
     {% else %}
         <li>No hay ninguna ponencia</li>
     {% endfor %}
