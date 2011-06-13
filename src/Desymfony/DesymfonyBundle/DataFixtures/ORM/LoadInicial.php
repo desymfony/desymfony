@@ -36,6 +36,16 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface, Co
                          'Pere', 'Rafael', 'Raúl', 'Rebeca', 'Rosa', 'Rubén', 'Salvador',
                          'Santiago', 'Sergio', 'Susana', 'Verónica', 'Vicente', 'Víctor',
                          'Victoria', 'Vidal');
+        
+        /* Los 50 apellidos más comunes en España según el Instituto de Estadística */
+        $apellidos = array('García', 'Fernández', 'González', 'Rodríguez', 'López', 'Martínez',
+                           'Sánchez', 'Pérez', 'Martín', 'Gómez', 'Jiménez', 'Ruiz', 'Hernández',
+                           'Díaz', 'Moreno', 'Álvarez', 'Muñoz', 'Romero', 'Alonso', 'Gutiérrez',
+                           'Navarro', 'Torres', 'Domínguez', 'Vázquez', 'Gil', 'Ramos', 'Serrano',
+                           'Blanco', 'Ramírez', 'Molina', 'Suárez', 'Ortega', 'Delgado', 'Morales',
+                           'Castro', 'Rubio', 'Ortíz', 'Marín', 'Sanz', 'Iglesias', 'Núñez',
+                           'Garrido', 'Cortés', 'Medina', 'Santos', 'Lozano', 'Cano', 'Castillo',
+                           'Gerrero', 'Prieto');
 
         // -- Cargar datos de PONENTES ----------------------------------------
         $ponentes = array(
@@ -171,7 +181,11 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface, Co
             $usuario = new Usuario();
 
             $usuario->setNombre($nombres[rand(0, count($nombres)-1)]);
-            $usuario->setApellidos('Apellido1 Apellido2');
+            $usuario->setApellidos(
+              $apellidos[rand(0, count($apellidos)-1)].
+              ' '.
+              $apellidos[rand(0, count($apellidos)-1)]
+            );
 
             $dni = substr(rand(), 0, 8);
             $usuario->setDni($dni.substr("TRWAGMYFPDXBNJZSQVHLCKE", strtr($dni, "XYZ", "012")%23, 1));

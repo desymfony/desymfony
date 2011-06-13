@@ -35,7 +35,7 @@
           <div class="usuario">
           {% if is_granted(['ROLE_USER']) %}
           {# usuario #}
-              <h4><a href="{{ path('perfil') }}">{{ app.user.nombre }}</a></h4>
+              <h4><a href="{{ path('perfil') }}">{{ app.user.nombreCompleto }}</a></h4>
               <p>Estás apuntado a <strong>{{ app.user.numeroPonencias }}</strong> ponencias</p>
           {% elseif is_granted(['ROLE_ADMIN']) %}
           {# administrador #}
