@@ -1,17 +1,16 @@
 Proyecto Desymfony
 ==================
 
-Este repositorio alberga el código de la aplicación de prueba desarrollada
-durante el primer día de las [Jornadas Symfony 2011](http://desymfony.com).
+Este repositorio alberga el código fuente de la aplicación-tutorial 
+desarrollada durante el primer día de las [Jornadas Symfony 2011](http://desymfony.com).
 
-Sobre el proyecto
------------------
+Sobre la aplicación
+-------------------
 
-La aplicación consiste en el desarrollo del sitio web ficticio de las propias 
-Jornadas Symfony. Su finalidad es didáctica, por lo que ha sido necesario 
-realizar algunas simplificaciones en su funcionamiento y arquitectura. No 
-obstante, la aplicación sigue la filosofía y buenas prácticas recomendadas por 
-Symfony2.
+La aplicación desarrollada es el sitio web ficticio de las propias Jornadas 
+Symfony. Su finalidad es didáctica, por lo que ha sido necesario realizar 
+algunas simplificaciones en su funcionamiento y arquitectura. No obstante, la 
+aplicación sigue la filosofía y buenas prácticas recomendadas por Symfony2.
 
 Instalación y configuración
 ---------------------------
@@ -19,10 +18,11 @@ Instalación y configuración
 ### Instalación ###
 
   1. Crea un directorio para el proyecto: `mkdir /proyectos/desymfony`
-  2. Clona el repositorio en ese directorio:
+  2. Clona el repositorio `desymfony` en ese directorio:
   `git clone git@github.com:desymfony/desymfony.git /proyectos/desymfony`
-  3. Descarga/actualiza las librerías externas de Symfony2: 
-  `/proyectos/desymfony/bin/vendors.php` (espera un buen rato)
+  3. Ejecuta el comando `/proyectos/desymfony/bin/vendors.php` para descargar
+  o actualizar las librerías externas de Symfony2. Este comando puede tardar
+  un buen rato en completarse.
 
 ### Configuración de la base de datos ###
 
@@ -62,8 +62,8 @@ tu servidor web local. Añade en primer lugar la siguiente línea en el archivo
 127.0.0.1    desymfony.local
 ```
 
-Después, configura el *host* en el servidor web añadiendo lo siguiente en su 
-archivo de configuración:
+Después, configura el *host* en el servidor web. Si utilizas por ejemplo 
+Apache, debes añadir lo siguiente en su archivo de configuración:
 
 ```
 # Desymfony 2011
@@ -99,29 +99,32 @@ Para probar mejor el proyecto, es muy recomendable cargar los datos de prueba
 php /proyectos/desymfony/app/console doctrine:fixtures:load
 ```
 
-El comando anterior crea varias ponencias y ponentes de prueba, 100 usuarios 
-aleatorios y asigna 50 usuarios a cada ponencia. 
+El comando anterior guarda en la base de datos la información sobre las
+ponencias y los ponentes de las Jornadas Symfony. Además crea 100 usuarios
+ficticios y asigna a cada ponencia entre 20 y 50 usuarios elegidos
+aleatoriamente.
 
 #### Parte pública o *frontend* ####
 
 Puedes acceder a la parte pública en `http://desymfony.local/app_dev.php` 
 (entorno de desarrollo) y `http://desymfony.local/` (entorno de producción).
 
-La aplicación es tan sencilla que todas sus secciones son auto-explicativas.
-
-Si quieres crear más usuarios de prueba, puedes hacerlo en la sección 
-*registro*. Para acceder a la aplicación como un usuario registrado, pincha el 
-enlace *accede aquí* dentro de la sección *registro*.
+Si quieres utilizar todas las características de la aplicación, debes acceder
+como un usuario registrado. Para ello, pulsa el enlace *Haz login* que se
+muestra en el lateral de todas las páginas.
 
 Las credenciales por defecto para acceder al *frontend como usuario* son:
 
   * **usuario**: usuario**X**@desymfony.com
   * **password**: usuario**X**
 
-    Donde la **X** es un cualquier numero del 1 al 100, dependiendo del usuario
+  Donde la **X** es cualquier número del 1 al 100.
 
-    **Nota**: Estos usuarios solo funcionan si has usado el comando
-    `doctrine:fixtures:load`, para cargar datos de prueba.
+  **Nota**: Estos usuarios sólo funcionan si has usado el comando
+  `doctrine:fixtures:load`, para cargar los datos de prueba (*fixtures*).
+
+También puedes registrarte como nuevo usuario. Para ello pulsa el botón
+*Regístrate* que se muestra en el lateral de todas las páginas.
 
 #### Parte de administración o *backend* ####
 
@@ -129,16 +132,22 @@ La parte de administración de la aplicación se accede desde
 `http://desymfony.local/app_dev.php/admin` (entorno de desarrollo) o 
 `http://desymfony.local/admin` (entorno de producción).
 
-Las credenciales por defecto para acceder al *backend* son:
+Por defecto existen dos usuarios de tipo administrador. Sus credenciales de
+acceso son las siguientes:
 
-  * **usuario**: `desymfony`
-  * **password**: `desymfony`
+  * Primer usuario:
+      * **usuario**: `desymfony`
+      * **password**: `desymfony`
+  * Segundo usuario:
+      * **usuario**: `admin`
+      * **password**: `admin`
 
-Puedes cambiar las credenciales en el archivo `app/config/security.yml`.
+Puedes cambiar sus credenciales o crear nuevos usuarios de tipo administrador
+en el archivo `app/config/security.yml`.
 
 ### Sobre tests ###
 
-Para correr los tests hay que generar los proxies de entidades con
+Para correr los tests hay que generar los proxies de entidades con:
 
     php console --env=test doctrine:generate:proxies
 
