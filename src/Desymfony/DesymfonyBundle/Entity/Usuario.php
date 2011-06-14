@@ -14,7 +14,6 @@ use Desymfony\DesymfonyBundle\Validator\DNI;
  * Desymfony\DesymfonyBundle\Entity
  *
  * @ORM\Table(name="usuario")
- * @ORM\Entity(repositoryClass="Desymfony\DesymfonyBundle\Entity\UsuarioRepository")
  * @UniqueEntity(fields="email")
  */
 class Usuario implements UserInterface, \Serializable
