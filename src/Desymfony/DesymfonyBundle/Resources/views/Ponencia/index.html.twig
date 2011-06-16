@@ -1,19 +1,7 @@
 {% extends "DesymfonyBundle::layout.html.twig" %}
 
 {% block title %}Ponencias{% endblock %}
-{% block metadesc %}{% filter format_metadesc %}
-   Se impartirán las charlas de 
-    {% for ponencia in ponenciasDiaUno %}
-      {{ponencia.titulo}}
-       {%if not loop.last %}, {% endif %}
-    {% endfor %}
-   el primer día y
-    {% for ponencia in ponenciasDiaDos %}
-      {{ponencia.titulo}}
-       {%if not loop.last %}, {% endif %}
-    {% endfor %}
-   el segundo.
-{% endfilter %}{% endblock %}
+{% block metadesc %}El primer día se impartirán las charlas: {{ponenciasDiaUno | join(", ")}}. Las charlas para el segundo día serán: {{ponenciasDiaDos | join(", ")}}.{% endblock %}
 {% block pageid 'ponencias' %}
 
 {% block contenido %}

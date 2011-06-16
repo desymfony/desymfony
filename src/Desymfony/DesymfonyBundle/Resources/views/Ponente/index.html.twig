@@ -4,8 +4,13 @@
 {% block metadesc %}{% filter format_metadesc %}
   En esta edición contaremos con:
     {% for ponente in ponentes %}
-      {{ ponente.nombreCompleto }}
-       {%if not loop.last %}, {% endif %}
+
+      {%if not loop.last and not loop.first %}, 
+      {% elseif loop.last %}y 
+      {%endif%}
+
+        {{ ponente.nombreCompleto }}
+
     {% endfor %}.
 {% endfilter %}{% endblock %}
 {% block pageid 'ponentes' %}

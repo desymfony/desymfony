@@ -53,6 +53,7 @@ class DesymfonyTwigExtension extends \Twig_Extension
         
         $string = preg_replace('/\s+/', ' ', $string);
         $string = preg_replace('/\s,/', ',', $string);
+        $string = preg_replace('/\s\./', '.', $string);
         $string = trim($string);
 
         return $string;
