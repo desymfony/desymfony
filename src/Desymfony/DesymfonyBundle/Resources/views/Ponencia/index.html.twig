@@ -1,6 +1,7 @@
 {% extends "DesymfonyBundle::layout.html.twig" %}
 
 {% block title %}Ponencias{% endblock %}
+{% block metadesc %}El primer día se impartirán las charlas: {{ponenciasDiaUno | join(", ")}}. Las charlas para el segundo día serán: {{ponenciasDiaDos | join(", ")}}.{% endblock %}
 {% block pageid 'ponencias' %}
 
 {% block contenido %}
