@@ -1,6 +1,7 @@
 {% extends "DesymfonyBundle::layout.html.twig" %}
 
 {% block title %}{{ ponencia.titulo }}{% endblock %}
+{% block metadesc %}{{ ponencia.titulo }} en DeSymfony, por {{ ponencia.ponente }}, se impartirá el {{ ponencia.fecha | date("d M") }}.{% endblock %}
 {% block pageid 'ponencia' %}
 
 {% block contenido %}

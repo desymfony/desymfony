@@ -1,6 +1,13 @@
 {% extends "DesymfonyBundle::layout.html.twig" %}
 
 {% block title %}Ponentes{% endblock %}
+{% block metadesc %}{% filter format_metadesc %}
+  En esta edición contaremos con:
+    {% for ponente in ponentes %}
+      {{ ponente.nombreCompleto }}
+       {%if not loop.last %}, {% endif %}
+    {% endfor %}.
+{% endfilter %}{% endblock %}
 {% block pageid 'ponentes' %}
 
 {% block contenido %}
@@ -9,8 +16,10 @@
 
     {% for ponente in ponentes %}
         <div class="grid_9 alpha">
+
             <h2>{{ ponente.nombreCompleto }}</h2>
             <p>{{ ponente.biografia | auto_link_text }}</p>
+
             <p><strong>Imparte las siguientes ponencias</strong></p>
             <ul>
 
