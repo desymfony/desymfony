@@ -19,7 +19,7 @@ class PonenciaController extends Controller
         $ponenciasDiaDos = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-02');
 
         return $this->render('DesymfonyBundle:Ponencia:index.html.twig', array(
-            'ponenciasDiaUno' => $ponenciasDiaDos,
+            'ponenciasDiaUno' => $ponenciasDiaUno,
             'ponenciasDiaDos' => $ponenciasDiaDos,
         ));
     }

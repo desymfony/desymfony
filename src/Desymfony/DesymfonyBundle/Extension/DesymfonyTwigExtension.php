@@ -51,9 +51,9 @@ class DesymfonyTwigExtension extends \Twig_Extension
     static public function format_metadesc($string)
     {
         
-        $string = preg_replace('/\n/', '', $string);
         $string = preg_replace('/\s+/', ' ', $string);
-        $string = preg_replace('/^\s+/', '', $string);
+        $string = preg_replace('/\s,/', ',', $string);
+        $string = trim($string);
 
         return $string;
     }

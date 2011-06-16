@@ -3,12 +3,12 @@
 {% block title %}Ponencias{% endblock %}
 {% block metadesc %}{% filter format_metadesc %}
    Se impartirán las charlas de 
-    {% for ponencia in ponenciasDia1 %}
+    {% for ponencia in ponenciasDiaUno %}
       {{ponencia.titulo}}
        {%if not loop.last %}, {% endif %}
     {% endfor %}
    el primer día y
-    {% for ponencia in ponenciasDia2 %}
+    {% for ponencia in ponenciasDiaDos %}
       {{ponencia.titulo}}
        {%if not loop.last %}, {% endif %}
     {% endfor %}
