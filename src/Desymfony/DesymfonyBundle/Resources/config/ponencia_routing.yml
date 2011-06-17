@@ -1,6 +1,8 @@
 ponencias:
-    pattern:  /ponencias
-    defaults: { _controller: DesymfonyBundle:Ponencia:index }
+    pattern:  /ponencias.{_format}
+    defaults: { _controller: DesymfonyBundle:Ponencia:index, _format: html }
+    requirements:
+      _format: html|xml|ics
 
 ponencia:
     pattern:  /ponencia/{slug}

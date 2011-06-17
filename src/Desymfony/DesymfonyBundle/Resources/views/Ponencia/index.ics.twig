@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+PRODID:-//deSymfony//iCal Feed//ES
+VERSION:2.0
+CALSCALE:GREGORIAN
+X-WR-CALNAME:JornadasSymfony2011
+X-WR-TIMEZONE:Europe/Madrid
+X-WR-CALDESC:Agenda de las Jornadas Symfony 2011 en Castellón (España)
+{% for ponencia in ponenciasTodas %}
+BEGIN:VEVENT
+DTSTART:{{ponencia.fecha | date('Ymd')}}T{{ ponencia.hora | date('Hi') }}Z
+DTEND:{{((((ponencia.fecha | date('Y-m-d')) ~ " " ~ (ponencia.hora | date('H:i')))| date('U')) + ponencia.duracion * 60) | date('Ymd\\THi\\Z') }}
+DTSTAMP:20110616T003424Z
+UID:{{ ponencia.titulo }}desymfony{{ponencia.fecha | date('Ymd')}}
+CREATED:20110611T091153Z
+DESCRIPTION:{{ ponencia.descripcion }}
+LAST-MODIFIED:{{"now"| date('Ymd')}}T{{ "now" | date('Hi') }}Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:{{ ponencia.titulo }}
+TRANSP:OPAQUE
+END:VEVENT
+{% endfor %}
+END:VCALENDAR

@@ -22,6 +22,9 @@
   {% include 'DesymfonyBundle:Ponencia:bloqueGrande.html.twig' %}
   </div>
 {% endfor %}
+
+<p>Ponencias en formatos
+<a href="{{ path('ponencias', {'_format': 'xml'}) }}">XML</a> | <a href="{{ path('ponencias', {'_format': 'ics'}) }}">iCal</a> </p>
 {% endblock %}
 
 {% block lateral %}

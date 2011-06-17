@@ -25,4 +25,19 @@ class PonenciaRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * Devuelve todas las ponencias ordenadas por fecha
+     *
+     */
+
+    public function findTodasOrdFecha()
+    {
+        return $this->getEntityManager()
+                    ->createQuery('SELECT p FROM Desymfony\DesymfonyBundle\Entity\Ponencia p
+                                    ORDER BY p.fecha ASC')
+                    ->getResult();
+    }
+
+
 }
