@@ -86,7 +86,11 @@ class Ponencia
         $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
+    public function __toString()
+    {
+        return $this->getTitulo();
+    }
+    
     /**
      * Get id
      *

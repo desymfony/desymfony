@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+  <ponencias>
+{% for ponencia in (ponenciasDiaUno | merge(ponenciasDiaDos)) %}
+    <ponencia>
+        <titulo>{{ ponencia.titulo }}</titulo>
+        <descripcion>{{ ponencia.descripcion }}</descripcion>
+        <fecha>{{ ponencia.fecha | date('D, d M Y') }}</fecha>
+        <duracion>{{ ponencia.duracion }}</duracion>
+    </ponencia>
+{% endfor %}
+  </ponencias>

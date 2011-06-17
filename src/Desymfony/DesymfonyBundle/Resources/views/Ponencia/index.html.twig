@@ -1,6 +1,7 @@
 {% extends "DesymfonyBundle::layout.html.twig" %}
 
 {% block title %}Ponencias{% endblock %}
+{% block metadesc %}El primer día se impartirán las charlas: {{ponenciasDiaUno | join(", ")}}. Las charlas para el segundo día serán: {{ponenciasDiaDos | join(", ")}}.{% endblock %}
 {% block pageid 'ponencias' %}
 
 {% block contenido %}
@@ -21,6 +22,9 @@
   {% include 'DesymfonyBundle:Ponencia:bloqueGrande.html.twig' %}
   </div>
 {% endfor %}
+
+<p>Ponencias en formatos
+<a href="{{ path('ponencias', {'_format': 'xml'}) }}">XML</a> | <a href="{{ path('ponencias', {'_format': 'ics'}) }}">iCal</a> </p>
 {% endblock %}
 
 {% block lateral %}

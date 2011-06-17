@@ -14,6 +14,7 @@ class DesymfonyTwigExtension extends \Twig_Extension
     {
         return array(
             'auto_link_text' => new \Twig_Filter_Method($this, 'auto_link_text', array('is_safe' => array('html'))),
+            'format_metadesc' => new \Twig_Filter_Method($this, 'format_metadesc', array('is_safe' => array('html'))),
         );
     }
 
@@ -46,7 +47,17 @@ class DesymfonyTwigExtension extends \Twig_Extension
 
         return $string;
     }
+    
+    static public function format_metadesc($string)
+    {
+        
+        $string = preg_replace('/\s+/', ' ', $string);
+        $string = preg_replace('/\s,/', ',', $string);
+        $string = preg_replace('/\s\./', '.', $string);
+        $string = trim($string);
 
+        return $string;
+    }
 }
 
 
