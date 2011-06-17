@@ -25,4 +25,5 @@ class PonenciaRepository extends EntityRepository
 
         return $query->getResult();
     }
+
 }
