@@ -13,15 +13,15 @@ class PonenciaRepository extends EntityRepository
      */
     public function findTodasDeFecha($fecha)
     {
-        $qb = $this->_em->createQueryBuilder();
+        $em = $this->getEntityManager();
 
-        $qb->add('select', 'p')
-            ->add('from', 'DesymfonyBundle:Ponencia p ')
-            ->add('where', 'p.fecha = :fecha')
-            ->add('orderBy', 'p.fecha ASC')
-            ->setParameter('fecha', new \DateTime($fecha), \Doctrine\DBAL\Types\Type::DATETIME);
-
-            $query = $qb->getQuery();
+        $query = $em->createQueryBuilder()
+            ->select('p')
+            ->from('DesymfonyBundle:Ponencia', 'p')
+            ->where('p.fecha = :fecha')
+            ->orderBy('p.fecha', 'ASC')
+            ->setParameter('fecha', new \DateTime($fecha), \Doctrine\DBAL\Types\Type::DATETIME)
+            ->getQuery();
 
         return $query->getResult();
     }
