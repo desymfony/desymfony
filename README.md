@@ -20,7 +20,7 @@ Instalación y configuración
   1. Crea un directorio para el proyecto: `mkdir /proyectos/desymfony`
   2. Clona el repositorio `desymfony` en ese directorio:
   `git clone git@github.com:desymfony/desymfony.git /proyectos/desymfony`
-  3. Ejecuta el comando `/proyectos/desymfony/bin/vendors.php` para descargar
+  3. Ejecuta el comando `/proyectos/desymfony/bin/vendors install` para descargar
   o actualizar las librerías externas de Symfony2. Este comando puede tardar
   un buen rato en completarse.
 
