@@ -92,6 +92,12 @@ escritura en los directorios de la caché y de los logs. Ejecuta `chmod -R 777
 /proyectos/desymfony/app/cache /proyectos/desymfony/app/logs` y el error ya no 
 debería mostrarse.
 
+Primero, hay que crear el schema en MySQL con el siguiente comando:
+
+```
+php /proyectos/desymfony/app/console doctrine:schema:create
+```
+
 Para probar mejor el proyecto, es muy recomendable cargar los datos de prueba 
 (*fixtures*) de la aplicación ejecutando el siguiente comando:
 
