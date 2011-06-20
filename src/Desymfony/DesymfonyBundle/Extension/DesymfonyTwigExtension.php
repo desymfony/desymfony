@@ -47,10 +47,10 @@ class DesymfonyTwigExtension extends \Twig_Extension
 
         return $string;
     }
-    
+
     static public function format_metadesc($string)
     {
-        
+
         $string = preg_replace('/\s+/', ' ', $string);
         $string = preg_replace('/\s,/', ',', $string);
         $string = preg_replace('/\s\./', '.', $string);

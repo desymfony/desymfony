@@ -307,8 +307,7 @@ class Usuario implements UserInterface, \Serializable
 
     public function hasPonencia(\Desymfony\DesymfonyBundle\Entity\Ponencia $ponencia)
     {
-        foreach($this->ponencias as $value)
-        {
+        foreach ($this->ponencias as $value) {
             if ($value->getId() == $ponencia->getId()) {
                 return true;
             }
