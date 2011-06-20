@@ -90,7 +90,7 @@ class Ponencia
     {
         return $this->getTitulo();
     }
-    
+
     /**
      * Get id
      *
@@ -289,8 +289,7 @@ class Ponencia
 
     public function hasUsuario(\Desymfony\DesymfonyBundle\Entity\Usuario $usuario)
     {
-        foreach ($this->usuarios as $value)
-        {
+        foreach ($this->usuarios as $value) {
             if ($value->getId() == $usuario->getId()) {
                 return true;
             }

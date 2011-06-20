@@ -17,7 +17,8 @@ class DNIValidator extends ConstraintValidator
         }
     }
 
-    protected function letra_nif($dni) {
+    protected function letra_nif($dni)
+    {
         return substr("TRWAGMYFPDXBNJZSQVHLCKE", strtr($dni, "XYZ", "012")%23, 1);
     }
 }
