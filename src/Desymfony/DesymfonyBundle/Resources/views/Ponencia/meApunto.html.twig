@@ -1,7 +1,0 @@
-{% if is_granted('ROLE_USER') %}
-    {% if app.user.hasPonencia(ponencia) %}
-        <strong class="apuntado">&#10004; Apuntado</strong>
-    {% else %}
-        <a href="{{ path('apuntarse', {'slug': ponencia.slug} ) }}" class="btn me_apunto">Me apunto</a>
-    {% endif %}
-{% endif %}

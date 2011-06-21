@@ -4,6 +4,7 @@ namespace Desymfony\DesymfonyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+//Aquí habrá código hecho por Javi E.
 class DefaultController extends Controller
 {
     public function indexAction()
