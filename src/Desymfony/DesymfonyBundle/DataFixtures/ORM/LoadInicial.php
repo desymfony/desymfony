@@ -36,7 +36,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface, Co
                          'Pere', 'Rafael', 'Raúl', 'Rebeca', 'Rosa', 'Rubén', 'Salvador',
                          'Santiago', 'Sergio', 'Susana', 'Verónica', 'Vicente', 'Víctor',
                          'Victoria', 'Vidal');
-        
+
         /* Los 50 apellidos más comunes en España según el Instituto de Estadística */
         $apellidos = array('García', 'Fernández', 'González', 'Rodríguez', 'López', 'Martínez',
                            'Sánchez', 'Pérez', 'Martín', 'Gómez', 'Jiménez', 'Ruiz', 'Hernández',
@@ -182,9 +182,9 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface, Co
 
             $usuario->setNombre($nombres[rand(0, count($nombres)-1)]);
             $usuario->setApellidos(
-              $apellidos[rand(0, count($apellidos)-1)].
-              ' '.
-              $apellidos[rand(0, count($apellidos)-1)]
+                $apellidos[rand(0, count($apellidos)-1)].
+                ' '.
+                $apellidos[rand(0, count($apellidos)-1)]
             );
 
             $dni = substr(rand(), 0, 8);
