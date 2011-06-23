@@ -1,0 +1,13 @@
+m_portada:
+    pattern:  /m
+    defaults: { _controller: DesymfonyBundle:Default:index, _format: mhtml }
+
+admin_portada:
+    pattern:  /admin
+    defaults: { _controller: DesymfonyBundle:AdminPonencia:list }
+
+estatica:
+    pattern:  /sitio/{pagina}
+    defaults: { _controller: DesymfonyBundle:Default:estatica }
+    requirements:
+      pagina: contacto|copyright|condiciones|privacidad
