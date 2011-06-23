@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Jornadas de Symfony{% endblock %} | Desymfony.com</title>
+  <meta name="description" content="{% block metadesc %}Symfony aterriza en España, ¿te lo vas a perder?. Las Jornadas de Symfony 2011 tendrán lugar en la Universitat Jaume I, en Castellón, los días 1,2 y 3 de Julio de 2011{% endblock %}" />
+
+  <link href="{{ asset('bundles/desymfony/css/reset.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('bundles/desymfony/css/960.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('bundles/desymfony/css/main.css') }}" rel="stylesheet" type="text/css" />
+
+  {% block stylesheets %}{% endblock %}
+
+  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body id="{% block pageid '' %}">
+  <header>
+    <div class="container_16">
+    {% block header %}{% endblock %}
+    </div>
+  </header>
+  
+  <div class="container_16">
+    {% block body %}{% endblock %}
+
+    <footer>
+      {% block footer %}
+        <a href="{{ path('estatica', { 'pagina': 'copyright'}) }}">&copy; {{ 'now' | date('Y') }} - desymfony</a>
+        <a href="{{ path('estatica', { 'pagina': 'privacidad'}) }}"> Privacidad</a>
+        <a href="{{ path('estatica', { 'pagina': 'condiciones'}) }}"> Condiciones de uso</a>
+      {% endblock %}
+    </footer>
+  </div>
+  {% block javascripts %}{% endblock %}
+</body>
+</html>

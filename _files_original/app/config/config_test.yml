@@ -1,0 +1,29 @@
+imports:
+    - { resource: config_dev.yml }
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.filesystem
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+
+    orm:
+        auto_generate_proxy_classes: true
+        default_entity_manager:      default
+        auto_mapping:                true

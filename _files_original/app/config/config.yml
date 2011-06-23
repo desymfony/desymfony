@@ -58,3 +58,12 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+
+
+# Services, listener
+
+services:
+    desymfony.desymfonybundle.listener.request:
+        class: Desymfony\DesymfonyBundle\RequestListener
+        tags:
+            - { name: kernel.listener, event: core.request, method: onCoreRequest }

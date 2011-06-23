@@ -1,0 +1,33 @@
+security:
+    firewalls:
+        secured_area:
+            pattern:    ^/
+            anonymous:  ~
+            form_login:
+                login_path:  /login
+                check_path:  /check
+            logout:
+                path:   /logout
+                target: /
+    access_denied_url: /denegado
+    access_control:
+        - { path: ^/perfil        , roles: ROLE_USER }
+        - { path: ^/me-apunto-a-* , roles: ROLE_USER }
+        - { path: ^/admin         , roles: ROLE_ADMIN }
+        - { path: ^/registro      , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+    providers:
+        main:
+            providers: [in_memory, user_db]
+        in_memory:
+            users:
+                desymfony: { password: 1d83b83cb4341ceb904d97bcd3987d23ded89b5b, roles: 'ROLE_ADMIN' }
+                admin:     { password: d033e22ae348aeb5660fc2140aec35850c4da997, roles: 'ROLE_ADMIN' }
+        user_db:
+            entity: { class: Desymfony\DesymfonyBundle\Entity\Usuario, property: email }
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm:  sha1
+            iterations: 1
+            encode_as_base64: false
+        Desymfony\DesymfonyBundle\Entity\Usuario: sha512
