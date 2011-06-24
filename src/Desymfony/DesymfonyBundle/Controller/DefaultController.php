@@ -27,7 +27,9 @@ class DefaultController extends Controller
      */
     public function estaticaAction($pagina)
     {
-        return $this->render(sprintf('DesymfonyBundle:Estaticas:%s.html.twig', $pagina));
+        $format = $this->get('request')->getRequestFormat();
+
+        return $this->render(sprintf('DesymfonyBundle:Estaticas:%s.'.$format.'.twig', $pagina));
     }
 
 }

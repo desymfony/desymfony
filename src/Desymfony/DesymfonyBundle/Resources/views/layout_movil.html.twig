@@ -10,22 +10,20 @@
 
 </head>
 <body>
-<div data-role="page" id="jqm-home" class="type-home">
-	<div data-role="content">
-	{% block contenido %}
+<div data-role="page" id="{% block pageid '' %}" class="type-{% block pagetype 'interior' %}">
+{% block header %}
+{% endblock %}
 
-    {% endblock %}
+{% block contenido %}
+{% endblock %}
 
-
-	</div>
-
-	<div data-role="footer" class="footer-docs" data-theme="c">
-      {% block footer %}
-        <a href="{{ path('m_estatica', { 'pagina': 'copyright'}) }}">&copy; {{ 'now' | date('Y') }} - desymfony</a>
-        <a href="{{ path('m_estatica', { 'pagina': 'privacidad'}) }}"> Privacidad</a>
-        <a href="{{ path('m_estatica', { 'pagina': 'condiciones'}) }}"> Condiciones de uso</a>
-      {% endblock %}
-	</div>
+{% block footer %}
+<div  data-role="footer" class="ui-bar" data-theme="b">
+    <a href="{{ path('m_estatica', { 'pagina': 'copyright'}) }}">&copy; {{ 'now' | date('Y') }} - desymfony</a>
+    <a href="{{ path('m_estatica', { 'pagina': 'privacidad'}) }}"> Privacidad</a>
+    <a href="{{ path('m_estatica', { 'pagina': 'condiciones'}) }}"> Condiciones de uso</a>
+</div>
+{% endblock %}
 
 </div>
 </body>
