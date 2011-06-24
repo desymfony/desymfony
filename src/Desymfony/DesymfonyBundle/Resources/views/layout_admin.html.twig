@@ -1,15 +1,15 @@
 {% extends "::base.html.twig" %}
 
 {% block header %}
-<h1 class="grid_6 alpha"><a href="{{ path('admin_portada') }}">Gestión de deSymfony.com</a></h1>
+<h1 class="grid_6 alpha"><a href="">Gestión de deSymfony.com</a></h1>
 
 <nav class="grid_10 omega">
     <ul>
-        <li><a href="{{ path('admin_ponencia_list') }}">Ponencias</a></li>
-        <li><a href="{{ path('portada') }}">Sitio público</a></li>
-        <li>{{ app.user.username }} <a href="{{ path('logout') }}">salir</a></li>
+        <li><a href="">Ponencias</a></li>
+        <li><a href="">Sitio público</a></li>
+        <li> NOMBRE_USUARIO <a href="">salir</a></li>
     </ul>
 </nav>
 
-<h1>{{ block('title') }}</h1>
+<h1> TITULO_DE_PAGINA </h1>
 {% endblock %}

@@ -2,10 +2,6 @@
 _ponencias:
     resource: @DesymfonyBundle/Resources/config/ponencia_routing.yml
 
-_admin_ponencias:
-    resource: @DesymfonyBundle/Resources/config/admin_ponencia_routing.yml
-    prefix:   /admin/ponencia
-
 _ponentes:
     resource: @DesymfonyBundle/Resources/config/ponente_routing.yml
 
