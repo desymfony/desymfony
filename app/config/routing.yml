@@ -7,3 +7,6 @@ _ponentes:
 
 _comun:
     resource: @DesymfonyBundle/Resources/config/routing.yml
+
+_usuarios:
+    resource: @DesymfonyBundle/Resources/config/usuario_routing.yml
