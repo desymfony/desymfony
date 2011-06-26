@@ -17,37 +17,8 @@ use Desymfony\DesymfonyBundle\Validator\DNI;
  * @ORM\Entity()
  * @UniqueEntity(fields="email")
  */
-class Usuario implements UserInterface, \Serializable
+class Usuario
 {
-    /*
-     * Implementation of UserInterface
-     */
-
-    public function getRoles()
-    {
-        return array('ROLE_USER');
-    }
-
-    public function getSalt()
-    {
-        return false;
-    }
-
-    public function getUsername()
-    {
-        return $this->email;
-    }
-
-    public function eraseCredentials()
-    {
-
-    }
-
-    public function equals(UserInterface $user)
-    {
-        return $user->getUsername() == $this->getUsername();
-    }
-
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -125,19 +96,6 @@ class Usuario implements UserInterface, \Serializable
     public function getNombreCompleto()
     {
         return $this->getNombre().' '.$this->getApellidos();
-    }
-
-    public function serialize()
-    {
-        return serialize(array(
-            $this->getEmail()
-        ));
-    }
-
-    public function unserialize($serialized)
-    {
-        $arr = unserialize($serialized);
-        $this->setEmail($arr[0]);
     }
 
     /**
@@ -336,50 +294,4 @@ class Usuario implements UserInterface, \Serializable
         return count($this->ponencias);
     }
 
-    /*
-     * Dejo comentado este código para que se viera como se haría mediante código PHP
-     * Creo que en ocasiones puede ser preferible esta manera por tener todas las
-     * validaciones a un sólo vistazo
-
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        // Validación global
-        $metadata->addConstraint(new UniqueEntity(array('fields' => 'email')));
-
-        // Nombre
-        $metadata->addPropertyConstraint('nombre',    new Assert\NotBlank()   );
-        $metadata->addPropertyConstraint('nombre',    new Assert\MinLength(3) );
-        $metadata->addPropertyConstraint('nombre',    new Assert\MaxLength(20));
-
-        // Apellidos
-        $metadata->addPropertyConstraint('apellidos', new Assert\NotBlank()   );
-        $metadata->addPropertyConstraint('apellidos', new Assert\MinLength(3) );
-        $metadata->addPropertyConstraint('apellidos', new Assert\MaxLength(20));
-
-        // DNI
-        $metadata->addPropertyConstraint('dni'      , new Assert\NotBlank()   );
-        $metadata->addPropertyConstraint('dni'      , new DNI() );
-
-        // Dirección
-        $metadata->addPropertyConstraint('direccion', new Assert\NotBlank()   );
-        $metadata->addPropertyConstraint('direccion', new Assert\MinLength(5) );
-        $metadata->addPropertyConstraint('direccion', new Assert\MaxLength(100));
-
-        // Telefóno
-        $metadata->addPropertyConstraint('telefono' , new Assert\NotBlank());
-
-        // Contraseña
-        $metadata->addPropertyConstraint('password',  new Assert\NotBlank());
-        $metadata->addPropertyConstraint('password',  new Assert\MinLength(5) );
-        $metadata->addPropertyConstraint('password',  new Assert\MaxLength(10));
-
-        // Email
-        $metadata->addPropertyConstraint('email'   ,  new Assert\NotBlank());
-        $metadata->addPropertyConstraint('email'   ,  new Assert\Email() );
-
-
-        $metadata->addPropertyConstraint('password',  new Assert\NotBlank());
-    }
-     *
-     */
 }
