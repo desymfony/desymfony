@@ -1,3 +1,0 @@
-# Rutas del proyecto Desymfony
-_comun:
-    resource: @DesymfonyBundle/Resources/config/routing.yml

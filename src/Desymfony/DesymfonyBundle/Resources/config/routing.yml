@@ -1,3 +1,0 @@
-portada:
-    pattern:  /
-    defaults: { _controller: DesymfonyBundle:Default:index }
