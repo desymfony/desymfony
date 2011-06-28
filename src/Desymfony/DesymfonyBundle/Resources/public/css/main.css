@@ -1,0 +1,580 @@
+/*
+ ____                                         ___
+/\  _`\                                     /'___\
+\ \ \/\ \    __    ____  __  __    ___ ___ /\ \__/  ___    ___   __  __
+ \ \ \ \ \ /'__`\ /',__\/\ \/\ \ /' __` __`\ \ ,__\/ __`\/' _ `\/\ \/\ \
+  \ \ \_\ \\  __//\__, `\ \ \_\ \/\ \/\ \/\ \ \ \_/\ \L\ \\ \/\ \ \ \_\ \
+   \ \____/ \____\/\____/\/`____ \ \_\ \_\ \_\ \_\\ \____/ \_\ \_\/`____ \
+    \/___/ \/____/\/___/  `/___/> \/_/\/_/\/_/\/_/ \/___/ \/_/\/_/`/___/> \
+                             /\___/                                  /\___/
+                             \/__/                                   \/__/
+
+Antes de que eches un vistado a esta hoja de estilos, por favor ten en cuenta
+lo siguiente:
+  * Este es el CSS del proyecto Desymfony (http://github.com/desymfony/desymfony)
+  * El objetivo del proyecto es enseñar a programar con Symfony2, no maquetar
+    con HTML5/CSS3
+  * Las reglas y selectores de este CSS son menos eficientes de lo que deberían
+    ser. La razón es que el código HTML de las páginas debe ser lo más ligero
+    posible y evitar el uso de atributos 'id' y 'class'
+*/
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* *                                                                       * */
+/* *  SITIO WEB PUBLICO (FRONTEND)                                         * */
+/* *                                                                       * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+
+/* Estilos básicos
+   ------------------------------------------------------------------------- */
+body {
+  color: #333;
+  font: 14px/1.4 Arial, sans-serif;
+}
+
+article {
+  overflow: auto;
+}
+p + p {
+  margin-top: 1em;
+}
+ul {
+  margin: .25em 0 1em 2em;
+}
+ul li {
+  margin-bottom: .25em;
+}
+
+
+/* Enlaces
+   ------------------------------------------------------------------------- */
+a {
+  color: #1148A6;
+}
+a:active {
+  position: relative;
+  top: 1px;
+}
+
+a.btn, input[type="submit"] {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, rgb(255,255,255)),
+    color-stop(0.50, rgb(236,236,236)),
+    color-stop(0.75, rgb(216,216,216))
+  );
+  background-image: -moz-linear-gradient(
+    center top,
+    rgb(255,255,255) 5%,
+    rgb(236,236,236) 50%,
+    rgb(216,216,216) 75%
+  );
+
+  border: 1px solid #AAA;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+
+  color: #333;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+
+  margin: 1em 0;
+  padding: .5em;
+
+  text-align: center;
+  text-decoration: none;
+
+  text-shadow: 0 1px 0 #FFF;
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+a.btn:hover, input[type="submit"]:hover {
+  border-color: #777;
+
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, rgb(255,255,255)),
+    color-stop(0.50, rgb(240,244,249)),
+    color-stop(0.75, rgb(203,218,235))
+  );
+  background-image: -moz-linear-gradient(
+    center top,
+    rgb(255,255,255) 5%,
+    rgb(240,244,249) 50%,
+    rgb(203,218,235) 75%
+  );
+}
+a.btn:active, input[type="submit"]:active {
+  border-color: #000;
+  position: relative;
+  top: 1px;
+}
+
+/* Formularios
+   ------------------------------------------------------------------------- */
+label {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 20px;
+  width: 100px;
+}
+input[type="text"], input[type="password"], input[type="email"], textarea {
+  border: solid 1px #AAA;
+  font-size: 14px;
+  padding: 4px;
+  width: 200px;
+}
+textarea {
+  height: 100px;
+}
+
+/* Cabecera
+   ------------------------------------------------------------------------- */
+header {
+  background: #326BAB;
+  border-bottom: 3px solid #164B7B;
+  color: #FFF;
+  height: 50px;
+  margin-bottom: 1em;
+}
+
+header a {
+  color: #E4F0F6;
+  display: block;
+  font-size: 18px;
+}
+header h1 a {
+  color: #FFF;
+  font-size: 28px;
+  line-height: 50px;
+  text-decoration: none;
+  text-shadow: 0 2px 0px #164B7B;
+}
+
+header nav ul {
+  text-align: right;
+  margin-top: 0;
+  list-style: none;
+}
+header nav ul li {
+  float: left;
+  text-transform: lowercase;
+}
+header nav ul li a {
+  line-height: 50px;
+  padding: 0 .85em;
+  text-decoration: none;
+}
+
+/* El menú de navegación restalta "automágicamente" la opción que corresponde
+   a la página que se está visualizando */
+body#ponencias header a[href*="ponencias"],
+body#ponentes header a[href*="ponentes"],
+body#registro header a[href*="registro"],
+body#pagina header a[href*="contacto"] {
+  background: #164B7B;
+  color: #F7B800;
+}
+
+/* Pie de página
+   ------------------------------------------------------------------------- */
+footer {
+  border-top: 1px solid #CBD3D7;
+  clear: both;
+  margin-top: 4em;
+  padding-top: .5em;
+}
+footer, footer a {
+  color: #777;
+  font-size: 14px;
+  padding-right: 1em;
+  text-decoration: none;
+}
+footer:hover a {
+  color: #1148A6;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Elementos comunes en varias páginas
+   ------------------------------------------------------------------------- */
+#portada   #principal h2,
+#ponencias #principal h2,
+#ponentes  #principal h2,
+#error     #principal h2 {
+  color: #177915;
+  font-size: 18px;
+}
+
+#ponencia  #principal h1,
+#ponencias #principal h1,
+#ponentes  #principal h1,
+#registro  #principal h1,
+#usuario   #principal h1,
+#pagina    #principal h1,
+#error     #principal h1 {
+  color: #164B7B;
+  font-size: 28px;
+  margin-bottom: .4em;
+  ttext-shadow: 0 1px 1px #E3F0F6;
+}
+
+#ponencias #principal > div + div,
+#ponentes  #principal > div + div {
+  margin: 2em 0;
+}
+
+/* Página: PORTADA
+   ------------------------------------------------------------------------- */
+#portada #principal p:first-child {
+  font: italic 18px/1.3 Arial, sans-serif;
+  margin: .7em 0 .5em;
+  text-align: center;
+}
+
+#portada #principal h2 {
+  border-bottom: 1px solid #CBD3D7;
+  font-weight: normal;
+  margin: .5em 0;
+}
+
+#portada #principal ul {
+  list-style: none;
+  margin-left: 0;
+}
+#portada #principal li {
+  margin-bottom: 1em;
+}
+#portada #principal li a {
+  font-size: 18px;
+}
+
+/* Páginas: PONENCIAS y PONENCIA
+   ------------------------------------------------------------------------- */
+#ponencia  #principal strong.apuntado,
+#ponencias #principal strong.apuntado {
+  background: #177915;
+  color: #FFF;
+  display: block;
+  font-weight: normal;
+  margin: 1em 0;
+  padding: .5em;
+  text-align: center;
+
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+#ponencias #principal > div {
+  overflow: hidden;
+}
+#ponencias #principal h2 {
+  margin-bottom: .5em;
+}
+#ponencias #principal a {
+  font-size: 18px;
+}
+#ponencias #principal a.btn {
+  font-size: 14px;
+}
+
+#ponencia #principal div {
+  font-size: 16px;
+  text-align: center;
+}
+#ponencia #principal div strong {
+  display: block;
+  font-size: 14px;
+}
+#ponencia #principal a.btn {
+  font-size: 16px;
+  margin: 0;
+}
+#ponencia #principal strong.apuntado {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Página: PONENTES
+   ------------------------------------------------------------------------- */
+#ponentes #principal div > p:first-child + ul {
+  list-style: none;
+  margin-left: 0;
+}
+#ponentes #principal div > p:first-child + ul li {
+  margin-bottom: 1em;
+}
+#ponentes #principal a[href*="twitter"] {
+  background: no-repeat left  url("data:image/png;base64,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");
+  padding: 10px 0 10px 30px;
+}
+#ponentes #principal a[href*="linkedin"] {
+  background: no-repeat left  url("data:image/png;base64,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");
+  padding: 10px 0 10px 30px;
+}
+
+/* Página: REGISTRO
+   ------------------------------------------------------------------------- */
+#registro form ul {
+  list-style: none;
+  margin-left: 120px;
+}
+
+#registro form ul li{
+  padding-left: 0;
+  margin-left: 0;
+  color: red;
+  font-size: 10px;
+}
+
+/* Lateral
+   ------------------------------------------------------------------------- */
+#lateral {
+  color: #555;
+}
+
+#lateral > p + div.usuario {
+  margin-top: 1em;
+}
+#lateral div.usuario {
+  background-color: #E4F0F6;
+  color: #222;
+  margin: 3px 0 1em;
+  outline: 1px solid #CBD3D7;
+  padding: .5em 0;
+  text-align: center;
+}
+#lateral div.usuario h4 {
+  font-size: 15px;
+  line-height: 1.2;
+  padding: 0 0 .25em .75em;
+  text-align: left;
+}
+
+#lateral h3, #lateral > * + h3 {
+  margin-top: 1em;
+}
+#lateral h3:first-child {
+  margin-top: 0;
+}
+
+#lateral a[href*="registro"] {
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  margin: .5em 2em;
+}
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* *                                                                       * */
+/* *  SITIO WEB PRIVADO (BACKEND)                                          * */
+/* *                                                                       * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#admin header {
+  background: #333;
+  border-color: #DDD;
+  color: #DDD;
+  font-size: 18px;
+}
+#admin header a {
+  color: #DDD;
+}
+#admin header h1 a {
+  color: #FFF;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 40px;
+  padding-top: 5px;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: 0 2px 0px #000;
+}
+
+#admin header nav {
+  position: relative;
+}
+#admin header nav li:nth-child(3n) {
+  color: #F7B800;
+  position: absolute;
+  right: 0;
+}
+#admin header nav li:nth-child(3n) a {
+  display: inline;
+}
+
+#admin header nav + h1 {
+  color: #555;
+  font-size: 30px;
+  line-height: 1.2;
+  margin: .5em 0;
+
+  width: 940px;
+  display: inline;
+  float: left;
+}
+
+#admin table {
+  clear: both;
+  margin-bottom: 2em;
+  width: 97%;
+}
+
+#admin thead th {
+  background: #555;
+  border-right: 1px solid #CCC !important;
+  color: #FFF;
+  font-size: 13px;
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+#admin tr, #admin th, #admin td {
+  border: solid #CCC;
+  border-width: 1px 0;
+  padding: .5em .25em;
+}
+
+#admin tr:nth-child(2n+1) td {
+  background: #F1F1F1;
+}
+
+#admin table a {
+  text-decoration: none;
+}
+#admin table a + a {
+  margin-left: 1em;
+}
+#admin table a[href*="edit"], #admin table a[href*="delete"] {
+  text-decoration: none;
+  margin-right: 1em;
+}
+#admin table a[href*="edit"]:hover, #admin table a[href*="delete"]:hover {
+  text-decoration: underline;
+}
+
+#admin tr:hover td {
+  background: #FFC;
+  color: #000;
+}
+#admin tr:hover a {
+  text-decoration: underline;
+}
+#admin a[href*="delete"] {
+  color: #BB1B23;
+}
+
+/* botones */
+#admin a[href*="new"], #admin form input[type="submit"] {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, rgb(0,0,0)),
+    color-stop(0.50, rgb(55,55,55)),
+    color-stop(0.75, rgb(77,77,77))
+  );
+  background-image: -moz-linear-gradient(
+    center top,
+    rgb(0,0,0) 5%,
+    rgb(55,55,55) 50%,
+    rgb(77,77,77) 75%
+  );
+
+  border: 1px solid #AAA;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+
+  color: #EFEFEF;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+
+  margin: 1em 0;
+  padding: .5em;
+
+  text-align: center;
+  text-decoration: none;
+
+  text-shadow: 0 1px 0 #000;
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+
+  width: 150px;
+}
+#admin a[href*="new"]:hover, #admin form input[type="submit"]:hover {
+  border-color: #777;
+
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, rgb(77,77,77)),
+    color-stop(0.50, rgb(55,55,55)),
+    color-stop(0.75, rgb(0,0,0))
+  );
+  background-image: -moz-linear-gradient(
+    center top,
+    rgb(77,77,77) 5%,
+    rgb(55,55,55) 50%,
+    rgb(0,0,0) 75%
+  );
+}
+#admin a[href*="new"]:active, #admin form input[type="submit"]:active {
+  border-color: #000;
+  position: relative;
+  top: 1px;
+}
+
+#admin form > div > div {
+  clear: both;
+  margin-bottom: 1em;
+}
+#admin form label {
+  font-size: 1.2em;
+  font-weight: bold;
+  float: left;
+  width: 15%;
+}
+#admin form input[type="text"],
+#admin form input[type="password"],
+#admin form input[type="email"],
+#admin form input[type="tel"],
+#admin form input[type="number"],
+#admin form textarea {
+  width: 75%;
+  border: 1px solid #333;
+  padding: .5em;
+  font-size: 16px;
+}
+#admin form textarea {
+  height: 200px;
+}
+#admin form input[type="number"] {
+  width: 25%;
+}
+#admin form select {
+  padding: .5em 1em;
+  font-size: 16px;
+}
+#admin form div[name*="fecha"] > div {
+  display: inline;
+  padding-right: 2em;
+}
+
+#admin form + a[href*="list"] {
+  font-size: 16px;
+}
+#admin form + a[href*="list"]:before {
+  content: '< ';
+}
