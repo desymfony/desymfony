@@ -8,8 +8,5 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class UsuarioController extends Controller
 {
-    public function registroAction()
-    {
-        return $this->render('DesymfonyBundle:Usuario:registro.html.twig');
-    }
+    
 }
