@@ -1,3 +1,0 @@
-registro:
-  pattern: /registro
-  defaults: { _controller: DesymfonyBundle:Usuario:registro }
