@@ -9,7 +9,7 @@ class DefaultController extends Controller
     public function indexaction()
     {
         
-        
+        return $this->render('DesymfonyBundle:Default:index.html.twig');
     }
     
     
