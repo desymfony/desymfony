@@ -15,6 +15,30 @@
   </div>
 {% endfor %}
 
+{# paginator #}
+<ul id="paginate_elements">
+  {% if paginator.currentPage('dia-uno') > 1 %}
+    <li><a href="{{ path('ponencias', {'page': paginator.previousPage('dia-uno'), 'paginatorId': 'dia-uno'}) }}">anterior</a></li>
+  {% else %}
+    <li class="left_disabled"><a href="#">anterior</a></li>
+  {% endif %}
+
+  {% for page in paginator.minPageInRange('dia-uno')..paginator.maxPageInRange('dia-uno') %}
+    {% if page == paginator.currentPage('dia-uno') %}
+      <li><a class="current" href="#">{{ page }}</a></li>
+    {% else %}
+      <li><a href="{{ path('ponencias', {'page': page, 'paginatorId': 'dia-uno'}) }}">{{ page }}</a></li>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.currentPage('dia-uno') < paginator.lastPage('dia-uno') %}
+    <li class="right"><a href="{{ path('ponencias', {'page': paginator.nextPage('dia-uno'), 'paginatorId': 'dia-uno'}) }}">siguiente</a></li>
+  {% else %}
+    <li class="right_disabled">siguiente</li>
+  {% endif %}
+</ul>
+{# end paginator #}
+
 <h2>Segundo día (2 de julio)</h2>
 
 {% for ponencia in ponenciasDiaDos %}
@@ -22,6 +46,30 @@
   {% include 'DesymfonyBundle:Ponencia:bloqueGrande.html.twig' %}
   </div>
 {% endfor %}
+
+{# paginator #}
+<ul id="paginate_elements">
+  {% if paginator.currentPage('dia-dos') > 1 %}
+    <li><a href="{{ path('ponencias', {'page': paginator.previousPage('dia-dos'), 'paginatorId': 'dia-dos'}) }}">anterior</a></li>
+  {% else %}
+    <li class="left_disabled"><a href="#">anterior</a></li>
+  {% endif %}
+
+  {% for page in paginator.minPageInRange('dia-dos')..paginator.maxPageInRange('dia-dos') %}
+    {% if page == paginator.currentPage('dia-dos') %}
+      <li><a class="current" href="#">{{ page }}</a></li>
+    {% else %}
+      <li><a href="{{ path('ponencias', {'page': page, 'paginatorId': 'dia-dos'}) }}">{{ page }}</a></li>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.currentPage('dia-dos') < paginator.lastPage('dia-dos') %}
+    <li class="right"><a href="{{ path('ponencias', {'page': paginator.nextPage('dia-dos'), 'paginatorId': 'dia-dos'}) }}">siguiente</a></li>
+  {% else %}
+    <li class="right_disabled">siguiente</li>
+  {% endif %}
+</ul>
+{# end paginator #}
 
 <p>Ponencias en formatos
 <a href="{{ path('ponencias', {'_format': 'xml'}) }}">XML</a> | <a href="{{ path('ponencias', {'_format': 'ics'}) }}">iCal</a> </p>

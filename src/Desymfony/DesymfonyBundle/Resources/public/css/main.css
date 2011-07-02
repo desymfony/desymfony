@@ -304,6 +304,76 @@ footer a:hover {
   margin: 0;
 }
 
+/* Paginador
+   ------------------------------------------------------------------------- */
+#paginate_elements {
+    list-style-type: none;
+    width:auto; 
+    height:20px; 
+    text-align:right; 
+    margin-top:10px; 
+    margin-left:0; 
+}
+#paginate_elements li {
+    float:left; 
+    height:20px; 
+    border:1px solid #E5E5E5; 
+    width:auto; 
+    margin-right:5px;}
+
+#paginate_elements li .next a:hover, #paginate_elements li.next a:hover {
+    color:#575757;
+}
+#paginate_elements li.left a {
+    float:left; 
+    color:#707070; 
+    text-decoration:none; 
+    padding:0 10px 0 23px;
+}
+#paginate_elements li.left:hover a {
+    color:#575757;
+}
+#paginate_elements li.left_disabled:hover {
+    cursor:default;
+}
+#paginate_elements li.left_disabled a {
+    float:left; 
+    color:#bbbbbb; 
+    text-decoration:none; 
+    padding:0 10px 0 23px;
+}
+#paginate_elements li.left_disabled a:hover {
+    cursor:default;
+}
+#paginate_elements li.right:hover a {
+    color:#575757;
+}
+#paginate_elements li.right_disabled:hover {
+    cursor:default;
+}
+#paginate_elements li.right_disabled a:hover {
+    cursor:default;
+}
+#paginate_elements li a {
+    float:left; 
+    color:#707070; 
+    text-decoration:none; 
+    padding:0 7px 0;
+}
+#paginate_elements li.current {
+    border:1px solid #828282; 
+}
+#paginate_elements li.current a {
+    color:#828282;
+}
+#paginate_elements li.disabled a {
+    color:#bbbbbb;
+}
+#paginate_elements li.disabled a:hover {
+    cursor:default;
+}
+
+
 /* Página: PONENTES
    ------------------------------------------------------------------------- */
 #ponentes #principal div > p:first-child + ul {

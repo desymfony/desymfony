@@ -7,11 +7,10 @@ use Doctrine\ORM\EntityRepository;
 class PonenciaRepository extends EntityRepository
 {
     /**
-     * Devuelve todas las ponencias del dia indicado
-     *
-     * @param string $dia Dia de las ponencias
+     * @see PonenciaRepository::findTodasDeFecha()
+     * @return Doctrine\ORM\Query
      */
-    public function findTodasDeFecha($fecha)
+    public function findTodasDeFechaQuery($fecha)
     {
         $em = $this->getEntityManager();
 
@@ -23,7 +22,17 @@ class PonenciaRepository extends EntityRepository
             ->setParameter('fecha', new \DateTime($fecha), \Doctrine\DBAL\Types\Type::DATETIME)
             ->getQuery();
 
-        return $query->getResult();
+        return $query;
+    }
+
+    /**
+     * Devuelve todas las ponencias del dia indicado
+     *
+     * @param string $dia Dia de las ponencias
+     */
+    public function findTodasDeFecha($fecha)
+    {
+        return $this->findTodasDeFechaQuery($fecha)->getResult();
     }
 
 }
