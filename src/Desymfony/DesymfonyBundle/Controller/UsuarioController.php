@@ -42,8 +42,9 @@ class UsuarioController extends Controller
         $em = $this->get('doctrine')->getEntityManager();
 
         $usuario = new Usuario();
+        $registroUsuario = new RegistroUsuarioType($usuario);
 
-        $usuarioForm = $this->get('form.factory')->create(new RegistroUsuarioType($usuario));
+        $usuarioForm = $this->get('form.factory')->create($registroUsuario);
         
         $registroFormHandler = new RegistroUsuarioHandler(
             $usuarioForm,
@@ -52,6 +53,9 @@ class UsuarioController extends Controller
         );
         
         if ($registroFormHandler->process($usuario) == true) {
+            $session = $this->get('request')->getSession();
+            $session->setFlash('notice', 'Gracias por registrarte en Desymfony 2011');
+
             // Logueamos al usuario
             $token = new UsernamePasswordToken($usuario, null, 'main', $usuario->getRoles());
             $this->get('security.context')->setToken($token);
