@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Desymfony\DesymfonyBundle\Entity\Ponencia,
-    Desymfony\DesymfonyBundle\Form\PonenciaType;
+    Desymfony\DesymfonyBundle\Form\Type\PonenciaType;
 
 class AdminPonenciaController extends Controller
 {
