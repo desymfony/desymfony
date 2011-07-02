@@ -53,6 +53,10 @@
     git=http://github.com/symfony/DoctrineFixturesBundle.git
     target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
 
+[DoctrineExtensions]
+    git=https://github.com/beberlei/DoctrineExtensions.git
+    target=/doctrine-extensions
+
 [IdeupSimplePaginatorBundle]
     git=https://github.com/javiacei/IdeupSimplePaginatorBundle.git
-    target=/bundles/Ideup/SimplePaginatorBundleBundle
+    target=/bundles/Ideup/SimplePaginatorBundle
