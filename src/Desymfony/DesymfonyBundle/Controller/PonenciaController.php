@@ -14,15 +14,27 @@ class PonenciaController extends Controller
     public function indexAction()
     {
         $em = $this->get('doctrine')->getEntityManager();
-
-        $ponenciasDiaUno = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-01');
-        $ponenciasDiaDos = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-02');
+        $repo = $em->getRepository('DesymfonyBundle:Ponencia');
+        $paginator = $this->get('ideup.simple_paginator');
 
         $format = $this->get('request')->getRequestFormat();
+
+        if ($format == 'html') {
+            $paginator->setItemsPerPage(3, 'dia-uno');
+            $ponenciasDiaUno = $paginator->paginate($repo->findTodasDeFechaQuery('2011-07-01'), 'dia-uno')->getResult();
+
+            $paginator->setItemsPerPage(5, 'dia-dos');
+            $ponenciasDiaDos = $paginator->paginate($repo->findTodasDeFechaQuery('2011-07-02'), 'dia-dos')->getResult();
+        }
+        else {
+            $ponenciasDiaUno = $repo->findTodasDeFecha('2011-07-01');
+            $ponenciasDiaDos = $repo->findTodasDeFecha('2011-07-02');
+        }
 
         return $this->render('DesymfonyBundle:Ponencia:index.'.$format.'.twig', array(
             'ponenciasDiaUno' => $ponenciasDiaUno,
             'ponenciasDiaDos' => $ponenciasDiaDos,
+            'paginator'       => $paginator,
         ));
     }
 

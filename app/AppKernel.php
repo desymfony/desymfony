@@ -21,7 +21,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
-            
+            new Ideup\SimplePaginatorBundle\IdeupSimplePaginatorBundle(),
+
             new Desymfony\DesymfonyBundle\DesymfonyBundle(),
         );
 
