@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+  <parameters>
+      <parameter key="desymfony_usuario_manager.class">Desymfony\DesymfonyBundle\Model\UsuarioManager</parameter>
+      <parameter key="desymfony_registro_usuario_form.class">Desymfony\DesymfonyBundle\Form\Type\RegistroUsuarioType</parameter>
+      <parameter key="desymfony_registro_usuario_handler.class">Desymfony\DesymfonyBundle\Form\Handler\RegistroUsuarioHandler</parameter>
+  </parameters>
+
+  <services>
+      <service id="desymfony.usuario_manager" class="%desymfony_usuario_manager.class%">
+          <argument type="service" id="doctrine.orm.default_entity_manager" />
+          <argument type="service" id="security.encoder_factory" />
+
+      </service>      
+  </services>
+
+</container>

@@ -1,5 +1,5 @@
 <?php
-namespace Desymfony\DesymfonyBundle\Form;
+namespace Desymfony\DesymfonyBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;

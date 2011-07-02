@@ -18,61 +18,68 @@
 
 <form action="{{ path('registro') }}" method="post" {{ form_enctype(form) }}>
 
-    {{ form_errors(form.nombre) }}
+    {{ form_errors(form.usuario.nombre) }}
     <p>
-        {{ form_label(form.nombre) }}
-        {{ form_widget(form.nombre) }}
+        {{ form_label(form.usuario.nombre) }}
+        {{ form_widget(form.usuario.nombre) }}
     </p>
 
-    {{ form_errors(form.apellidos) }}
+    {{ form_errors(form.usuario.apellidos) }}
     <p>
-        {{ form_label(form.apellidos) }}
-        {{ form_widget(form.apellidos) }}
+        {{ form_label(form.usuario.apellidos) }}
+        {{ form_widget(form.usuario.apellidos) }}
     </p>
 
-    {{ form_errors(form.email) }}
+    {{ form_errors(form.usuario.email) }}
     <p>
-        {{ form_label(form.email) }}
-        {{ form_widget(form.email) }}
+        {{ form_label(form.usuario.email) }}
+        {{ form_widget(form.usuario.email) }}
     </p>
 
     <div class="grid_6 alpha">
-        {{ form_errors(form.dni) }}
+        {{ form_errors(form.usuario.dni) }}
         <p>
-            {{ form_label(form.dni) }}
-            {{ form_widget(form.dni) }}
+            {{ form_label(form.usuario.dni) }}
+            {{ form_widget(form.usuario.dni) }}
         </p>
     </div>
     
     <div class="grid_6 omega">
-        {{ form_errors(form.telefono) }}
+        {{ form_errors(form.usuario.telefono) }}
         <p>
-            {{ form_label(form.telefono) }}
-            {{ form_widget(form.telefono) }}
+            {{ form_label(form.usuario.telefono) }}
+            {{ form_widget(form.usuario.telefono) }}
         </p>
     </div>
 
-    {{ form_errors(form.direccion) }}
+    {{ form_errors(form.usuario.direccion) }}
     <p>
-        {{ form_label(form.direccion) }}
-        {{ form_widget(form.direccion) }}
+        {{ form_label(form.usuario.direccion) }}
+        {{ form_widget(form.usuario.direccion) }}
     </p>
     
     <div class="grid_6 alpha">
-        {{ form_errors(form.password.first) }}
+        {{ form_errors(form.usuario.password.first) }}
         <p>
-            {{ form_label(form.password.first, 'Contraseña') }}
-            {{ form_widget(form.password.first) }}
+            {{ form_label(form.usuario.password.first, 'Contraseña') }}
+            {{ form_widget(form.usuario.password.first) }}
         </p>
     </div>
     
     <div class="grid_6 omega">
-        {{ form_errors(form.password.second) }}
+        {{ form_errors(form.usuario.password.second) }}
         <p>
-            {{ form_label(form.password.second, 'Repetir contraseña') }}
-            {{ form_widget(form.password.second) }}
+            {{ form_label(form.usuario.password.second, 'Repetir contraseña') }}
+            {{ form_widget(form.usuario.password.second) }}
         </p>
     </div>
+
+    {{ form_errors(form.eresUnRobot) }}
+    <p>
+        {{ form_label(form.eresUnRobot) }}
+        {{ form_widget(form.eresUnRobot) }}
+    </p>
+
     {{ form_errors(form._token) }}
     {{ form_widget(form._token) }}
 
