@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}Jornadas de Symfony{% endblock %} | Desymfony.com</title>
+	<link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
+
+</head>
+<body>
+<div data-role="page" id="{% block pageid '' %}" class="type-{% block pagetype 'interior' %}">
+{% block header %}
+{% endblock %}
+
+{% block contenido %}
+{% endblock %}
+
+{% block footer %}
+<div  data-role="footer" class="ui-bar" data-theme="b">
+    <a href="{{ path('m_estatica', { 'pagina': 'copyright'}) }}">&copy; {{ 'now' | date('Y') }} - desymfony</a>
+    <a href="{{ path('m_estatica', { 'pagina': 'privacidad'}) }}"> Privacidad</a>
+    <a href="{{ path('m_estatica', { 'pagina': 'condiciones'}) }}"> Condiciones de uso</a>
+</div>
+{% endblock %}
+
+</div>
+</body>
+</html>
