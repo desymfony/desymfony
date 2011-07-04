@@ -1,0 +1,34 @@
+{% extends "DesymfonyBundle::layout_movil.html.twig" %}
+
+{% block pageid 'contacto' %}
+{% block pagetype 'interior' %}
+
+{% block header %}
+    {% include 'DesymfonyBundle:Movil:header.mhtml.twig' with {'titulo': 'Contacto'} %}
+{% endblock %}
+{% block contenido %}
+<div data-role="content">
+    <div class="content-primary">
+        <div data-role="fieldcontain">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value=""  />
+        </div>
+        <div data-role="fieldcontain">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value=""  />
+        </div>
+        <div data-role="fieldcontain">
+            <label for="phone">Phone:</label>
+            <input type="phone" name="phone" id="phone" value=""  />
+        </div>
+        <div class="ui-body ui-body-b">
+            <fieldset class="ui-grid-a">
+                    <div class="ui-block-a"><button type="submit" data-theme="d">Cancel</button></div>
+                    <div class="ui-block-b"><button type="submit" data-theme="b">Submit</button></div>
+            </fieldset>
+		</div>
+
+    </div>
+</div>
+{% endblock %}
+

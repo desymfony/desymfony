@@ -1,0 +1,44 @@
+{% extends "DesymfonyBundle::layout_movil.html.twig" %}
+
+{% block pageid 'home' %}
+{% block pagetype 'home' %}
+
+{% block contenido %}
+<div data-role="content">
+    <div class="content-secondary">
+        <p><strong>Jornadas Symfony 2011</strong> es la conferencia más importante del mundo hispano dedicada a Symfony, el mejor framework para desarrollar aplicaciones PHP.</p>
+
+        <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
+            <li data-role="list-divider">Menu</li>
+            <li><a href="{{ path('m_ponencias') }}">Ponencias</a></li>
+            <li><a href="{{ path('m_ponentes') }}">Ponentes</a></li>
+            <li><a href="{{ path('m_estatica', { 'pagina': 'contacto'}) }}">Contacto</a></li>
+        </ul>
+
+    </div><!--/content-primary-->
+
+    <div class="content-primary">
+        <nav>
+            <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+                <li data-role="list-divider">
+                    Ponencias del <strong>primer día</strong> (1 de julio)
+                </li>
+                {% for ponencia in ponenciasDiaUno %}
+                    <li>{% include 'DesymfonyBundle:Ponencia:bloquePequeno.mhtml.twig' with {'_format': 'mhtml'} %}</li>
+                {% else %}
+                    <li>No hay ninguna ponencia</li>
+                {% endfor %}
+
+                <li data-role="list-divider">Ponencias del <strong>segundo día</strong> (2 de julio)</li>
+                {% for ponencia in ponenciasDiaDos %}
+                    <li>{% include 'DesymfonyBundle:Ponencia:bloquePequeno.mhtml.twig' with {'_format': 'mhtml'} %}</li>
+                {% else %}
+                    <li>No hay ninguna ponencia</li>
+                {% endfor %}
+
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endblock %}
+

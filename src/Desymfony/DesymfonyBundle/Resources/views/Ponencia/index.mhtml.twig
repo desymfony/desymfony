@@ -1,0 +1,35 @@
+{% extends "DesymfonyBundle::layout_movil.html.twig" %}
+
+{% block pageid 'ponencias' %}
+{% block pagetype 'interior' %}
+
+{% block header %}
+    {% include 'DesymfonyBundle:Movil:header.mhtml.twig' with {'titulo': 'Ponencias'} %}
+{% endblock %}
+{% block contenido %}
+<div data-role="content">
+    <div class="content-primary">
+        <ul data-role="listview" data-theme="c" data-dividertheme="a">
+            <li data-role="list-divider">Primer día (1 de julio) <span class="ui-li-count">{{ponenciasDiaUno|length}}</span></li>
+            {% for ponencia in ponenciasDiaUno %}
+            <li>
+                {% include 'DesymfonyBundle:Ponencia:bloqueGrande.mhtml.twig' %}
+            </li>
+            {% endfor %}
+            <li data-role="list-divider">Segundo día (2 de julio) <span class="ui-li-count">{{ponenciasDiaDos|length}}</span></li>
+            {% for ponencia in ponenciasDiaDos %}
+            <li>
+                {% include 'DesymfonyBundle:Ponencia:bloqueGrande.mhtml.twig' %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div  data-role="footer" class="ui-bar">
+    Ponencias en formatos: <a href="{{ path('ponencias', {'_format': 'xml'}) }}">XML</a>
+    <a href="{{ path('ponencias', {'_format': 'ics'}) }}">iCal</a>
+</div>
+{% endblock %}

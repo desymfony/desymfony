@@ -1,0 +1,6 @@
+<a href="{{ path('m_ponencia', {'slug': ponencia.slug} ) }}"  data-transition="fade">
+    <h3>{{ ponencia.titulo }}</h3>
+    <p><strong>{{ponencia.ponente}}</strong></p>
+    <p>{{ ponencia.descripcion | truncate(300, true) }}</p>
+    <p class="ui-li-aside"><strong>{{ ponencia.hora |  date('H:i') }}</strong> - <strong>{{ ponencia.horaFinalizacion | date('H:i') }}</strong></p>
+</a>
