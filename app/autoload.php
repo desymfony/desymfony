@@ -2,8 +2,6 @@
 
 use Symfony\Component\ClassLoader\UniversalClassLoader;
 
-umask(0);
-
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
     'Symfony'                        => array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/bundles'),
