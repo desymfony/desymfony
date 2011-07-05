@@ -14,7 +14,7 @@ use
 /**
  * Description of UsuarioManager
  *
- * @author xcapy
+ * @author Fco Javier Aceituno
  */
 class UsuarioManager {
     
