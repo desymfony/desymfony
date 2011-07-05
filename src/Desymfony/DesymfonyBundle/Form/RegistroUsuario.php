@@ -30,8 +30,7 @@ class RegistroUsuario
 
     /**
      *
-     * @var boolean
-     * @Assert\False()
+     * @var boolean     
      */
     public $eresUnRobot;
 

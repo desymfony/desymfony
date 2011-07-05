@@ -41,11 +41,17 @@ class UsuarioController extends Controller
     {
         $em = $this->get('doctrine')->getEntityManager();
 
+        
         $usuario = new Usuario();
+
+        // Objeto del dominio del formulario de registro donde se van a volcar
+        // y a validar los datos
         $registroUsuario = new RegistroUsuarioType($usuario);
 
+        // Formulario de registro
         $usuarioForm = $this->get('form.factory')->create($registroUsuario);
-        
+
+        // Manejador del formulario de registro encargado de procesar los datos
         $registroFormHandler = new RegistroUsuarioHandler(
             $usuarioForm,
             $this->get('request'),
@@ -66,41 +72,6 @@ class UsuarioController extends Controller
         return $this->render('DesymfonyBundle:Usuario:registro.html.twig', array(
             'form' => $usuarioForm->createView())
         );
-
-//      $form = $this->get('form.factory')->create(new UsuarioType(), array());
-//
-//        $request = $this->get('request');
-//        if ($request->getMethod() == 'POST') {
-//            $form->bindRequest($request);
-//
-//            if ($form->isValid()) {
-//
-//                // Mensaje para notificar al usuario que todo ha salido bien
-//                $session = $this->get('request')->getSession();
-//                $session->setFlash('notice', 'Gracias por registrarte en Desymfony 2011');
-//
-//                // Obtenemos el usuario
-//                $usuario = $form->getData();
-//
-//                // Codificamos el password
-//                $factory = $this->get('security.encoder_factory');
-//                $codificador = $factory->getEncoder($usuario);
-//                $password = $codificador->encodePassword($usuario->getPassword(), $usuario->getSalt());
-//                $usuario->setPassword($password);
-//
-//                // Guardamos el objeto en base de datos
-//                $em = $this->get('doctrine')->getEntityManager();
-//                $em->persist($usuario);
-//                $em->flush();
-//
-//                // Logueamos al usuario
-//                $token = new UsernamePasswordToken($usuario, null, 'main', $usuario->getRoles());
-//                $this->get('security.context')->setToken($token);
-//
-//                return $this->redirect($this->generateUrl('portada'));
-//            }
-//        }
-//        return $this->render('DesymfonyBundle:Usuario:registro.html.twig', array('form' => $form->createView()));
     }
 
     public function denegadoAction()
