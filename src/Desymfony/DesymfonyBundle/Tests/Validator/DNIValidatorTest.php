@@ -16,6 +16,7 @@ class DNIValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testIsNotValid()
     {
+        $dniValidator = new DniValidator();
         $this->assertFalse($dniValidator->isValid("11111111A", new DNI()), "DNI con letra incorrecta no valida");
         $this->assertFalse($dniValidator->isValid("11111111-H", new DNI()), "DNI con guion no valida");
         $this->assertFalse($dniValidator->isValid("H11111111", new DNI()), "DNI con letra al principio no valida");

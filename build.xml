@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Desymfony 2011" default="build">
+
+    <target name="install" depends="cache,vendors,links,database,doctrine" description="First install after the first clone"/>
+
+    <target name="update" depends="pull,doctrine" description="Update local box with latest changes from the rest of the team"/>
+
+    <target name="build" depends="cache,clean,pdepend,phpmd,phpcpd,phpcs,phpdoc,phploc,phpunit,phpcb" description="Run all tests and build everything"/>
+
+    <target name="pull" description="Fetch from and merge with remote repository">
+        <echo>Updating your working copy against the repository...</echo>
+
+        <exec passthru="true" checkreturn="true" command="git pull" />
+        <exec passthru="true" checkreturn="true" command="git status" />
+    </target>
+
+    <target name="database" description="Set default database configuration">
+        <echo msg="Checking database configuration..."/>
+
+        <available file="app/config/parameters.ini" property="database.configured" value="true"/>
+        <if> <not><isset property="database.configured"/></not>
+        <then>
+            <echo msg="Setting database configuration to defaults..."/>
+            <copy file="app/config/parameters_sample.ini" tofile="app/config/parameters.ini"/>
+        </then>
+        </if>
+    </target>
+
+    <target name="doctrine" depends="cache" description="Create the configured databases">
+        <echo>Creating the configured databases...</echo>
+
+        <exec passthru="true" command="./app/console doctrine:database:drop --connection=default --force" />
+        <exec passthru="true" checkreturn="true" command="./app/console doctrine:database:create --connection=default" />
+        <exec passthru="true" checkreturn="true" command="./app/console doctrine:schema:create --em=default" />
+        <exec passthru="true" checkreturn="true" command="./app/console doctrine:fixtures:load --em=default" />
+    </target>
+
+    <target name="links" description="Make required symbolic links to static directories">
+        <echo msg="Linking static content..."/>
+        <exec command="ln -s ../app/build web/build" />
+    </target>
+
+    <target name="vendors" description="Remove and download latest version of all vendors">
+        <echo msg="Updating vendors..."/>
+
+        <delete dir="vendors"/>
+        <exec passthru="true" checkreturn="true" command="./bin/vendors install" />
+    </target>
+
+    <target name="tags" description="Generate tags file for VIM">
+        <echo msg="Generating CTags..."/>
+
+        <exec checkreturn="true" command="ctags -R --exclude='*.js' --exclude='*.sql' --exclude='*.htm*' --exclude='.git*' --PHP-kinds=+cidf-v"/>
+    </target>
+
+    <target name="cache" description="Clean up and create cache directories">
+        <echo msg="Cleaning garbage files..."/>
+
+        <delete dir="app/cache"/>
+        <delete dir="app/logs"/>
+        <mkdir dir="app/cache"/>
+        <mkdir dir="app/logs"/>
+        <chmod file="app/cache" mode="777"/>
+        <chmod file="app/logs" mode="777"/>
+    </target>
+
+    <target name="clean" description="Clean up and create artifact directories">
+        <delete dir="app/build"/>
+        <delete dir="app/build/api"/>
+        <delete dir="app/build/code-browser"/>
+        <delete dir="app/build/coverage"/>
+        <delete dir="app/build/tests"/>
+        <delete dir="app/build/logs"/>
+        <delete dir="app/build/pdepend"/>
+        <mkdir dir="app/build"/>
+        <mkdir dir="app/build/api"/>
+        <mkdir dir="app/build/code-browser"/>
+        <mkdir dir="app/build/coverage"/>
+        <mkdir dir="app/build/tests"/>
+        <mkdir dir="app/build/logs"/>
+        <mkdir dir="app/build/pdepend"/>
+        <chmod file="app/build" mode="777"/>
+    </target>
+
+    <target name="phpunit" description="Run unit tests using PHPUnit and generates junit.xml and clover.xml">
+        <exec passthru="true" checkreturn="true" command="phpunit -c app/phpunit.xml.dist"/>
+        <phpunitreport infile="app/build/logs/junit.xml" format="frames" todir="app/build/tests"/>
+    </target>
+
+    <target name="pdepend" description="Generate jdepend.xml and software metrics charts using PHP_Depend">
+        <exec command="pdepend --jdepend-xml=app/build/logs/jdepend.xml --jdepend-chart=app/build/pdepend/dependencies.svg --overview-pyramid=app/build/pdepend/overview-pyramid.svg src"/>
+    </target>
+
+    <target name="phpmd" description="Generate pmd.xml using PHPMD">
+        <exec command="phpmd src xml app/phpmd.xml --reportfile app/build/logs/pmd.xml"/>
+    </target>
+
+    <target name="phpcpd" description="Generate pmd-cpd.xml using PHPCPD">
+        <exec command="phpcpd --log-pmd app/build/logs/pmd-cpd.xml src"/>
+    </target>
+
+    <target name="phploc" description="Generate phploc.csv">
+        <exec command="phploc --log-csv app/build/logs/phploc.csv src"/>
+    </target>
+
+    <target name="phpcs" description="Generate checkstyle.xml using PHP_CodeSniffer">
+        <touch file="app/build/logs/checkstyle.xml"/>
+        <exec command="phpcs --report=checkstyle --report-file=app/build/logs/checkstyle.xml --standard=app/phpcs.xml src"/>
+    </target>
+
+    <target name="phpdoc" description="Generate API documentation using PHPDocumentor">
+        <exec command="phpdoc -o HTML:frames:earthli -d src -t app/build/api -ti 'Desymfony 2011'"/>
+    </target>
+
+    <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
+        <exec command="phpcb --log app/build/logs --source src --output app/build/code-browser"/>
+    </target>
+
+</project>
