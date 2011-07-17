@@ -1,0 +1,27 @@
+m_portada:
+    pattern:  /m
+    defaults: { _controller: DesymfonyBundle:Default:index, _format: mhtml }
+
+m_admin_portada:
+    pattern:  /m/admin
+    defaults: { _controller: DesymfonyBundle:AdminPonencia:list, _format: mhtml }
+
+m_estatica:
+    pattern:  /m/sitio/{pagina}
+    defaults: { _controller: DesymfonyBundle:Default:estatica, _format: mhtml }
+    requirements:
+      pagina: contacto|copyright|condiciones|privacidad
+
+m_ponencias:
+    pattern:  /m/ponencias.{_format}
+    defaults: { _controller: DesymfonyBundle:Ponencia:index, _format: mhtml }
+    requirements:
+      _format: mhtml|html|xml|ics
+
+m_ponencia:
+    pattern:  /m/ponencia/{slug}
+    defaults: { _controller: DesymfonyBundle:Ponencia:ponencia, _format: mhtml }
+
+m_ponentes:
+    pattern:  /m/ponentes
+    defaults: { _controller: DesymfonyBundle:Ponente:index, _format: mhtml }

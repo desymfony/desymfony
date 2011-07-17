@@ -36,7 +36,9 @@ class PonenciaController extends Controller
             throw new NotFoundHttpException("No existe la ponencia indicada");
         }
 
-        return $this->render('DesymfonyBundle:Ponencia:ponencia.html.twig', array(
+        $format = $this->get('request')->getRequestFormat();
+
+        return $this->render('DesymfonyBundle:Ponencia:ponencia.'.$format.'.twig', array(
             'ponencia' => $ponencia
         ));
     }

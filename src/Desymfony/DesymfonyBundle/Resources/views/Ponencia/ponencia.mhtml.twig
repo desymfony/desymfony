@@ -1,0 +1,24 @@
+{% extends "DesymfonyBundle::layout_movil.html.twig" %}
+
+{% block pageid 'ponencia' %}
+{% block pagetype 'interior' %}
+
+{% block header %}
+    {% include 'DesymfonyBundle:Movil:header.mhtml.twig' with {'titulo': ponencia.titulo} %}
+{% endblock %}
+{% block contenido %}
+<div data-role="content">
+    <div class="content-primary">
+    <h2>{{ ponencia.titulo }}</h2>
+    <p>{{ ponencia.descripcion }}</p>
+
+    <ul data-role="listview" data-inset="true">
+    <li><strong>Fecha</strong><p class="ui-li-aside">{{ ponencia.fecha | date("d M") }}</p></li>
+    <li><strong>Hora</strong><p class="ui-li-aside">{{ ponencia.hora | date("H:i") }} - {{ ponencia.horaFinalizacion | date("H:i") }}</p></li>
+    <li><strong>Idioma</strong><p class="ui-li-aside">{{ idiomas[ponencia.idioma] }}</p></li>
+    <li><a href="{{ path('m_ponentes') }}"><strong>Ponente</strong><p class="ui-li-aside">{{ ponencia.ponente }}</p></a></li>
+    </ul>
+
+    </div>
+</div>
+{% endblock %}

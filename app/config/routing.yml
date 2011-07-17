@@ -12,5 +12,8 @@ _ponentes:
 _usuarios:
     resource: @DesymfonyBundle/Resources/config/usuario_routing.yml
 
+_movil:
+    resource: @DesymfonyBundle/Resources/config/routing_movil.yml
+
 _comun:
     resource: @DesymfonyBundle/Resources/config/routing.yml

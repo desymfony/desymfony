@@ -11,7 +11,8 @@ class PonenteController extends Controller
         $em = $this->get('doctrine')->getEntityManager();
         $ponentes = $em->getRepository('DesymfonyBundle:Ponente')->findTodosAlfabeticamente();
 
-        return $this->render('DesymfonyBundle:Ponente:index.html.twig', array(
+        $format = $this->get('request')->getRequestFormat();
+        return $this->render('DesymfonyBundle:Ponente:index.'.$format.'.twig', array(
             'ponentes' => $ponentes
         ));
     }

@@ -1,0 +1,47 @@
+{% extends "DesymfonyBundle::layout_movil.html.twig" %}
+
+{% block pageid 'ponentes' %}
+{% block pagetype 'interior' %}
+
+{% block header %}
+    {% include 'DesymfonyBundle:Movil:header.mhtml.twig' with {'titulo': 'Ponentes'} %}
+{% endblock %}
+{% block contenido %}
+<div data-role="content">
+    <div class="content-primary">
+        <div data-role="collapsible-set">
+        {% for ponente in ponentes %}
+            <div data-role="collapsible" data-collapsed="true" data-theme="a">
+                <h2>{{ ponente.nombreCompleto }}</h2>
+                <p>{{ ponente.biografia | auto_link_text }}</p>
+
+                <p><strong>Imparte las siguientes ponencias</strong></p>
+                <ul>
+                    {% for ponencia in ponente.ponencias %}
+                    <li>
+                        <a href="{{ path('m_ponencia', { 'slug': ponencia.slug})  }}">{{ ponencia.titulo }}</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <p>No imparte ninguna ponencia</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <p><strong>Más información</strong></p>
+                <ul>
+                    {% if ponente.twitter %}
+                    <li><a href="{{ ponente.twitter }}">Twitter</a></li>
+                    {% endif %}
+
+                    {% if ponente.linkedin %}
+                    <li><a href="{{ ponente.linkedin }}">Linkedin</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -12,7 +12,9 @@ class DefaultController extends Controller
         $ponenciasDiaUno = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-01');
         $ponenciasDiaDos = $em->getRepository('DesymfonyBundle:Ponencia')->findTodasDeFecha('2011-07-02');
 
-        return $this->render('DesymfonyBundle:Default:index.html.twig', array(
+        $format = $this->get('request')->getRequestFormat();
+
+        return $this->render('DesymfonyBundle:Default:index.'.$format.'.twig', array(
             'ponenciasDiaUno' => $ponenciasDiaUno,
             'ponenciasDiaDos' => $ponenciasDiaDos,
         ));
@@ -25,7 +27,9 @@ class DefaultController extends Controller
      */
     public function estaticaAction($pagina)
     {
-        return $this->render(sprintf('DesymfonyBundle:Estaticas:%s.html.twig', $pagina));
+        $format = $this->get('request')->getRequestFormat();
+
+        return $this->render(sprintf('DesymfonyBundle:Estaticas:%s.'.$format.'.twig', $pagina));
     }
 
 }
