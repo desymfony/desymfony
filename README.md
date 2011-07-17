@@ -12,6 +12,8 @@ Symfony. Su finalidad es didáctica, por lo que ha sido necesario realizar
 algunas simplificaciones en su funcionamiento y arquitectura. No obstante, la 
 aplicación sigue la filosofía y buenas prácticas recomendadas por Symfony2.
 
+También se incluye una versión móvil, realizada por Pablo Godel, y mejoras adicionales realizadas por Ideup! en la rama ideup
+
 Instalación y configuración
 ---------------------------
 
@@ -160,6 +162,34 @@ Para correr los tests hay que generar los proxies de entidades con:
 
     php console --env=test doctrine:generate:proxies
 
+### Aplicación móvil ###
+
+Se puede acceder a la aplicación móvil anteponiendo a las rutas /m
+
+Ver `https://github.com/desymfony/desymfony/blob/master/src/Desymfony/DesymfonyBundle/Resources/config/routing_movil.yml` para obtener un detalle de las rutas.
+
+### Rama ideup ###
+
+En la rama ideup (accesible mediante `git checkout ideup`) hay una serie de mejoras interesantes, desarrolladas en su unconference:
+
+* Paginador en la lista de ponencias.
+* Sistema alternativo para el registro del usuario con un campo adicional y un formulario embebido.
+
+Y ayudas para el deploy y el mantenimiento del código, gestionadas mediante build.xml. Las herramientas son:
+
+* phing install: Esta tarea debe de ser ejecutada después de realizar el primer commit. En general ejecuta el vendors y crea la base de datos, tables, fixtures, directorios cache, logs, ... (prepara el entorno para ser ejecutado en local).
+* phing update: Realiza un pull y vuelve a generar la bbdd por si existen cambios.
+* phing build: Esta tarea permite explorar algunas de las herramientas que existen para PHP destinadas a mejorar el trabajo en equipo, detección de bug, calidad de código (Utilizadas en metodologías ágiles como eXtreme Programming ). El resultado de la ejecución de estas herramientas se vuelcan sobre app/build, y se puede acceder a él mediante un enlace simbólico desde web/build. El conjunto de estas tareas son:
++ phing phpunit --> Ejecuta todos los test y genera el informe de cobertura.
++ phing pdepend --> Genera análisis de rendimiento del código de la aplicación.
++ phing phpmd --> PHP Mess Detector. Encuentra problemas en el código de la aplicación (parametros sin usar, posibles bugs, ...)
++ phing phpcpd --> Detecta código duplicado.
++ phing phploc --> Lineas de código de la aplicación, complejidad ciclomática, ...
++ phing phpcs --> PHP Code Sniffer para reglas de codificación. Utiliza PEAR.
++ phing phpdoc --> PHP Documentor. Genera el API del proyecto
++ phing phpcb --> PHP Code Browser. Genera un visualizador del código de la aplicación.
+
+
 Sobre los autores
 -----------------
 
@@ -171,3 +201,9 @@ El proyecto ha sido desarrollado por:
   * Marcos Labad (@esmiz)
   * David Castelló (@dcastello)
   * Javier Eguiluz (@javiereguiluz)
+
+La aplicación móvil fue desarrollada por
+
+  * Pablo Godel @pgodel
+
+La rama ideup fue desarrollada por Ideup! http://www.ideup.com/ Ver @javiacei 
