@@ -1,5 +1,6 @@
 [symfony]
     git=http://github.com/symfony/symfony.git
+    version=v2.0.0
 
 [twig]
     git=http://github.com/fabpot/Twig.git
@@ -55,15 +56,4 @@
 [AsseticBundle]
     git=http://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
-    version=v1.0.0RC1
-
-[WebConfiguratorBundle]
-		git=http://github.com/symfony/WebConfiguratorBundle.git
-		target=/bundles/Symfony/Bundle/WebConfiguratorBundle
-
-[doctrine-fixtures]
-		git=http://github.com/doctrine/data-fixtures.git
-
-[DoctrineFixturesBundle]
-		git=http://github.com/symfony/DoctrineFixturesBundle.git
-		target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
+    version=v1.0.0RC2
