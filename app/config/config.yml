@@ -3,14 +3,15 @@ imports:
     - { resource: security.yml }
 
 framework:
-    charset:       UTF-8
-    secret:        %secret%
-    csrf_protection:
-        enabled:   true
-    form:          { enabled: true }
-    router:        { resource: "%kernel.root_dir%/config/routing.yml" }
-    validation:    { enabled: true, enable_annotations: true }
-    templating:    { engines: ['twig'] } #assets_version: SomeVersionScheme
+    #esi:             ~
+    #translator:      { fallback: en }
+    secret:          %secret%
+    charset:         UTF-8
+    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
     session:
         default_locale: %locale%
         auto_start:     true

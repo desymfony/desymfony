@@ -1,3 +1,8 @@
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal
+
 # Rutas del proyecto Desymfony
 _ponencias:
     resource: @DesymfonyBundle/Resources/config/ponencia_routing.yml
