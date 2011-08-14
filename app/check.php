@@ -28,7 +28,7 @@ check(ini_get('date.timezone'), 'Checking that the "date.timezone" setting is se
 check(is_writable(__DIR__.'/../app/cache'), sprintf('Checking that app/cache/ directory is writable'), 'Change the permissions of the app/cache/ directory so that the web server can write in it', true);
 check(is_writable(__DIR__.'/../app/logs'), sprintf('Checking that the app/logs/ directory is writable'), 'Change the permissions of the app/logs/ directory so that the web server can write in it', true);
 check(function_exists('json_encode'), 'Checking that the json_encode() is available', 'Install and enable the json extension', true);
-check(class_exists('SQLite3') || in_array('sqlite', PDO::getAvailableDrivers()), 'Install and enable the SQLite3 or PDO_SQLite extension.', true);
+check(class_exists('SQLite3') || in_array('sqlite', PDO::getAvailableDrivers()), 'Checking that the SQLite3 or PDO_SQLite extension is available', 'Install and enable the SQLite3 or PDO_SQLite extension.', true);
 
 // warnings
 echo_title("Optional checks");
@@ -52,13 +52,13 @@ if (class_exists('Locale')) {
 
         ob_start();
         $reflector->info();
-        $output = ob_get_clean();
+        $output = strip_tags(ob_get_clean());
 
-        preg_match('/^ICU version => (.*)$/m', $output, $matches);
+        preg_match('/^ICU version +(?:=> )?(.*)$/m', $output, $matches);
         $version = $matches[1];
     }
 
-    check(version_compare($matches[1], '4.0', '>='), 'Checking that the intl ICU version is at least 4+', 'Upgrade your intl extension with a newer ICU version (4+)', false);
+    check(version_compare($version, '4.0', '>='), 'Checking that the intl ICU version is at least 4+', 'Upgrade your intl extension with a newer ICU version (4+)', false);
 }
 
 $accelerator = 

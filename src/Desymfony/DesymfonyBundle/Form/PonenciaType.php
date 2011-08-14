@@ -30,4 +30,9 @@ class PonenciaType extends AbstractType
             'data_class' => 'Desymfony\DesymfonyBundle\Entity\Ponencia',
         );
     }
+
+    public function getName()
+    {
+        return 'ponencia';
+    }
 }
