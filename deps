@@ -54,7 +54,7 @@
     target=/bundles/Sensio/Bundle/GeneratorBundle
 
 [AsseticBundle]
-    git=http://github.com/symfony/AsseticBundle.git
+    git=https://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
     version=v1.0.0RC2
 
