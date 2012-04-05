@@ -1,5 +1,5 @@
 [symfony]
-    git=http://github.com/symfony/symfony.git
+    git=https://github.com/symfony/symfony.git
     version=v2.0.0
 
 [twig]
@@ -42,7 +42,7 @@
     target=/bundles/Sensio/Bundle/FrameworkExtraBundle
 
 [JMSSecurityExtraBundle]
-    git=http://github.com/schmittjoh/JMSSecurityExtraBundle.git
+    git=https://github.com/schmittjoh/JMSSecurityExtraBundle.git
     target=/bundles/JMS/SecurityExtraBundle
 
 [SensioDistributionBundle]
