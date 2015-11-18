@@ -1,3 +1,12 @@
+-----
+
+PROYECTO NO MANTENIDO DESDE 2011
+================================
+
+Este proyecto se desarrolló en el año 2011 como práctica de un tutorial para enseñar a programar con Symfony2. Hemos decidido mantener el repositorio abierto por razones históricas, pero **no debes utilizar este repositorio para aprender Symfony**.
+
+-----
+
 Proyecto Desymfony
 ==================
 
