@@ -1,5 +1,5 @@
 [symfony]
-    git=http://github.com/symfony/symfony.git
+    git=https://github.com/symfony/symfony.git
     version=v2.0.0
 
 [twig]
@@ -42,7 +42,7 @@
     target=/bundles/Sensio/Bundle/FrameworkExtraBundle
 
 [JMSSecurityExtraBundle]
-    git=http://github.com/schmittjoh/JMSSecurityExtraBundle.git
+    git=https://github.com/schmittjoh/JMSSecurityExtraBundle.git
     target=/bundles/JMS/SecurityExtraBundle
 
 [SensioDistributionBundle]
@@ -54,7 +54,7 @@
     target=/bundles/Sensio/Bundle/GeneratorBundle
 
 [AsseticBundle]
-    git=http://github.com/symfony/AsseticBundle.git
+    git=https://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
     version=v1.0.0RC2
 
@@ -62,5 +62,5 @@
     git=http://github.com/doctrine/data-fixtures.git
 
 [DoctrineFixturesBundle]
-    git=http://github.com/symfony/DoctrineFixturesBundle.git
+    git=https://github.com/symfony/DoctrineFixturesBundle.git
     target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
